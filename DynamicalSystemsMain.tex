@@ -1,0 +1,106 @@
+% !Mode:: "TeX:ACP"
+\documentclass[a4paper,12pt]{ctexbook}%,draft
+\usepackage[centering, margin = 3cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}           %提供空心字体，使用命令\mathbb
+    \allowdisplaybreaks[4]
+\usepackage{fancybox}           %提供公式阴影边框
+\usepackage[
+    amsmath,
+    thref,
+    hyperref,
+    thmmarks]{ntheorem}          %定理环境宏包
+\usepackage{amsopn}              %自定义算符宏包, 提供命令\DeclareMathOperator{}{}
+    \DeclareMathOperator{\e}{\mathrm{e}}
+    \DeclareMathOperator{\diag}{\mathrm{diag}}
+    \newcommand{\D}{\mathrm{d}}
+    \newcommand{\kD}{\,\mathrm{d}}
+    \DeclareMathOperator{\diff}{\mathrm{D}}
+    \DeclareMathOperator{\Rer}{\mathrm{Re}}
+
+
+%插图、绘图宏包及命令
+\usepackage{subfig}             %提供子标题，子浮动体
+\usepackage[sub]{psfragx}       %提供插图环境中的文字替换命令psfrag, 此时包含了\usepackage{graphicx}%插图包
+    \graphicspath{{Graph/}}
+    \setkeys{Gin}{width=0.8\textwidth,height=45mm,keepaspectratio}
+    %设定图片默认缩放大小
+\usepackage{pgf,tikz}
+%\usepackage{mathrsfs}
+    \usetikzlibrary{arrows}
+    \usetikzlibrary{arrows.meta}
+    \definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+    \definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
+    \definecolor{ccqqqq}{rgb}{0.8,0.,0.}
+    \definecolor{qqwuqq}{rgb}{0.,0.39215686274509803,0.}
+    \definecolor{qqqqff}{rgb}{0.,0.,1.}
+
+
+\usepackage[color,final]{showkeys}    %显示书签名%,final
+    \definecolor{labelkey}{rgb}{0, 0, 1}
+    \definecolor{refkey}{rgb}{1, 0, 0}
+\usepackage{paralist}           %提供列表环境
+
+\usepackage{pifont}             %提供dingautolist环境与特殊符号
+\usepackage{phonetic}           %提供弧记号
+\usepackage{nicefrac}           %提供行间公式斜分数
+\usepackage{txfonts}            %提供积分符号，不恒等于符号
+\usepackage[all]{xy}%提供交换图
+
+
+\begin{document}
+
+\theoremstyle{plain}
+\theorembodyfont{\kaishu}
+\newtheorem{Thm}{定理}[chapter]
+\newtheorem{Cor}[Thm]{推论}
+\newtheorem{Prop}[Thm]{性质}
+\newtheorem{Def}{定义}[chapter]
+\newtheorem{Exa}{例}[chapter]
+\newtheorem{Note}{注}[chapter]
+
+\theoremstyle{nonumberplain}
+\theoremheaderfont{\bfseries}
+\theorembodyfont{\normalfont}
+\theoremsymbol{证毕.}
+\newtheorem{proof}{证明:}
+
+\theoremstyle{nonumberplain}
+\theoremheaderfont{\bfseries}
+\theorembodyfont{\normalfont}
+\theoremsymbol{$\blacksquare$}
+\newtheorem{solve}{解:}
+
+\begin{titlepage}
+  \thispagestyle{empty}
+  \begin{flushleft}
+    {\heiti\Huge 动力系统的分支理论笔记}\\[30mm]
+    {\Large 陆征一}\\
+    {授课}\\[5mm]
+    {\Large Yummy}\\
+    {编辑}
+  \end{flushleft}
+\end{titlepage}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\frontmatter
+
+\tableofcontents
+
+\mainmatter
+
+\include{Body/cha_1}
+
+\include{Body/cha_2}
+
+\include{Body/cha_3}
+
+\include{Body/cha_4}
+
+\include{Body/cha_5}
+
+\backmatter
+
+\end{document}
