@@ -1,0 +1,39 @@
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=4.258348923866512cm,y=4.41985639199633cm]
+\draw[->,color=black] (-0.07868,0.) -- (1.095483998627919,0.);
+%\foreach \x in {,0.2,0.4,0.6,0.8,1.}
+%\draw[shift={(\x,0)},color=black] (0pt,-2pt);
+\draw[color=black] (1.06,-0.1) node [anchor=south] {$x$};
+\draw[->,color=black] (0.,-0.06709600189464562) -- (0.,1.0641624727142172);
+%\foreach \y in {,0.2,0.4,0.6,0.8,1.}
+%\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt);
+\draw[color=black] (0,1.01) node [anchor=east] {$y$};
+\clip(-0.07868,-0.06709600189464562) rectangle (1.095483998627919,1.0641624727142172);
+\draw[line width=1.2pt,color=qqwuqq,smooth,samples=100,domain=-0.07868:1.095483998627919] plot(\x,{(\x)});
+\draw[line width=1.2pt,color=ccqqqq,smooth,samples=100,domain=-0.07868:1.095483998627919] plot(\x,{(\x)^(3.0)});
+\draw [dash pattern=on 3pt off 3pt] (0.9012959396283815,0.7321536700141503)-- (0.9012959396283815,0.);
+\draw [dash pattern=on 3pt off 3pt] (0.7321536700141503,0.7321536700141503)-- (0.7321536700141503,0.);
+\draw [dash pattern=on 3pt off 3pt] (0.9012959396283815,0.7321536700141503)-- (0.7321536700141503,0.7321536700141503);
+\draw [dash pattern=on 3pt off 3pt] (0.8048702644505034,0.7321536700141503) -- (0.816724804821266,0.7473951764085811);
+\draw [dash pattern=on 3pt off 3pt] (0.8048702644505034,0.7321536700141503) -- (0.816724804821266,0.7169121636197195);
+\draw [dash pattern=on 3pt off 3pt] (0.7321536700141503,0.39247024010599835)-- (0.39247024010599835,0.39247024010599835);
+\draw [dash pattern=on 3pt off 3pt] (0.5504574146893118,0.3924702401059984) -- (0.5623119550600744,0.4077117465004292);
+\draw [dash pattern=on 3pt off 3pt] (0.5504574146893118,0.3924702401059984) -- (0.5623119550600744,0.3772287337115676);
+\draw [dash pattern=on 3pt off 3pt] (0.39247024010599835,0.39247024010599835)-- (0.39247024010599835,0.);
+\draw [dash pattern=on 3pt off 3pt] (0.39247024010599835,0.06045332507481716)-- (0.06045332507481716,0.06045332507481716);
+\draw [dash pattern=on 3pt off 3pt] (0.21460724221964514,0.06045332507481713) -- (0.22646178259040778,0.07569483146924792);
+\draw [dash pattern=on 3pt off 3pt] (0.21460724221964514,0.06045332507481713) -- (0.22646178259040778,0.045211818680386345);
+\draw [dash pattern=on 3pt off 3pt] (0.06045332507481716,0.06045332507481716)-- (0.06045332507481716,0.);
+\draw (0.48356391472759974,0.8406203789292322) node[anchor=center] {$g(x)=x^3$};
+\begin{scriptsize}
+\draw [fill=black] (1.,0.) circle (1.0pt);
+\draw[color=black] (1.0164537294895013,0.027740037892923702) node {1};
+\draw [fill=xdxdff] (0.9012959396283815,0.) circle (1.5pt);
+\draw[color=xdxdff] (0.9080693603853858,-0.045) node {$x_0$};
+\draw [fill=uuuuuu] (0.7321536700141503,0.) circle (1.5pt);
+\draw[color=uuuuuu] (0.7432347990395433,-0.04) node {$g(x_0)$};
+\draw [fill=uuuuuu] (0.39247024010599835,0.) circle (1.5pt);
+\draw[color=uuuuuu] (0.4135656763478584,-0.04) node {$g(x_1)$};
+\draw [fill=uuuuuu] (0.06045332507481716,0.) circle (1.5pt);
+\draw[color=uuuuuu] (0.08360651520782803,-0.04) node {$g(x_2)$};
+\end{scriptsize}
+\end{tikzpicture}
