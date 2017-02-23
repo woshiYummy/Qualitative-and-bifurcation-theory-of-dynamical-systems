@@ -1,0 +1,622 @@
+\chapter{平面系统的极限环}
+
+\begin{Exa}
+  \begin{align*}
+    \dot{x} & = - y,\\
+    \dot{y} & = x.
+  \end{align*}
+  中心、一族周期解 (非极限环).
+\end{Exa}
+
+\begin{Exa}\label{Ex:3.2}
+  \begin{equation}\label{Eq:3.1}
+  \begin{aligned}
+    \dot{x} & = - y + \mu x (x^2 + y^2 - 1),\\
+    \dot{y} & = x + \mu y (x^2 + y^2 - 1).
+  \end{aligned}
+  \end{equation}
+\end{Exa}
+\begin{solve}
+  作极坐标变换: $x = r \cos \theta$, $y = r \sin \theta$ 代入方程 \eqref{Eq:3.1} 得到
+  \begin{equation}\label{Eq:3.2}
+  \begin{aligned}
+    \dot{r} & = \mu r (r^2 - 1),\\
+    \dot{\theta} & = 1.
+  \end{aligned}
+  \end{equation}
+  解得$\theta = t + \theta_0$ (逆时针),
+  \begin{enumerate}[C{a}se 1.]
+    \item $\mu > 0$.
+
+          奇点: $r = 0$, $r = 1$.
+
+          $r > 1 \Rightarrow \dot{r} > 0 \Rightarrow r$  \raisebox{1ex}{\scalebox{1}[-1]{$\curvearrowright$}} $+ \infty$.
+
+          $r < 1 \Rightarrow \dot{r} < 0 \Rightarrow r \curvearrowright 0$.
+
+          $r = 0$, 原点; $r = 1$, 闭轨.
+
+          \begin{figure}[!ht]
+            \centering
+            \subfloat[$\mu > 0$.]{
+            \psfrag{yone}[][]{$x$}
+            \psfrag{ytwo}[][]{$y$}
+             \includegraphics[width = 0.25\textwidth]{T71.eps}
+            }
+            \qquad
+            \subfloat[$\mu < 0$.]{
+            \psfrag{yone}[][]{$x$}
+            \psfrag{ytwo}[][]{$y$}
+             \includegraphics[width = 0.25\textwidth]{T72.eps}
+            }
+            \caption{例 \ref{Ex:3.2}.}
+          \end{figure}
+
+    \item $\mu < 0$.
+  \end{enumerate}
+\end{solve}
+
+一般
+\begin{equation}\label{Eq:3.3}
+  \begin{aligned}
+    \dot{x} & = P(x, y),\\
+    \dot{y} & = Q(x, y).
+  \end{aligned}
+\end{equation}
+
+\begin{Def}
+  方程 \eqref{Eq:3.3} 的孤立闭轨为极限环.
+\end{Def}
+
+\begin{Def}
+  孤立闭轨: 存在极限环的 (环形) 邻域, 其中无闭轨.
+\end{Def}
+
+系统
+\begin{equation}\label{Eq:3.4}
+  \begin{aligned}
+    \dot{x} & = P_n(x, y),\\
+    \dot{y} & = Q_n(x, y).
+  \end{aligned}
+\end{equation}
+其中, $P_n$, $Q_n$ 为变量 $x$, $y$ 的 $n$ 次多项式. 1900 年, Hilbert 在国际数学家大会上作 45 分钟报告, 提出了 23 个问题, 其中有关于 $H(n): \sup \{n \text{次系统极限环的个数}\}$ 的问题:
+\begin{enumerate}
+  \item $H(n) = $?
+  \item 位置如何?
+\end{enumerate}
+
+李继彬, 在 $n = 3$ 时得到了极限环位置类似如下:
+\begin{figure}[!ht]
+  \centering
+   \includegraphics[width = 0.2\textwidth]{T73.eps}
+   \caption{李继彬的极限环.}
+\end{figure}
+
+1923 年, Dulac 证明了 $H(n)$ 有限 (后发现有错误).
+
+1945 年, Bautin 证明了 $H(2) \geq 3$.
+
+1950--52年, P--L 证明了 $H(2)\leq 3$ (错误的).
+
+1979--1980年, 陈兰荪, 王明淑, 史松龄证明了 $H(2) \geq 4$.
+
+1983 年, 《光明日报》, Hilbert 16 问题重大突破中, $H(2) \leq 4$, 结果论证细节问题较多.
+
+1985 年, 俄罗斯, $H(2) \geq 5$, 结果陈兰荪老师觉得可能有错.
+
+2002 年, 瑞典 4 年级本科毕业生 (女), 证明 $H(2) \leq 4$, 发表于 Nonl. Anal.,  2002 In Press, 结果证明有误.
+
+2008 年, JMAA., $H(2) = 4$.
+
+2006 年, $H(3) \geq 12$, 现在 $H(3) \geq 13$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{极限环的不存在性}
+
+\begin{Thm}[Bendixson 判定]\label{Th:Bendixson}
+  方程 \eqref{Eq:3.3} 发散量 $P_x + Q_y$ 在 $G$ 中常号且在任何子域不恒为零 $ \Rightarrow$ 方程 \eqref{Eq:3.3} 无闭轨.
+\end{Thm}
+\begin{proof}[反正]
+  假设 \eqref{Eq:3.3} 在 $G$ 中有闭轨 $L$ (内部为 $S$, 只证一般情况),
+  \begin{equation*}
+    0 \lessgtr \iint \limits_{S} (P_x + Q_y) \kD x \kD y = \int_{L} P \kD y - Q \kD x = 0.
+  \end{equation*}
+  矛盾!
+\end{proof}
+
+\begin{Exa}
+  \begin{align*}
+    \dot{x} & = 2 x y + x^3,\\
+    \dot{y} & = - x^2 + y - y^2 + y^3.
+  \end{align*}
+\end{Exa}
+\begin{solve}
+  由 Bendixson 定理 (定理 \ref{Th:Bendixson}),
+  \begin{align*}
+     \Rightarrow P_x + Q_y  & = 2 y + 3 x^2 + 1 - 2 y + 3 y^2\\
+      & = 1 + 3 (x^2 + y^2) > 0,
+  \end{align*}
+  则无闭轨.
+\end{solve}
+
+\begin{Exa}
+  \begin{align*}
+    \dot{x} & = y,\\
+    \dot{y} & = - a x - b y + c x^2 \  (b \neq 0, \ \exists\ \text{LC?})
+  \end{align*}
+\end{Exa}
+\begin{solve}
+  $P_x + Q_y = - b \neq 0 \Rightarrow$ 无闭轨. (Bendixson 定理.)
+
+  $b = 0$ 时, 有首次积分, 也无极限环. 为什么? 定理 \ref{Th:3.5}.
+\end{solve}
+
+\begin{Cor}
+  方程 \eqref{Eq:3.3} 的周期轨 $L$ 内部 $S \Rightarrow \iint_{S} (P_x + Q_y) \kD x \kD y = 0$.
+\end{Cor}
+
+问题: 若 $P_x + Q_y$ 不定?
+
+\begin{Thm}[Dulac]
+  $G$ 单连通, $P$, $Q \in C^1$, $\exists B \in C^1$, 若有 $(B P)_x + (B Q)_y$ 常号 ($\neq 0$), $\forall$ 区域不恒为零 $\Rightarrow$ 无闭轨.
+\end{Thm}
+
+\begin{Exa}
+  \begin{align*}
+    \dot{x} & = y,\\
+    \dot{y} & = - a x - b y + c x^2 + d y^2  \  (b \neq 0),
+  \end{align*}
+\end{Exa}
+\begin{solve}
+  $P_x + Q_y = - b + 2 b y$ (无效的).
+
+  取 Dulac 函数 $B = e^{2 d x}$, $(B P)_x + (B Q)_y = - b e^{ - 2 d x} \neq 0$.
+\end{solve}
+
+\begin{Exa}\label{Ex:3.6}
+  \begin{equation}\label{Eq:3.5}
+    \begin{aligned}
+      \dot{x} & = - y + m x y + n y^2,\\
+      \dot{y} & = x (1 + a x),
+    \end{aligned}
+    (m n \neq 0).
+  \end{equation}
+\end{Exa}
+\begin{solve}
+  $\dot{x}|_{x = \frac{1}{m}} = n y^2$ ($n > 0$)
+  \begin{figure}[!ht]
+    \centering
+    \psfrag{yone}[][]{$x$}
+    \psfrag{ytwo}[][]{$y$}
+    \psfrag{x}{$x = \frac{1}{m}$}
+    \includegraphics[width = 0.4\textwidth]{T74.eps}
+    \caption{例 \ref{Ex:3.6}.}
+  \end{figure}
+  $ \Rightarrow x = \frac{1}{m}$ 是方程 \eqref{Eq:3.5} 的无切直线.
+
+  $\Leftrightarrow$ 轨线从一边穿到另一边.
+
+  $ \Rightarrow$ 闭轨线位于 $x = \frac{1}{m}$ 的某一侧.
+
+  取 $B(x, y) = \frac{1}{1 - mx}$,
+  \begin{equation*}
+    (B P)_x + (B Q)_y = \frac{m n y^2}{(1 - m x)^2}, \ \text{正定或负定 (除 $y = 0$), }
+  \end{equation*}
+  
+  $ \Rightarrow$ 无闭轨.
+\end{solve}
+
+\begin{Cor}
+  若 $E(x, y)$, $F(x, y)$ 使得 $\Delta = (E P)_x + (E Q)_y + E (P F_x + Q F_y) \geq 0$ 且子域 $\nequiv 0 \Rightarrow$ 方程 \eqref{Eq:3.3} 无闭轨.
+\end{Cor}
+
+\begin{Exa}
+  证明
+  \begin{equation*}
+    m \ddot{x} + b \dot{x} - \beta (\dot{x})^2 + \alpha x - \alpha x^2 = 0
+  \end{equation*}
+  无周期解. ($b \neq0$, 考虑 $b = 0$.)
+\end{Exa}
+\begin{solve}
+  令 $y = \dot{x}$ 得到
+  \begin{align*}
+    \dot{x} & = y,\\
+    \dot{y} & = - \frac{\alpha}{m} x - \frac{b}{m} y + \frac{\alpha}{m} x^2 + \frac{\beta}{m} y^2.
+  \end{align*}
+  令 $E = 1$, $F = \frac{2 \beta}{m} x \Rightarrow \Delta = - \frac{b}{m}$.
+\end{solve}
+
+\begin{Thm}\label{Th:3.5}
+  $P_x + Q_y = 0 \Rightarrow P \kD y - Q \kD x = 0$ 为全微分方程, \eqref{Eq:3.3} 无极限环.
+\end{Thm}
+\begin{proof}
+  全微分方程 $\Rightarrow \exists \Phi(x, y) = c$ 为通积分.
+
+  设 $\exists c^*$, $\exists \Phi(x, y) = c^*$ 为闭轨 $L^*$, 则 $c \neq c^*$.
+
+  $L: \Phi(x, y) = c$ (轨线) 满足 $t \to \pm \infty$, $L \nrightarrow L^*$.
+
+  $t \to + \infty$, $(x(t), y(t)) \to (x^*(t), y^*(t))$ 与 $\Phi(x, y)$ 连续矛盾!
+
+  即 $\lim \limits_{t \to + \infty} \kD (\Phi(x(t), y(t)), \Phi(x^*(t), y^*(t))) = 0$,
+
+  但 $\Phi(x(t), y(t)) = c \neq \Phi(x^*(t), y^*(t)) = c^*$.
+
+  \begin{tabular}{r @{ $\Leftrightarrow$ } l}
+    极限环  &  孤立闭轨, \\
+      &  闭轨且为 ($\alpha$ 或 $w$) 极限,\\
+      &  $t \to \pm  \infty$, $(x(t), y(t)) \to (x^*(t), y^*(t))$.
+  \end{tabular}
+\end{proof}
+
+\begin{Exa}[Lotka-Volterra 系统]
+  \begin{align*}
+    \dot{x}_1 & = x_1 (r_1 - a_{11} x_1 - a_{12} x_2) = P,\\
+    \dot{x}_2 & = x_2 (r_2 - a_{21} x_1 - a_{22} x_2) = Q,  \  \text{(1934 年, Bautin)}
+  \end{align*}
+  不存在极限环.
+\end{Exa}
+\begin{solve}
+  \begin{enumerate}
+    \item 系统有三个奇点:
+          \begin{equation*}
+            O = (0, 0), \ A = \left(0, \frac{r_2}{a_{22}}\right), \ B = \left(\frac{r_1}{a_{11}}, 0\right).
+          \end{equation*}
+          因为 $x = 0$, $y = 0$ 为轨线 $\Rightarrow$ 奇点外无周期解.
+
+    \item $\Delta = a_{11} a_{22} - a_{12} a_{21} = 0$ 无闭轨.
+
+    \item $\Delta = a_{11} a_{22} - a_{12} a_{21} \neq 0$ 奇点 $M(x^*_1, x^*_2)$.
+
+          取 Dulac 函数
+          \begin{equation*}
+            B(x_1, x_2) = x^{\alpha - 1}_1x^{\beta - 1}_2, \  \alpha, \ \beta\ \text{待定}.
+          \end{equation*}
+          可以得到
+          \begin{align*}
+            D  & = (B P)_x + (B Q)_y\\
+              & = B [ - (a_{11} \alpha + a_{21} \beta + a_{11}) x_1 - (a_{12} \alpha + a_{22} \beta + a_{22}) x_2\\
+              & \quad - (\alpha r_1 + \beta r_2)].
+          \end{align*}
+          
+          令 $\Delta_1 \triangleq a_{11} \alpha + a_{21} \beta + a_{11} = \Delta_2 \triangleq a_{12} \alpha + a_{22} \beta + a_{22} = 0$,
+          
+          $\Rightarrow D = B (a_{11} x^*_1 + a_{22} x^*_2)$.
+          \begin{enumerate}
+            \item $D \neq 0$, 无闭轨.
+            \item $D = 0$, 全微分方程 $\Rightarrow$ 无极限环.
+          \end{enumerate}
+  \end{enumerate}
+\end{solve}
+
+1983 年, Bozme 证明. 1990 年, 推广到 3 维 Lotka-Volterra 系统. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{极限环的存在性}
+
+\begin{Thm}\label{Th:3.6}
+  $R$ 是一个环域,
+  \begin{enumerate}
+    \item 无奇点;
+    \item 向量场进 (出).
+  \end{enumerate}
+  $\Rightarrow$ 存在稳定 (不稳定) 的极限环.
+\end{Thm}
+\begin{figure}[!ht]
+\centering
+  \subfloat[只有一个极限环]{
+  \psfrag{R}[][]{$R$}\psfrag{lcy}[][]{$LC$}
+  \includegraphics[width = 0.3\textwidth]{T75.eps}}
+  \qquad
+  \subfloat[可能出现多个极限环]{
+  \includegraphics[width = 0.3\textwidth]{T76.eps}}
+  \caption{定理 \ref{Th:3.6}.}
+\end{figure}
+
+\begin{Thm}\label{Th:3.7}
+  $D$ 是一个单连通区域, 包含不稳定奇点 (焦、结), 且轨线由外向内 $\Rightarrow$ 存在稳定的极限环.
+\end{Thm}
+\begin{figure}[!ht]
+\centering
+  \subfloat[焦点]{
+  \includegraphics[width = 0.20\textwidth]{T77.eps}}
+  \qquad
+  \subfloat[结点]{
+  \includegraphics[width = 0.20\textwidth]{T78.eps}}
+  \caption{定理 \ref{Th:3.7}.}
+\end{figure}
+
+\begin{Exa}\label{Ex:3.9}
+  \begin{align*}
+    \dot{x} & = - y - x (x^2 + y^2 - 1),\\
+    \dot{y} & = x - y (x^2 + y^2 - 1).
+  \end{align*}
+\end{Exa}
+\begin{solve}
+  令 $V(x, y) = x^2 + y^2$,
+
+  $\Rightarrow \dot{V}(x, y) = (x^2 + y^2) (1 - x^2 - y^2)$.
+
+  $r_1 > 1 \Rightarrow \dot{V}|_{V = r^2_1} < 0$.
+
+  $r_2 < 1 \Rightarrow \dot{V}|_{V = r^2_2} > 0$.
+
+  \begin{figure}[!ht]
+    \centering
+    \psfrag{lcy}[][]{$LC$}
+    \psfrag{rone}[][]{$r_1 > 1$}
+    \psfrag{rtwo}[][]{$r_2 < 1$}
+    \includegraphics[width = 0.3\textwidth]{T79.eps}
+    \caption{例 \ref{Ex:3.9}.}
+  \end{figure}
+
+  由定理 \ref{Th:3.6} 得存在一个极限环.
+\end{solve}
+
+问题: 对于一般的 $n$?
+\begin{align*}
+  \dot{x} & = - y - x (x^2 + y^2 - 1)^n,\\
+  \dot{y} & = x - y (x^2 + y^2 - 1)^n.
+\end{align*}
+
+\begin{Exa}\label{Ex:3.10}
+  Van der Pol 方程
+  \begin{equation}\label{Eq:3.6}
+  \begin{aligned}
+    \dot{x} & = y = P,\\
+    \dot{y} & = - x + \mu (1 - x^2) y = Q.
+  \end{aligned}
+  \end{equation}
+  证明 ($\mu > 0$) 存在 (唯一) 稳定的极限环.
+\end{Exa}
+\begin{proof}
+  系统有唯一奇点 $O(0, 0)$, 且不稳定. 下面做外境界线 $L$.
+
+  水平等倾线 $Q(x, y) = - x + \mu (1 - x^2) y = 0$, 得到三条分支曲线 $L_1$, $L_2$, $L_3$, 渐近线为 $x = - 1$, $x = 1$, $y = 0$.
+  \begin{enumerate}[(1)]
+    \item 在 $y$ 轴上取一点 $A(0, y_0)$, 考虑方程
+          \begin{equation}\label{Eq:3.7}
+            \begin{aligned}
+              \dot{x} & = y,\\
+              \dot{y} & = \mu (1 - x^2) y.
+            \end{aligned}
+          \end{equation}
+          方程 \eqref{Eq:3.7} 可积, 得到 $y = \mu x = \frac{1}{3} \mu x^3 + y_0$, 与 $x = 1$ 交于 $B(1, y_1)$, 其中 $y_1 = \frac{2}{3} \mu + y_0 > y_0$, 则在 \labvel{$AB$} 上的斜率 $\frac{\kD y}{\kD x} = \frac{\dot{y}}{\dot{x}}$ 满足
+          \begin{equation*}
+            \left.\frac{dy}{dx}\right|_{\ref{Eq:3.6}} = \frac{ - x + \mu(1 - x^2)y}{y} < \frac{\mu(1 - x^2)y}{y} = \left.\frac{dy}{dx}\right|_{\ref{Eq:3.7}}.
+          \end{equation*}
+
+    \item 过 $B$ 作圆弧
+          \begin{equation}\label{Eq:3.8}
+            \begin{aligned}
+              \dot{x} & = y,\\
+              \dot{y} & = - x.
+            \end{aligned}
+          \end{equation}
+          交 $x$ 轴于 $C$ 点, 则在 \labvel{$BC$} 上,
+          \begin{equation*}
+           \left.\frac{dy}{dx}\right|_{\ref{Eq:3.6}} < \left.\frac{dy}{dx}\right|_{\ref{Eq:3.8}}.
+          \end{equation*}
+
+    \item 过 $C$ 作 $CD$ ($\bot x$ 轴) 交 $L_2$ 于 $D$, 由于 $\dot{x} = y < 0$, 向量场由右向左穿过 $CD$.
+
+    \item 在 $L_2$ 上位于 $D$ 下方取 $E$, 在 \labvel{$DE$} 上 $\dot{y} = 0$, $\dot{x} < 0$, 向量场由右向左穿过 \labvel{$DE$}.
+
+    \item \begin{equation}\label{Eq:3.9}
+            \begin{aligned}
+              \dot{x} & = y,\\
+              \dot{y} & = - x + \mu y.
+            \end{aligned}
+          \end{equation}
+          \begin{equation*}
+            \left.\frac{dy}{dx}\right|_{\ref{Eq:3.6}} - \left.\frac{dy}{dx}\right|_{\ref{Eq:3.9}} = - \mu x^2 < 0.
+          \end{equation*}
+  \end{enumerate}
+  由对称性与定理 \ref{Th:3.7}, 存在稳定的极限环.
+  \begin{figure}[!ht]
+    \centering
+    \psfrag{A}[][]{$A(0, y_0)$}
+    \psfrag{B}[][]{$B(1, y_1)$}
+    \psfrag{C}[][]{$C$}
+    \psfrag{D}[][]{$D$}
+    \psfrag{E}[][]{$E$}
+    \psfrag{F}[][]{$F$}
+    \psfrag{O}[][]{$O$}
+    \psfrag{1}[][]{$1$}
+    \psfrag{2}[][]{$ - 1$}
+    \psfrag{yone}[][]{$x$}
+    \psfrag{ytwo}[][]{$y$}
+    \psfrag{l}[][]{$L_1$}
+    \psfrag{m}[][]{$L_2$}
+    \psfrag{n}[][]{$L_3$}
+     \includegraphics[totalheight = 3in]{T80.eps}
+    \caption{例 \ref{Ex:3.10}.}
+  \end{figure}
+\end{proof}
+
+50 年代, 苏联研究了方程
+\begin{align*}
+  \dot{y} & = \text{一次} + x^2 + x y + y^2,\\
+  \dot{x} & = \text{一次} + x^2 + x y + y^2, \ \text{这里省略了系数.}
+\end{align*}
+
+80 年代, 国内研究种群动力系统的人考虑方程
+\begin{align*}
+  \dot{x} & = P_n,\\
+  \dot{y} & = Q_m,  \  n, m = 3, 4.
+\end{align*}
+其中 $P_n$, $Q_m$ 为缺项的多项式, 得到了比较完整的结果.
+\begin{align*}
+  \dot{x} & = \text{分式},\\
+  \dot{y} & = \text{分式},
+\end{align*}
+也得到了比较好的结果, 使用的方法都是境界线法.
+
+\begin{Thm}
+  Li\'{e}nard 方程
+  \begin{equation}
+    \begin{aligned}
+      \dot{x} & = - \varphi(y) - F(x),\\
+      \dot{y} & = g(x).
+    \end{aligned}
+  \end{equation}
+  其中 $F(x) = \int^x_0 f(x)dx$,
+  \begin{enumerate}[(a)]
+    \item $\varphi(0) = 0$, $\varphi'(y) > 0$; 
+    \item $x g(x) > 0$, $G(\pm \infty) = \pm \infty$, $G(x) = \int^x_0 g(x) \kD x$;
+    \item $f(0) < 0$, $\nicefrac{f(x)}{g(x)}$ 在 $( - \infty, 0)$, $(0,  + \infty)$ 不降, $0 < |x| \leq 1$, $\nicefrac{f(x)}{g(x)} \nequiv$ 常数.
+  \end{enumerate}
+  则极限环唯一 (至多一个, 存在就是稳定的).
+\end{Thm}
+
+\begin{Exa}
+  Van der Pol 方程
+  \begin{equation*}
+    \ddot{x} + \mu (x^2 - 1) \dot{x} + x = 0\ (\mu > 0),
+  \end{equation*}
+\end{Exa}
+\begin{solve}
+  令 $\dot{y} = - \dot{x} - \mu \left(\frac{x^3}{3} - x\right) \Rightarrow $
+  \begin{align*}
+    \dot{x} & = - y - \mu \left(\frac{x^3}{3} - x\right),\\
+    \dot{y} & = x.
+  \end{align*}
+  $\Rightarrow f(x) = \mu (x^2 - 1)$, $g(x) = x$, $\varphi(y) = y$.
+  \begin{enumerate}[(a)]
+    \item $\varphi(0) = 0$, $\varphi'(y) = 1 > 0$;
+    \item $x g(x) = x^2$;
+    \item $f(0) < 0$, $\left(\nicefrac{f(x)}{g(x)}\right)' = 1 + \nicefrac{1}{x^2} > 0$.
+  \end{enumerate}
+  $\Rightarrow$ 极限环唯一性得证.
+\end{solve}
+
+\begin{Exa}\label{Ex:3.12}
+  Holling II 功能性反应
+  \begin{align*}
+    \dot{x} & = x(a_1 + a_2 x + a_3 x^2 - y) = P,\ (a_1 > 0, a_3 < 0),\\
+    \dot{y} & = y(x - 1) = Q.
+  \end{align*}
+\end{Exa}
+\begin{solve}
+  \begin{enumerate}
+    \item 奇点分析: $(O(0, 0))$, $R_1(x_1, 0)$, $R^ + (1, a_1 + a_2 + a_3)$, 设$a_1 + a_2 + a_3 > 0$.
+
+          $O$--鞍点, $R_1$--鞍点.
+          \begin{enumerate}
+            \item \label{solve 1} $a_2 + 2 a_3 > 0$, $R^ + $--不稳定非鞍点,
+            \item \label{solve 2} $a_2 + 2 a_3 < 0$, $R^ + $--稳定非鞍点.
+          \end{enumerate}
+
+    \item  (\ref{solve 2}) 无环性, 取 Dulac 函数 $B(x, y) = x^{\alpha - 1} y^{\beta - 1}$,
+          \begin{align*}
+             \Rightarrow D  & = (B P)_x + ( BQ)_y\\
+             & = B [\alpha a_1 + (\alpha + 1) a_2 x + (\alpha + 2) a_3 x^2 - \alpha y - \beta + \beta x]\\
+            \text{(取 $\alpha = 0$)} & = \beta [2 a_3 x^2 + (a_2 + \beta) x - \beta]\\
+            \Delta_1 & = (a_2 + \beta)^2 + 8 a_3 \beta\\
+             & = \beta^2 + 2 (a_2 + 4 a_3)\beta + a^2_2 \stackrel{\textrm{目的}}{\leq} 0\\
+            \Delta_2 & = 4 (a_2 + 4 a_3)^2 - 4 a^2_2\\
+             & = 32 a_3 (a_2 + 2 a_3) \geq 0,
+          \end{align*}
+          $\Rightarrow$ 无周期解.
+
+    \item 极限环的存在性.
+
+           (\ref{solve 1}) 的条件为: $a_1 > 0$, $a_3 < 0$, $a_2 + 2 a_3 > 0$, $a_1 + a_2 + a_3 > 0$.
+
+          $R^ + (1, a_1 + a_2 + a_3)$ 为不稳定焦点或结点.
+
+          构造环域 $x = 0$, $y = 0$, $x = x_1$ ($x$ 足够大即可, 此处取 $R_1$ 的横坐标 $x_1$).
+
+          $l:\ x + y - k = 0$ ($k$ 待定).
+          \begin{flalign*}
+            \dot{l}|_{l = 0} & = x [a_1 + a_2 x + a_3 x^2] + x - k < 0.\\
+             & \text{ ($\because 0 \leq x \leq x_1$, $k$ 充分大.) }  &
+          \end{flalign*}
+          $\Rightarrow$ 存在极限环.
+          \begin{figure}[!ht]
+            \centering
+            \psfrag{yone}[][]{$x$}
+            \psfrag{ytwo}[][]{$y$}
+            \psfrag{x}[][]{$x = x_1$}
+            \includegraphics[width = 0.4\textwidth]{T81.eps}
+            \caption{例 \ref{Ex:3.12}.}
+          \end{figure}
+
+    \item 令 $\bar{x} = x - 1$, $\bar{y} = y - y_0 (a_1 + a_2 + a_3)$, 仍记为 $x$, $y$.
+          \begin{align*}
+            \dot{x} & = - y + (a_2 + 2 a_3) x - x y + (a_2 + 3 a_3) x^2 + a_3 x^3,\\
+            \dot{y} & = x y + x y_0.
+          \end{align*}
+          再作变换 (目的是去掉 $x y$): 令 $x = e^u - 1$, $y = y_0 \left(e^{\left(\frac{v}{y_0}\right)} - 1\right)$ 得到
+          \begin{equation}
+            \begin{aligned}
+              \dot{u} & = - \varphi(v) - F(u),\\
+              \dot{v} & = g(u).
+            \end{aligned}
+          \end{equation}
+          其中
+          \begin{align*}
+            g(u) & = y_0 (e^u - 1),\\
+            F(u) & = a_2 + a_3 - a_2 e^u - a_3 e^{2 u},\\
+            \varphi(v) & = y_0 \left(e^{\nicefrac{v}{y_0}} - 1\right),\\
+            f(u) & = F'(u) = - a_2 e^u - 2 a_3 e^{2 u}.
+          \end{align*}
+          \begin{enumerate}[(a)]
+            \item $\varphi(0) = 0$, $\varphi'(v) > 0$;
+            \item $u g(u) > 0$ $(u \neq 0)$,
+                  \begin{equation*}
+                    G(u) = \int^u_0 g(u) \kD u = y_0 e^u - u \to + \infty.
+                  \end{equation*}
+            \item $f(0) = - (a_2 + 2 a_3) < 0$,
+                  \begin{equation*}
+                    \left(\frac{f(u)}{g(u)}\right)' = \frac{e^u}{(g(u))^2}(a_2 + 2 a_3 - 2 a_3 (e^u - 1)^2) > 0.
+                  \end{equation*}
+          \end{enumerate}
+          $\therefore$ 存在唯一的极限环.
+  \end{enumerate}
+\end{solve}
+
+Li\'{e}nard 系统
+\begin{enumerate}
+  \item 极限环唯一性,
+  \item $\dot{x} = y - F(x)$, $\dot{y} = - x$, $\partial(F(x)) = n + 1$.
+
+        1977 年, Lins et al, Lect. Note in Math., 证明了 $n = 2$ 时, 极限环的唯一性.
+
+        猜想: $\partial(F) = n + 1$, $LC = \lfloor\frac{n}{2}\rfloor$ 个.
+\end{enumerate}
+
+一般化,
+\begin{gather*}
+  \dot{x} = y - F(x), \ \dot{y} = - g(x)，\\
+  \partial(F) = n + 1, \ \partial(g) = m。
+\end{gather*}
+$H(n, m) = $? 
+
+$H(1, 2) = H(2, 1) = H(1, 3) = H(3, 1) = 1$.
+
+$\hat{H}(m, n)$: 小扰动极限环的个数, Chrislophe (1999), M. A. Han (韩茂安 Maoan Han) 得到:
+\begin{gather*}
+  \hat{H}(n, 1) = \lfloor\frac{n}{2}\rfloor, \ \hat{H}(n, 2) = \lfloor\frac{2 n + 1}{3}\rfloor,\\
+  \hat{H}(5, 5) = 6, \ \hat{H}(4, 9) = 9, \ \hat{H}(6, 4) = 7,\\
+  \hat{H}(n, 3) = 2 \lfloor\frac{3 (n + 2)}{8}\rfloor \ (1 \leq n \leq 50).
+\end{gather*}
+
+2002--2004 年, He, Lu, Luo: $\hat{H}(6, 5) = 8$, $\hat{H}(7, 5) = 9$.
+
+2006 年, Lin: $\hat{H}(8, 5) = 10$. 2012 年, JMAA 得到同样结论.
+
+He:
+\begin{equation*}
+  n + 1 - \lceil\frac{n + 2}{4}\rceil \leq \hat{H}(n, 3) \leq n + 2 - \lceil\frac{n + 2}{4}\rceil.
+\end{equation*} 

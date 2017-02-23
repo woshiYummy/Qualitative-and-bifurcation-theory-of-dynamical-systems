@@ -1,0 +1,1474 @@
+\chapter{平面系统的奇点}
+
+二维系统
+\begin{equation}\label{Eq:2.1}
+  \dot{x} = P(x, y),\ \dot{y} = Q(x, y),
+\end{equation}
+$P$, $Q \in G$ 内满足
+\begin{inparaenum}[(i)]
+  \item 连续;
+  \item Lipschitz 连续.
+\end{inparaenum}
+解 $(x(t), y(t))$ 为平面上一曲线, 平衡点 $(x^*, y^*) \xrightarrow{\text{平移}}$ 原点.
+
+Jacobi矩阵
+\begin{equation*}
+  A =
+  \begin{pmatrix}
+    a & b \\
+    c & d
+  \end{pmatrix}
+  = \left.J(P, Q)\right|_{(x^*, y^*)}.
+\end{equation*}
+
+线性系统
+\begin{equation}\label{Eq:2.2}
+  \dot{x} = a x + b y, \ \dot{y} = c x + d y.
+\end{equation}
+\begin{enumerate}
+  \item 非线性方程 $\rightarrow$ 线性方程 $\Rightarrow$ 共性 (简化).
+  \item 线性方程 $\xrightarrow{\text{部分描述}}$ 非线性方程现象.
+\end{enumerate}
+
+如果平衡点是双曲的, 方程组 \eqref{Eq:2.2} 可描述对应非线性方程平衡点局部情况.
+\begin{enumerate}
+  \item $|A| \neq 0$, 初等奇点 (平衡点).
+  \item $|A| = 0$, 高阶奇点.
+\end{enumerate}
+
+\begin{Exa}\label{Ex:2.1}
+  对于 Lotka-Volterra 系统
+  \begin{align*}
+    \dot{x}_1 = x_1 (r_1 + a_{11} x_1 + a_{12} x_2),\\
+    \dot{x}_2 = x_2 (r_2 + a_{21} x_1 + a_{22} x_2),
+  \end{align*}
+  设平衡点 $(0, 0)$ 或正平衡点 $(x^*, y^*)$, 分别找出对应的线性系统.
+\end{Exa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{奇点, 稳定性}
+
+\subsection{线性系统的奇点}
+
+\begin{equation}
+  \dot{X} = A X, \ A =
+  \begin{pmatrix}
+    a & b \\
+    c & d
+  \end{pmatrix}, \ |A| \neq 0.
+\end{equation}
+
+\begin{Prop}
+  $A$ 相似\footnote{相似: $X = T Y$, $\dot{X} = A X$, $Y = B Y$}于如下之一:
+  \begin{enumerate}
+    \item \label{M 1} $\begin{pmatrix}\lambda & 0\\ 0 & \mu\end{pmatrix}$;
+    \item \label{M 2} $\begin{pmatrix}\lambda & 0\\ 1 & \lambda\end{pmatrix}$, 与 $\lambda = \mu$ 时的矩阵 \ref{M 1} 对应的 Jordan 标准型不同;
+    \item \label{M 3} $\begin{pmatrix}\alpha &  - \beta\\ \beta & \alpha\end{pmatrix}$.
+  \end{enumerate}
+  矩阵 \ref{M 1} 的特征值为 $\lambda$, $\mu$. 矩阵 \ref{M 2} 的特征值为 $\lambda$ (重根).矩阵 \ref{M 3} 的特征值为 $\alpha \pm i \beta$.
+\end{Prop}
+
+\begin{equation}
+  \dot{y} = B y,\ y=(y_1, y_2).
+\end{equation}
+
+\begin{enumerate}[I.]
+  \item $B = \begin{pmatrix}\lambda & 0\\ 0 & \mu\end{pmatrix}$.
+
+  即
+  \begin{align*}
+    \dot{y}_1 = \lambda y_1,\\
+    \dot{y}_2 = \mu y_2.
+  \end{align*}
+  初值为 $(c_1, c_2)$, 解为 $y_1 = c_1 \e^{\lambda t}$, $y_2 = c_2 \e^{\mu t}$.
+  \begin{enumerate}[{I}-1]
+    \item 鞍点: $\lambda$, $\mu$ 异号. $\lambda > 0$, $\mu < 0$, 广义双曲线 $y^{|\mu|}_1 y^\lambda_2 = c^{|\mu|}_1 c^\lambda_2$.
+    \begin{figure}[!ht]
+      \centering
+      \input{Graph/T2_1_i.tex}
+      \caption{鞍点.}
+    \end{figure}
+
+    \item 结点: $\lambda \cdot \mu > 0$.
+
+    \begin{itemize}
+      \item $\lambda = \mu$.
+      \begin{figure}[!ht]
+        \centering
+        \psfrag{yone}[][]{$y_1$}\psfrag{ytwo}[][]{$y_2$}
+        \includegraphics[width = 0.3\textwidth]{T30.eps}
+        \caption{$\lambda = \mu$.}
+      \end{figure}
+      \item $\lambda \neq \mu$. $\lambda > 0$, $\mu > 0$, 不稳定结点 (源), $\lambda < 0$, $\mu < 0$, 稳定结点 (渊).
+      \begin{figure}[!ht]
+        \centering
+        \psfrag{yone}[][]{$y_1$}\psfrag{ytwo}[][]{$y_2$}
+        \includegraphics[width = 0.3\textwidth]{T31.eps}
+        \caption{$\lambda \neq \mu$.}
+      \end{figure}
+    \end{itemize}
+  \end{enumerate}
+
+  \item $B = \begin{pmatrix}\lambda & 0\\ 1 & \lambda\end{pmatrix}, \ \lambda < 0$. $y_1 = c_1 \e^{\lambda t}$, $y_2 = (c_1 t + c_2) \e^{\lambda t}$.
+  \begin{enumerate}
+    \item $(c_1, c_2) = (0, 1)$, $(0,  - 1)$.
+    \begin{figure}[!ht]
+      \centering
+      \psfrag{yone}[][]{$y_1$}\psfrag{ytwo}[][]{$y_2$}
+      \includegraphics[width = 0.3\textwidth]{T32.eps}
+      \caption{情形 II (a).}
+    \end{figure}
+    \item $(c_1, c_2) = (1, 0)$, $( - 1, 0)$.
+    \begin{figure}[!ht]
+      \centering
+      \psfrag{yone}[][]{$y_1$}\psfrag{ytwo}[][]{$y_2$}
+      \includegraphics[width = 0.3\textwidth]{T33.eps}
+      \caption{情形 II (b).}
+    \end{figure}
+  \end{enumerate}
+
+  \item $B = \begin{pmatrix}\alpha &  - \beta \\ \beta & \alpha\end{pmatrix}$. 变换 $x = r \cos \theta$, $y = r \sin \theta \Rightarrow r = c_1 \e^{\alpha t}$, $\theta = \beta t + c_2$.
+  \begin{enumerate}[{III}-1]
+    \item 焦点 (不稳定): $\alpha > 0$, $\beta > 0$.
+    \begin{figure}[!htb]
+      \centering
+      \psfrag{O}{$O$}
+      \includegraphics[width = 0.3\textwidth]{T34.eps}
+      \caption{不稳定焦点}
+    \end{figure}
+    \item 焦点 (稳定): $\alpha < 0$, $\beta < 0$. 其它两种类似!
+    \begin{figure}[!htb]
+      \centering
+      \psfrag{O}{$O$}
+      \includegraphics[width = 0.3\textwidth]{T35.eps}
+      \caption{稳定焦点}
+    \end{figure}
+    \item 中心: $\alpha = 0$, $r = c_1$, $\theta = \beta t + c_2$. (特别)
+    \begin{figure}[!htb]
+      \centering
+      \psfrag{O}{$O$}
+      \includegraphics[width = 0.3\textwidth]{T36.eps}
+      \caption{中心型奇点}
+    \end{figure}
+  \end{enumerate}
+\end{enumerate}
+
+总结: $A = \begin{pmatrix} a & b \\ c & d\end{pmatrix}$, $|A| \neq 0$, 特征值 $\lambda_1$, $\lambda_2$:
+\begin{enumerate}[i]
+  \item \label{Q 1} $\Rer \lambda_1$, $\Rer \lambda_2 < 0$, 稳定的焦点或结点;
+        $\Rer \lambda_1$, $\Rer \lambda_2 > 0$, 不稳定的焦点或结点.
+  \item \label{Q 2} $\Rer \lambda_1 \cdot\Rer \lambda_2 < 0$, 鞍点. 此时, $\Rer \lambda_i = \lambda_i$.
+  \item \label{Q 3} $\Rer \lambda_1 = \Rer \lambda_2 = 0$, 中心.
+\end{enumerate}
+奇点类型 \ref{Q 1} 和 \ref{Q 2} 称为双曲型, \ref{Q 3} 称为非双曲的. $|A| = 0$, 奇点 $=$ 奇线, 奇点的连续统.
+
+一般线性常微分方程解为:
+\begin{equation}
+  c_1 \e^{\Rer \lambda_1 t} P(\cos t, \sin t) Q(t) + c_2 \e^{\Rer \lambda_2 t}\bigtriangleup
+\end{equation}
+
+奇点类型 \ref{Q 1}.
+\begin{figure}[!htb]
+  \centering
+  \subfloat[结点]{\psfrag{yone}[][]{$y_1$}\psfrag{ytwo}[][]{$y_2$}\includegraphics[width = 0.25\textwidth]{T37.eps}}\hspace{30pt}
+  \subfloat[焦点]{\psfrag{yone}[][]{$y_1$}\psfrag{ytwo}[][]{$y_2$}\includegraphics[width = 0.25\textwidth]{T38.eps}}
+  \caption{类型 \ref{Q 1}.}
+\end{figure}
+
+%\setcounter{totalnumber}{5}
+
+奇点类型 \ref{Q 2}.
+\begin{figure}[!ht]
+  \centering
+  \psfrag{yone}[][]{$y_1$}\psfrag{ytwo}[][]{$y_2$}
+  \psfrag{yws}[br][br]{$\text{一维稳定流型}$}\psfrag{ybs}[bl][bl]{$\text{一维不稳定流型}$}
+  \includegraphics[width = 0.25\textwidth]{T39.eps}
+  \caption{鞍点}
+\end{figure}
+
+奇点类型 \ref{Q 3}.
+\begin{figure}[!ht]
+  \centering
+  \psfrag{yone}[][]{$y_1$}\psfrag{ytwo}[][]{$y_2$}
+  \includegraphics[width = 0.25\textwidth]{T40.eps}
+  \caption{中心}
+\end{figure}
+
+\begin{Exa}
+  给出 Lotka-Volterra 系统 (例 \ref{Ex:2.1}) 正平衡点 $(x^*_1, x^*_2)$ 处线性系统稳定、不稳定、鞍点、中心的条件.
+\end{Exa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{非线性奇点}
+
+\begin{Def}
+  奇点某领域没有其他奇点 $\Rightarrow$ 孤立奇点.
+\end{Def}
+
+二维非线性系统
+\begin{equation}\label{Eq:2.6}
+  \begin{aligned}
+    \dot{x} & = a x + b y + \Phi(x, y),\\
+    \dot{y} & = c x + d y + \Psi(x, y).
+  \end{aligned}
+\end{equation}
+其对应线性系统为
+\begin{equation}\label{Eq:2.7}
+  \begin{aligned}
+    \dot{x} = a x + b y,\\
+    \dot{y} = c x + d y.
+  \end{aligned}
+\end{equation}
+在条件 $\Phi(0, 0) = \Psi(0, 0) = 0$ 下, $(0, 0)$ 是方程组 \eqref{Eq:2.6} 和 \eqref{Eq:2.7} 的奇点.
+
+\begin{Def}[二维]
+  $\begin{pmatrix}
+    a & b\\
+    c & d
+  \end{pmatrix}$
+  的特征值是 $\lambda_1$, $\lambda_2$,
+  \begin{enumerate}
+    \item $\Rer \lambda_i \neq 0 \Rightarrow$ 双曲奇点, 如: 焦点、鞍点、结点;
+    \item $\Rer \lambda_i = 0 \Rightarrow$ 非双曲奇点, 如: 中心.
+  \end{enumerate}
+\end{Def}
+
+一般 $\dot{x} = f(x)$, $A = \diff f(0)$, $x =  A x$.
+\begin{Def}[$n$ 维]
+  $\lambda_i$ 为$A$ 的特征值 ($i = 1, \dots, n$),
+  \begin{enumerate}
+    \item $\forall \Rer \lambda_i \neq 0 \Rightarrow$ 双曲奇点;
+    \item $\exists \Rer \lambda_i = 0 \Rightarrow$ 非双曲奇点.
+  \end{enumerate}
+  特别的,
+  \begin{enumerate}
+    \item $\forall \Rer \lambda_i > 0 \Leftrightarrow 0$ 为源;
+    \item $\forall \Rer \lambda_i < 0 \Leftrightarrow 0$ 为渊.
+  \end{enumerate}
+\end{Def}
+
+\begin{Thm}[Hartmon]
+  双曲奇点邻域中线性与非线性系统同胚 (连续可逆一一映射). (定性性质相同)
+\end{Thm}
+\begin{figure}[!ht]
+  \centering
+  \subfloat[线性系统]{\psfrag{yone}[][]{$y_1$}\psfrag{ytwo}[][]{$y_2$}\includegraphics[width = 0.2\textwidth]{T41.eps}}\hspace{30pt}
+  \subfloat[非线性系统]{\psfrag{yone}[][]{$y_1$}\psfrag{ytwo}[][]{$y_2$}\includegraphics[width = 0.2\textwidth]{T42.eps}}
+  \caption{双曲奇点线性系统与非线性系统同胚.}
+\end{figure}
+
+\begin{Note}
+  对于 $\dot{x} = f(x)$, 其线性系统为 $\dot{x} = A x$, 原点为线性系统中心, 但对于非线性系统, 原点可为焦点 (稳定或不稳定) 或中心.
+\begin{figure}[!ht]
+  \centering
+  \subfloat[线性系统中心]{\psfrag{yone}[][]{$y_1$}\psfrag{ytwo}[][]{$y_2$}\includegraphics[width = 0.2\textwidth]{T40.eps}}\hfill
+  \subfloat[非线性系统对应情况]{\psfrag{yone}[][]{$y_1$}\psfrag{ytwo}[][]{$y_2$}\includegraphics[width = 0.2\textwidth]{T40.eps}\hspace{2pt}\includegraphics[width = 0.2\textwidth]{T43.eps}\hspace{2pt}\includegraphics[width = 0.2\textwidth]{T44.eps}}
+  \caption{原点线性系统为中心, 原系统原点不一定为中心.}
+\end{figure}
+\end{Note}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{稳定性}
+
+\begin{Def}\label{De:2.4}\
+  \begin{enumerate}
+    \item \label{De:2.4.1} $\forall U \ni x^*$, $\exists V \subset U$, $x^* \in V$ 使得当 $x^0 \in V \Rightarrow x(t) \in U$.
+
+        $\Rightarrow x^*$ (局部) 稳定, 否则称为不稳定.
+    \begin{figure}[!ht]
+      \centering
+      \psfrag{forallU}{$\forall U$}
+      \psfrag{existsV}{$\exists V$}
+      \psfrag{x}{$x^*$}
+      \psfrag{z}{$x^0$}
+      \includegraphics[width = 0.3\textwidth]{T45.eps}
+      \caption{局部稳定.}
+    \end{figure}
+        特别的, 当 $U = V$ 时, $\forall U$, $\forall x^0 \in U \Rightarrow x(t) \in U$.
+
+    \item \label{De:2.4.2} $\exists W \Rightarrow x^*$, $\forall x^0 \in \bar{W}$, $\lim \limits_{t \to \infty} x(t) = x^*$.
+
+        $\Rightarrow x^*$ (局部) 吸引.
+
+    \item \label{De:2.4.3} 稳定 $\oplus$ 吸引 $\Rightarrow$ 渐进稳定.
+  \end{enumerate}
+\end{Def}
+
+问题: 稳定是否蕴含吸引?
+
+定义 \ref{De:2.4.1} $\nRightarrow$ \ref{De:2.4.2}, 因为中心是稳定的但不是吸引的.
+
+定义 \ref{De:2.4.2} $\nRightarrow$ \ref{De:2.4.1}, 如图
+\begin{figure}[!ht]
+  \centering
+  \psfrag{S}{$x^*$}
+  \psfrag{U}{$U$}
+  \includegraphics[width = 0.3\textwidth]{T46.eps}
+  \caption{是吸引的, 但不是稳定的奇点. 苏联二十世纪五十年代.}
+\end{figure}
+
+对于二维非线性系统
+\begin{equation*}
+  \begin{array}{|c|l}
+    \cline{1-1}
+    \dot{x} = a x + b y & {} + \Phi(x, y),\\
+    \dot{y} = c x + d y & {}+ \Psi(x, y).\\
+    \cline{1-1}
+  \end{array}
+\end{equation*}
+现假设其系数矩阵
+$A = \begin{pmatrix}
+  a & b\\
+  c & d
+\end{pmatrix}$ 的特征值为 $\Rer \lambda_i \neq 0$.
+
+\begin{Thm}
+  $|A| \neq 0$,
+  \begin{enumerate}
+    \item $\Rer \lambda_{1, 2} < 0 \Rightarrow$ 方程组 \eqref{Eq:2.6} 在原点渐近稳定;
+    \item $\exists \Rer \lambda_i > 0 \Rightarrow$ 方程组 \eqref{Eq:2.6} 在原点是不稳定的.
+  \end{enumerate}
+\end{Thm}
+
+对于一般的平面系统
+\begin{equation} \label{Eq:2.8}
+  \begin{aligned}
+    \dot{x} & = P(x, y),\\
+    \dot{y} & = Q(x, y).
+  \end{aligned}
+\end{equation}
+有 Lyapunov 稳定性理论. (1885 年, 博士论文, 用辅助函数 $\Rightarrow$ 稳定性, LaSalle 在 1960 年将 Lyapunov 定理推广, 即 LaSalle 不变性原理.)
+
+本节的三大内容:
+\begin{enumerate}
+  \item Lyapunov (局部稳定性理论);
+  \item 平面系统 (双曲型) 稳定性判断;
+  \item 中心焦点型奇点判定 (编程).
+\end{enumerate}
+
+\subsection{Lyapunov (Liapunov) 稳定性定理}
+
+\begin{Def}
+  $V(x)$ ($V(0) = 0$) 在原点邻域 ($N = N(0) \setminus \{0\}$):
+  \begin{enumerate}[(i)]
+    \item 正定: $V(x) > 0$, $x \in N$;
+    \item 负定: $V(x) < 0$, $x \in N$;
+    \item 半正定: $V(x) \geq 0$, $x \in N$;
+    \item 半负定: $V(x) \leq 0$, $x \in N$.
+  \end{enumerate}
+\end{Def}
+
+\begin{Thm}[Lyapunov, 教材引理2.5]
+  若方程 \eqref{Eq:2.8} 存在函数 $V(x, y)$, 使得
+  \begin{equation*}
+    V(0, 0) = 0,
+  \end{equation*}
+  且:
+  \begin{enumerate}[(i)]
+    \item \label{Lyapunov_C1} $V(x, y)$ 在 $(0, 0)$ 邻域正定;
+    \item \label{Lyapunov_C2} $\dot{V}(x, y)$ 在 $(0, 0)$ 邻域负定,
+  \end{enumerate}
+  则 $(0, 0)$ 点是渐进稳定的.
+\end{Thm}
+
+解释:
+\begin{enumerate}[(i)]
+  \item $V(x, y)$ 正定, 见图 \ref{T 4}.
+  \begin{figure}[!ht]
+    \centering
+    \psfrag{V}{$V$}
+    \psfrag{yone}{$x$}
+    \psfrag{ytwo}{$y$}
+    \includegraphics[width = 0.25\textwidth]{T47.eps}
+    \caption{$V(x, y)$ 正定示意图.}
+    \label{T 4}
+  \end{figure}
+
+  $V(x, y) = c$, $c$ 充分小时, 截面图形是闭曲线, 如图 \ref{T 5}.
+  \begin{figure}[!ht]
+    \centering
+    \psfrag{yone}{$x$}
+    \psfrag{ytwo}{$y$}
+    \includegraphics[width = 0.25\textwidth]{T48.eps}
+    \caption{截面示意图.}
+    \label{T 5}
+  \end{figure}
+
+  \item $\dot{V}(x, y)$ 负定的定义及意义.
+
+  设 $(x(t), y(t))$ 为解, 带入 $V(x, y)$ 有,
+  \begin{align*}
+    \dot{V}(x, y) & = \frac{\D(V(x(t), y(t)))}{\D t}\\
+    & = V_x \cdot \dot{x} + V_y \cdot \dot{y}\\
+    & = V_x \cdot P(x, y) + V_y \cdot Q(x, y) < 0,
+  \end{align*}
+  $\Rightarrow V(x(t), y(t))$ 关于 $t$ 严格单调递减,
+
+  $\Rightarrow V(x(0), y(0)) = c_1$, $V(x(t), y(t)) = c_2$, $t > 0$,
+
+  $\Rightarrow c_2 < c_1$.
+\end{enumerate}
+联合条件 (\ref{Lyapunov_C1}) 与 (\ref{Lyapunov_C2}), 得示意图 \ref{T 6}.
+\begin{figure}[!ht]
+  \centering
+  \psfrag{yone}{$x$}
+  \psfrag{ytwo}{$y$}
+  \psfrag{Cone}{$c_1$}
+  \psfrag{Ctwo}{$c_2$}
+  \includegraphics[width = 0.25\textwidth]{T49.eps}
+  \caption{Lyapunov 定理示意图.}
+  \label{T 6}
+\end{figure}
+
+\begin{proof}\
+  \begin{enumerate}[1)]
+    \item  稳定性.
+
+    设 $V$ 在 $N$ 中正定,
+    \begin{enumerate}
+      \item 在 $N$ 中 \CJKunderline{任取 $\varepsilon$ 球}
+        \begin{equation*}
+          B_\varepsilon = \{(x, y) \mid x^2 + y^2 \leq \varepsilon^2\}.
+        \end{equation*}
+
+      \item 令$m = \min \limits_{x^2 + y^2 = \varepsilon^2} V(x, y) > 0$.
+
+      \item 对 $l < m$, 存在 $\delta > 0$, 当 $x^2 + y^2 < \delta$ 时,
+        \begin{equation*}
+          V(x, y) < l \ (\because V(0, 0) = 0).
+        \end{equation*}
+        如图 \ref{T 7}.
+      \begin{figure}[!ht]
+        \centering
+        \psfrag{V}{$V$}
+        \psfrag{yone}{$x$}
+        \psfrag{ytwo}{$y$}
+        \psfrag{epsilon}{$\varepsilon$}
+        \psfrag{delta}{$\delta$}
+        \includegraphics{T50.eps}
+        \caption{$l < m$.}
+        \label{T 7}
+      \end{figure}
+
+      \item $\because$ 在 $N$ 中 $\dot{V}(x, y) < 0$,
+
+        \CJKunderline{$\Rightarrow$ 当 $x^2_0 + y^2_0 < \delta^2$,}
+
+        $\Rightarrow V(x(t), y(t)) < V(x_0, y_0) < l < m$,
+
+        \CJKunderline{$\Rightarrow x^2(t) + y^2(t) < \varepsilon^2$.} 稳定!
+    \end{enumerate}
+
+    \item  吸引性.
+
+    $\forall M > 0$ 由稳定性, 存在 $\delta > 0$, 当 $x^2_0 + y^2_0 < \delta^2$ 时,
+    \begin{equation}\label{Eq:2.9}
+      \|(x(t), y(t))\|\leq M.
+    \end{equation}
+    反设, $t \to + \infty$, $V(x(t), y(t)) \to c > 0$, 单调递减有极限, 不趋于零,
+    \begin{equation}\label{Eq:2.10}
+      \Rightarrow \exists m > 0, \ \exists t > t_0, \ \|(x(t), y(t))\| \geq m.
+    \end{equation}
+    记 $h$ ($< 0$) 为 $\dot{V}(x, y)$ 在 \eqref{Eq:2.9} $\oplus$ \eqref{Eq:2.10} 区域中的最大值, 当 $t > t_0$ 时:
+    \begin{equation*}
+      V(x(t), y(t)) - V(x_0, y_0) = \int^t_{t_0} \frac{\D V}{\D t} \D t \leq h(t - t_0).
+    \end{equation*}
+    $t \to \infty$ 时, 由上式得常数 $\leq - \infty$, 矛盾！
+
+    $\therefore V(x(t), y(t)) \to 0$.
+  \end{enumerate}
+\end{proof}
+
+\begin{Note}
+  1885 年, Lyapunov $\to$ 1960 年, LaSalle. \footnotemark
+\end{Note}
+
+\footnotetext{参考书:
+
+LaSalle J P. 动力系统的稳定性[M]. 成都: 四川科学技术出版社, 2002.
+
+Hofbauer J, Sigmund K. 进化对策与种群动力学[M]. 成都: 四川科学技术出版社, 2002.}
+
+\begin{Note}\label{No:2.3}
+  1950 年, $V$ 无穷大 $\Rightarrow$ 全局 (整体) 稳定: 局部稳定 $\oplus$ 全局吸引.
+
+  \begin{inparaenum}
+    \item $V$正定;
+    \item $\dot{V}$负定;
+    \item $V$无穷大.
+  \end{inparaenum}
+  \begin{equation*}
+    V(\xi), \ \xi\in G, \ \xi\to\partial G, \ V\to  + \infty.
+  \end{equation*}
+  即对 $\forall c$, $V(x, y) = c$ 的截面都是闭曲线.
+  \begin{figure}[!ht]
+    \centering
+    \psfrag{v}{$V(x, y) = c$}
+    \psfrag{x}{$x^*$}
+    \includegraphics[width = 0.25\textwidth]{T51}
+    \caption{注 \ref{No:2.3}.}
+  \end{figure}
+\end{Note}
+
+\begin{Note}
+  $V$ 函数在特殊情况下可构造出来.
+\end{Note}
+
+\begin{Note}
+  $\dot{x} = y$, $\dot{y} = - x - y$, 特征根为 $\frac{ - 1 \pm \sqrt{3}i}{2}$.
+  \begin{enumerate}
+    \item 线性分析 $\Rightarrow$ 结点稳定性;
+    \item \begin{align*}
+      V_1 & = x^2 + y^2, \ \dot{V}_1 = - 2 y^2,\\
+      V_2 & = 3 x^2 + 2 x y + 2 y^2, \dot{V}_2 = - 2 (x^2 + y^2).
+    \end{align*}
+  \end{enumerate}
+\end{Note}
+
+\begin{Note}
+  $\dot{x} = y$, $\dot{y} = - x$, 取 $V = x^2 + y^2$, $\dot{V} = 0$, $V = c$ 称为不变曲线 $L$: $(x_0, y_0) \in L \Rightarrow (x(t), y(t)) \in L$, $\forall t$.
+\end{Note}
+
+\begin{Thm}[教材定理 2.4]
+  双曲奇点的稳定性由其线性系统确定.
+\end{Thm}
+\begin{proof}\
+  \begin{enumerate}[1)]
+    \item $\lambda$, $\mu$ 是实根
+    \begin{equation}
+      \begin{aligned}
+        \dot{u} & = \lambda u + f_1(u, v),\\
+        \dot{v} & = \mu v + f_2(u, v).
+      \end{aligned}
+    \end{equation}
+    取 $V = u^2 + v^2$ (正定) $\Rightarrow \dot{V} = 2 \lambda u^2 + 2 \mu v^2 + o(u^2 + v^2)$.
+    \begin{enumerate}[a)]
+      \item $\lambda$, $\mu < 0 \Rightarrow \dot{V}$ 负定 $\Rightarrow$ 渐近稳定.
+
+      \item $\lambda$, $\mu > 0 \Rightarrow \dot{V}$ 正定 $\Rightarrow$ 不稳定.
+
+      \item $V = \lambda u^2 + \mu v^2$ ($\lambda \cdot \mu < 0$, 不定的),
+
+          $\dot{V} = 2 \lambda^2 u^2 + 3 \mu^2 v^2 + o(u^2 + v^2)$ (正定),
+
+          $\Rightarrow$ 不稳定.
+    \end{enumerate}
+
+    \item 线性系统有重根.
+
+    $D = a d - b c > 0$, $T = a + d \neq 0$, $T^2 - 4 D = 0$, $\lambda = \frac{T}{2}$ (二重根).
+    \begin{align*}
+      V & = D (x^2 + y^2) + (a y - c x)^2 + (b y - d x)^2 > 0, \\
+      \dot{V} & = 2 (a + d) (a d - b c) (x^2 + y^2) + o(x^2 + y^2) \\
+       & = 2 \cdot T \cdot D (x^2 + y^2) + o(x^2 + y^2) \lessgtr 0\ (T \gtrless 0).
+    \end{align*}
+
+    \item $\alpha \pm i \beta$.
+    \begin{align*}
+      \dot{u} & = \alpha u - \beta v + \mathrm{h.o.t},\\
+      \dot{v} & = \beta u + \alpha v + \mathrm{h.o.t}.
+    \end{align*}
+    令 $V = u^2 + v^2$, $\dot{V} = 2 \alpha(u^2 + v^2) + o\left((u^2 + v^2)^ {\frac{3}{2}}\right)$,
+
+    $\Rightarrow \alpha < 0$, 稳定; $\alpha > 0$, 不稳定.
+  \end{enumerate}
+\end{proof}
+
+\begin{Note}
+  非双曲情况: $\alpha = 0$ (线性部分为中心), $\dot{V} = o\left((u^2 + v^2)^ {\frac{3}{2}}\right)$. 其稳定性如何?
+\end{Note}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{中心焦点判定}
+
+线性系统
+\begin{equation*}
+  \dot{x} = - y, \ \dot{y} = x,
+\end{equation*}
+的平衡点为中心, 那么此时对应的非线性系统:
+\begin{equation*}
+  \dot{x} = - y + P(x, y), \ \dot{y} = x + Q(x, y),
+\end{equation*}
+其稳定性如何?
+
+\begin{Exa}
+  \begin{align*}
+    \dot{x} & = - y - y (x^2 + y^2),\\
+    \dot{y} & = x + x (x^2 + y^2).
+  \end{align*}
+\end{Exa}
+\begin{solve}
+  $V = x^2 + y^2$, $\dot{V} = 0 \Rightarrow V = c$, 中心 $\to$ 中心.
+\end{solve}
+
+\begin{Exa}
+  \begin{align*}
+    \dot{x} & = y + a x(x^2 + y^2),\\
+    \dot{y} & = - x + a y(x^2 + y^2).
+  \end{align*}
+\end{Exa}
+\begin{solve}
+  $V = x^2 + y^2$, $\dot{V} = a (x^2 + y^2)^2$, 中心 $\to$ 焦点. ($a < 0$ 稳定, $a > 0$ 不稳定.)
+\end{solve}
+
+\begin{Exa}
+  \begin{align*}
+    \dot{x} & = y + x (1 - x^2 - y^2),\\
+    \dot{y} & = - x + y (1 - x^2 - y^2).
+  \end{align*}
+\end{Exa}
+\begin{solve}
+  $V = x^2 + y^2$, $\dot{V} = V(1 - V)$.
+
+  极限环 (limit cycle): 周期解邻域内无其它周期解, 也称为孤立周期解.
+  \begin{figure}[!ht]
+    \centering
+    \psfrag{yone}{$x$}
+    \psfrag{ytwo}{$y$}
+    \includegraphics[width = 0.3\textwidth]{T52.eps}
+    \caption{极限环.}
+  \end{figure}
+\end{solve}
+
+\begin{Exa}
+  \begin{align*}
+    \dot{x} & = - y - a x y - y^2,\\
+    \dot{y} & = x + a x^2.
+  \end{align*}
+\end{Exa}
+\begin{solve}\
+  \begin{enumerate}
+    \item \begin{align*}
+      V_1 & = x^2 + y^2,\\
+      \dot{V}_1 & = - 2 x y^2.
+    \end{align*}
+
+    \item \begin{align*}
+      V_2 & = V_1 + \left(\frac{2}{3} y^3\right),\\
+      \dot{V}_2 & = 2 a x^2 y^2.
+    \end{align*}
+
+    \item \begin{align*}
+      V_3 & = V_2 + \left(x^4 + \frac{1}{4} a x^3 y + 2 x^2 y^2 - \frac{1}{4} a x y^3 + y^4\right),\\
+      \dot{V}_3 & = \frac{1}{2} a (x^2 + y^2)^2 + \mathrm{h.o.t}.
+    \end{align*}
+  \end{enumerate}
+\end{solve}
+
+问题:
+\begin{enumerate}
+  \item 如何寻找 $V$ 函数?
+  \item 有没有一般的方法?
+  \item 能否用 Maple 做成算法程序?
+\end{enumerate}
+
+启示: Taylor 展开, 可用来判断极大极小值:
+\begin{equation*}
+  f(x) - f(0) = f'(0) x + \frac{f''(0)}{2} x^2 + \frac{f'''(0)}{6} x^3 + \cdots.
+\end{equation*}
+
+\paragraph{算法化论证 (求解)}
+\begin{align*}
+  \dot{x} & = - y - a x y - y^2 = P(x, y),\\
+  \dot{y} & = x + a x = Q(x, y).
+\end{align*}
+\begin{solve}
+  (形式幂级数法)
+
+  $V_1 = x^2 + y^2$, 此函数无效.
+  \begin{itemize}
+    \item 令
+        \begin{align*}
+          V_2 & = V_1 + (A x^3 + B x^2 y + C x y^2 + D y^3)\\
+          \dot{V}_2 & = V_{2 x} \cdot \dot{x} + V_{2 y} \cdot \dot{y}\\
+          & = V_{2 x} \cdot P(x, y) + V_{2 y} \cdot Q(x, y)\\
+          & = (2 x + 3 A x^2 + 2 B x y + C y^2) ( - y - a x y - y^2)\\
+          & + (2 y + B x^2 + 2 C x y + 3 D y^2) (x + a x^2).
+        \end{align*}
+        要求三次同类项全为 0. (此时, 三次项为最低项. $\dot{V}$ 的最低次项不为 ``奇''.) 即
+        \begin{align*}
+          & B x^3 + (2 C - 3 A) x^2 y + (3 D - 2 B - 2) x y^2 - C y^3 \equiv 0,\\
+          \Rightarrow & B = A = C = 0, \ D = \frac{3}{2},\\
+          \Rightarrow & V_2 = V_1 + \frac{2}{3}y^3,\\
+          \Rightarrow & \dot{V}_2 = 2 a x^2 y^2.
+        \end{align*}
+    \item 令
+        \begin{align*}
+          V_3 & = V_2 + (A x^4 + B x^3 y + C x^2 y^2 + D x y^3 + E y^4),\\
+          \dot{V}_3 & = V_{3 x} \cdot P(x, y) + V_{3 y} \cdot Q(x, y)\ (\stackrel{\text{令}}{ = } L_1(x^2 + y^2)^2 + o(r^2))~\footnotemark\\
+          & = (2 x + 4 A x^3 + 3 B x^2 y + 2 C x y^2 + D y^3) ( - y - a x y - y^2)\\
+          & + (2 y + 2 y^2 + B x^3 + 2 C x^2 y + 3 D x y^2 + 4 E y^3) (x + a x^2).
+        \end{align*}
+        比较四次项: (此时二次项, 三次项均为 0)
+        \begin{align*}
+          x^4:\ & B = L,\\
+          x^3 y:\ & - 4 A + 2 C = 0,\\
+          x^2 y^2:\ & 2 a - 3 B + 3 D = 2 C,\\
+          x y^3:\ &  - 2 C + 4 E = 0,\\
+          y^4:\ &  - D = L,\\
+          \Rightarrow {} & C = 2, \ A = 1, \ E = 1,\ L = \frac{a}{4}, \ b = - \frac{a}{4}, \ B = \frac{a}{4},\\
+          \Rightarrow {} & V_3 = (x^2 + y^2) + \left(\frac{2}{3} y^2\right) + \left(x^4 + \frac{a}{4} x^3 y + 2 x^2 y^2 - \frac{a}{4} x y^3 + y^4\right),\\
+          & \dot{V}_3 = \frac{a}{4}(x^2 + y^2)^2 + o(r^2).&
+        \end{align*}
+  \end{itemize}
+\end{solve}
+
+\footnotetext{此处也可以令为 $Lx^4$, $Ly^4$, 称 $L_1$ 为一阶焦点量, 以后称 $L_2 (x^2 + y^2)^3$, $L_3 (x^2 + y^2)^4$, $\dots$ 中的 $L_2$ 为二阶焦点量, $L_3$ 为三阶焦点量, $\dots$; $r = x^2 + y^2$.}
+
+\paragraph{中心焦点---极坐标}
+
+\begin{dingautolist}{172}
+  \item 系统 (有线性中心)
+  \begin{align*}
+    \dot{x}& = - y + U(x, y),\\
+    \dot{y}& = x + V(x, y).
+  \end{align*}
+
+  \item 极坐标,
+  \begin{gather*}
+    x = r \cos \theta, \ y = r \sin \theta,\\
+    \frac{\D r}{\D t} = r R(r, \theta), \ \frac{\D \theta}{\D t} = 1 + Q(r, \theta).
+  \end{gather*}
+
+  \item \begin{equation}\label{Eq:2.12}
+    \frac{\D r}{\D \theta} = \frac{r R(r, \theta)}{1 + Q(r, \theta)} = R_2(\theta) r^2 + R_3(\theta) r^3 + \cdots.
+  \end{equation}
+  $R_i(\theta)$ 是 $\cos \theta$ 与 $\sin \theta$ 的函数, 以 $2 \pi$ 为周期.
+
+  \item 解的图形.
+  \begin{figure}[!ht]
+    \centering
+    \psfrag{theta}{$\theta$}
+    \psfrag{rzero}{$r_0$}
+    \psfrag{r}{$r$}
+    \psfrag{req}{$r = r(\theta, r_0)$}
+    \includegraphics[width = 0.4\textwidth]{T53.eps}
+    \caption{解的图形示意图.}
+  \end{figure}
+
+  \item Poincar\'{e} 映射.
+
+    $P:\ c \to P(c) = r(\theta, c)|_{\theta = 2\pi} = r(2\pi, c)$,
+    \begin{enumerate}[i)]
+      \item $P(0) = 0$.
+      \item $P(c) = c$ ($c$ 为 $P$ 的不动点) $\Rightarrow r(\theta, c)$ 为闭轨.
+    \end{enumerate}
+  \begin{figure}[!ht]
+    \centering
+    \psfrag{r}{$r(2\pi, c) < c$}
+    \psfrag{e}{$r(2\pi, c) = c$}
+    \psfrag{g}{$r(2\pi, c) > c$}
+    \psfrag{c}{$c$}
+    \psfrag{o}{$O$}
+    \includegraphics[width = 0.5\textwidth]{T54.eps}
+    \caption{Poincar\'{e} 映射示意图.}
+  \end{figure}
+
+  \item 后继函数
+  \begin{equation*}
+    F(c) = P(c) - c.
+  \end{equation*}
+  $F(c)$ 有非 0 零点 $\Rightarrow$ 闭轨.\\
+  问题: 如何确定 $r(\theta, c)$?
+
+  \item 幂级数法, 将 $r(\theta, c)$ 展为 $c$ 的级数:
+  \begin{equation}\label{Eq:2.13}
+    r(\theta, c) = r_1(\theta) c + r_2(\theta) c^2 + \cdots.
+  \end{equation}
+  将 \eqref{Eq:2.13} 代入方程 \eqref{Eq:2.12}, 求 $r_i(\theta)$.
+\end{dingautolist}
+
+\begin{Note}
+  $r(0, c) = c \Rightarrow r_1(\theta) = 1$, $r_i(0) = 0$, $i = 2, 3, \dots$.
+\end{Note}
+
+\begin{Note}
+  $\forall i$, $r_i(\theta) = r_i(2 \pi + \theta) \Rightarrow r(\theta, c)$ 闭轨, 即 $r(2 \pi, c) = c$.
+\end{Note}
+
+\begin{Exa}\label{Ex:2.7}
+  \begin{align*}
+    \dot{x} & = - y - a x y - y^2,\\
+    \dot{y} & = x + a x^2.
+  \end{align*}
+\end{Exa}
+\begin{solve}
+  令 $x = r \cos \theta$, $y = r \sin \theta$,
+  \begin{align*}
+    \frac{\D r}{\D t} &  = - r^2 \cos \theta \sin^2 \theta,\\
+    \frac{\D \theta}{\D t} & = 1 + r (a \cos \theta + \sin^3 \theta) > 0,\\
+    & \stackrel{\text{令}}{ = } 1 + r \Phi(\theta),\\
+    \frac{\D r}{\D \theta} & = \frac{ - r^2 \cos \theta \sin^2 \theta}{1 + r \Phi(\theta)}\\
+    & = - r^2 \cos \theta \sin^2 \theta \left(1 - \Phi(\theta) r + (\Phi(\theta) r)^2 - (\Phi(\theta) r)^3 + \cdots\right)\\
+    & = r^2( - \cos\theta\sin^2\theta) + r^3(\Phi(\theta)\cos\theta\sin^2\theta) + \cdots &
+  \end{align*}
+  下求 $r(\theta, c)$, $r(0, c) = c$. 令 $r(\theta, c) = r_1(\theta)c + r_2(\theta)c^2 + \cdots$ 代入上式
+  \begin{align*}
+    \text{左} & = r'_1(\theta) c + r'_2(\theta) c^2 + r'_3(\theta) c^3 + \cdots,\\
+    \text{右} & = c^2 r^2_1(\theta)( - \cos \theta \sin^2 \theta)\\
+     & + c^3 r_{{1}}(\theta) \cos \theta \sin^2 \theta \left( r_{1}^{2}(\theta) \Phi(\theta) - 2 r_{{2}}(\theta) \right)\\
+     & + \cdots.
+  \end{align*}
+  比较 $c$ 的同次项有:
+  \begin{align*}
+    r'_1(\theta) & = 0,\\
+    r'_2(\theta) & = - r^2_1(\theta) \cos \theta \sin^2 \theta,\\
+    r'_3(\theta) & = r_{1}(\theta) \cos \theta \sin^2 \theta \left( r_{1}^{2}(\theta) \Phi(\theta) - 2 r_{2}(\theta) \right),\\
+    \cdots, &
+  \end{align*}
+  可逐次求解.
+
+  代入初始条件: $r_1(0) = 1$, $r_i(0) = 0$, $\forall i = 2, 3, \cdots$ 有:
+  \begin{enumerate}[i)]
+    \item $r_1(\theta) = 1$;
+
+    \item $r'_2(\theta) = - \cos \theta \sin^2 \theta$,
+
+        $\Rightarrow r_2(\theta) = - \frac{1}{3} \sin^3 \theta$;
+
+    \item $r'_3(\theta) = \frac{1}{3} \cos \theta \sin^2 \theta \left( 2 \sin^3 \theta + 3 \Phi(\theta) \right)$,
+
+        $\Rightarrow r_3(\theta) = \frac{a}{8} \theta + \frac{a}{8} \sin \theta \cos \theta \left( 2  \sin^{2} \theta - 1 \right) + \frac {5}{18} \sin^{6} \theta$.
+  \end{enumerate}
+  $\Rightarrow r(\theta, c) = c - \frac{1}{3} \sin^3 \theta c^2 + \left( \frac{a}{8} \theta + \frac{a}{8} \sin \theta \cos \theta \left( 2  \sin^{2} \theta - 1 \right) + \frac {5}{18} \sin^{6} \theta \right) c^3 + \cdots,$
+  \begin{align*}
+    F(c) &  = P(c) - c = r(2\pi, c) - c\\
+    &  = \frac{a\pi}{4}c^3 + r_4(\theta)c^4 + \cdots &
+  \end{align*}
+  综上有,
+  \begin{itemize}
+    \item $a < 0 \Rightarrow$ 原点稳定;
+    \item $a > 0 \Rightarrow$ 原点不稳定.
+  \end{itemize}
+  其中 $L_1 = \frac{a\pi}{4}$ 称为一阶焦点量.
+\end{solve}
+
+\begin{Exa}\label{Ex:2.8}
+  例 \ref{Ex:2.7} 中 $a = 0 \stackrel{?}{\Rightarrow} \forall i \geq 4$, $r_i(\theta) = r_i(2\pi + \theta)$.
+\end{Exa}
+\begin{solve}
+  事实上, $a = 0$, $3 r^2 + 2 r^3 \cos \theta = c$,
+
+  $\Rightarrow 2y^3 + 3(x^2 + y^2) = c$.
+
+  $c$ 充分小时 $\Rightarrow$ 闭轨. 综上, $a$ 的不同取值系统的解的图像如图 \ref{T 8}.
+  \begin{figure}[!ht]
+    \centering
+    \subfloat[$a < 0$]{\psfrag{yone}{$x$}\psfrag{ytwo}{$y$}\includegraphics[width = 0.25\textwidth]{T55.eps}}\hfill
+    \subfloat[$a > 0$]{\psfrag{yone}{$x$}\psfrag{ytwo}{$y$}\includegraphics[width = 0.25\textwidth]{T56.eps}}\hfill
+    \subfloat[$a = 0$]{\psfrag{yone}{$x$}\psfrag{ytwo}{$y$}\includegraphics[width = 0.25\textwidth]{T57.eps}}
+    \caption{例 \ref{Ex:2.7} 及例 \ref{Ex:2.8}.}
+    \label{T 8}
+  \end{figure}
+\end{solve}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{无穷远奇点 (多项式)}
+
+对于平面系统
+\begin{equation*}
+  \dot{x} = P(x, y), \ \dot{y} = Q(x, y), \ \begin{array}{|c c|} a&b\\c&d   \end{array}\neq 0,
+\end{equation*}
+Poincar\'{e}-Lyapunov 算法化解决了有限平面上奇点及其邻近轨线的性态问题.
+
+现在的问题是: 在无穷远处 ($\partial \mathbb{R}^2$), 解的性态如何?
+
+作单位球面 (投影), 根据图 \ref{Fi:Poincare} 建立坐标系.
+\begin{figure}[!ht]
+  \centering
+  \psfrag{0}{$O$}
+  \psfrag{1}{$1$}
+  \psfrag{Y}{$Y$}
+  \psfrag{X}{$X$}
+  \psfrag{z}{$Z$}
+  \psfrag{y}{$y$}
+  \psfrag{x}{$x$}
+  \psfrag{m}{$M(x, y, 1)$}
+  \psfrag{l}{$M_2(1, u, z)$}
+  \psfrag{n}{$M_1$}
+  \psfrag{a}{$\alpha$}
+  \psfrag{b}{$\beta$}
+  \psfrag{t}{$\theta$}
+  \includegraphics[totalheight = 3in]{T58.eps}
+  \caption{Poincar\'{e} 变换.}\label{Fi:Poincare}
+\end{figure}
+
+由图 \ref{Fi:Poincare} 得: $O$, $M$, $M_1$ 共线, 即 $(0, 0, 0)$, $(x, y, 1)$, $(X, Y, Z)$ 共线. 有
+\begin{equation*}
+  \Rightarrow \frac{X}{x} = \frac{Y}{y} = \frac{Z}{1}.
+\end{equation*}
+即将无穷远点映到了赤道上.
+
+\begin{Note}\
+  \begin{enumerate}[i)]
+    \item $X^2 + Y^2 + Z^2 = 1$.
+    \item 赤道 $(X, Y, 0)$ 对应 $(x, y)$ 平面无穷远点.
+    \item \begin{flalign*}
+            X & = \frac{x}{\sqrt{1 + x^2 + y^2}},\\
+            Y & = \frac{y}{\sqrt{1 + x^2 + y^2}},\\
+            Z & = \frac{1}{\sqrt{1 + x^2 + y^2}}, &
+          \end{flalign*}
+          而对应的 $X$, $Y$ 的方向是? 令 $x = r \cos \theta$, $y = r \sin \theta$ 有:
+          \begin{flalign*}
+            & X = \frac{r}{\sqrt{1 + r^2}} \cos \theta, \ Y = \frac{r}{\sqrt{1 + r^2}} \sin \theta, \ Z = \frac{1}{\sqrt{1 + r^2}},\\
+            & X \to \cos \theta, \ Y \to \sin \theta,\ Z \to 0,\ \text{当} \ r \to \infty. &
+          \end{flalign*}
+  \end{enumerate}
+\end{Note}
+
+\begin{Note}\
+  \begin{enumerate}[i)]
+    \item 无穷远点: 常点, 奇点.
+    \item $X$, $Y$ 平面上沿 $(\cos \theta, \sin \theta)$ 的无穷远点对应赤道 (单位球) 上点 $(\cos \theta, \sin \theta, 0)$.
+  \end{enumerate}
+\end{Note}
+
+接下来建立 $\beta$ 平面, $MO$ 与 $\beta$ 面交于 $M_2$, $M$ ($\alpha$ 面), $M_2$ ($\beta$ 面), $O$ 共线.
+\begin{equation*}
+  \frac{x}{1} = \frac{y}{u} = \frac{1}{z}.
+\end{equation*}
+这建立了 $(x, y)$ 与 $(u, z)$ 的一个关系 (除 $y$ 轴外). 此即 Poincar\'{e} 变换:
+\begin{equation*}
+  x = \frac{1}{z}, \ y = \frac{u}{z}\ (z \neq 0),\ \text{或}\ u = \frac{y}{x}, \ z = \frac{1}{x}.
+\end{equation*}
+由方程 \eqref{Eq:2.1} 有,
+\begin{equation}\label{Eq:2.14}
+  \begin{aligned}
+    \frac{\D u}{\D t} & = z Q\left(\frac{1}{z}, \frac{u}{z}\right) - u z P\left(\frac{1}{z}, \frac{u}{z}\right),\\
+    \frac{\D z}{\D t} & = - z^2 P\left(\frac{1}{z}, \frac{u}{z}\right).
+  \end{aligned}
+\end{equation}
+
+
+\begin{Note}\
+  \begin{enumerate}[i)]
+    \item 方程 \eqref{Eq:2.1} $\in \alpha \Leftrightarrow$ \eqref{Eq:2.14} $\in \beta$ ($z \neq 0$).
+    \item $z = 0$ 对应 $\alpha$ 平面上的无穷远点. (将 $\alpha$ 上无穷远点映成 $\beta$ 上有限远点.)
+  \end{enumerate}
+\end{Note}
+
+整理 \eqref{Eq:2.14} 得:
+\begin{equation}\label{Eq:2.15}
+  \frac{\D u}{\D t} = \frac{P^*(u, z)}{z^m}, \ \frac{\D z}{\D t} = \frac{Q^*(u, z)}{z^m}.
+\end{equation}
+其中 $P^*$, $Q^*$ 是互质多项式, $m$ 是正整数.
+
+由积分因子理论有:
+\begin{align*}
+  \frac{\D u}{\D t} & = \mu(u, z) P^*(u, z),\ \frac{\D z}{\D t} = \mu(u, z) Q^*(u, z),
+\end{align*}
+与
+\begin{align*}
+  \frac{\D z}{\D t} & = P^*(u, z), \ \frac{\D z}{\D t} = Q^*(u, z),
+\end{align*}
+两者解是一样的 (方向除外, $\mu(u, z) \neq 0$).
+
+作变换 (去分母): $z^m \D \tau = \D t$, 得到:
+\begin{equation}\label{Eq:2.16}
+  \begin{aligned}
+    \frac{\D u}{\D \tau} = P^*(u, z),\\
+    \frac{\D z}{\D \tau} = Q^*(u, z).
+  \end{aligned}
+\end{equation}
+这个变换使得 $\alpha$ 平面上的有限远奇点变为了 $\beta$ 面上的有限远奇点, 无穷远奇点变为了 $\beta$ 面上 $z = 0$ 的有限远奇点.
+
+\begin{Note}\
+  \begin{enumerate}
+    \item $z \neq 0$, $m$ 为偶数或奇数, $z > 0$,
+
+          $\Rightarrow$ \eqref{Eq:2.15}, \eqref{Eq:2.16} 轨线同向.
+
+    \item $m$ 为奇数, $z < 0$,
+
+          $\Rightarrow$ \eqref{Eq:2.15}, \eqref{Eq:2.16} 轨线反向.
+
+    \item 无穷远奇点满足:
+        \begin{equation*}
+          P^*(u^*, 0) = Q^*(u^*, 0) = 0\ \left(x = \frac{1}{z}, \ y = \frac{u}{z}\right),
+        \end{equation*}
+        $\Rightarrow y = u^* x$, $x \to \pm \infty$, $z \to 0$.
+
+        $(u^*, 0)$ 对应方程 \eqref{Eq:2.1} 一对无穷远奇点.
+  \end{enumerate}
+\end{Note}
+
+$Y$ 轴的 Poincar\'{e} 变换:
+\begin{align*}
+  x = \frac{v}{z}, \ y = \frac{1}{z} \  (z \neq 0),\ \text{或}\  v = \frac{x}{y}, \ z = \frac{1}{y}.
+\end{align*}
+得到
+\begin{align*}
+  \frac{\D v}{\D \tau} = \bar{P}(v, z), \ \frac{\D z}{\D \tau} = \bar{Q}(v, z).
+\end{align*}
+将赤道与下半球面垂直下投得到:
+\begin{dingautolist}{172}
+  \item \begin{align*}
+          x & = \frac{1}{z}, & u & = \frac{y}{x},\\
+          y & = \frac{u}{z}, & z & = \frac{1}{x}.
+        \end{align*}
+        \begin{figure}[!ht]
+          \centering
+          \subfloat[原系统]{\psfrag{1}{$1$}\psfrag{yone}{$x$}\psfrag{ytwo}{$y$}\includegraphics[width = 0.4\textwidth]{T59.eps}}\hfill
+          \subfloat[$uz$ 平面]{\psfrag{yone}{$u$}\psfrag{ytwo}{$z$}\includegraphics[width = 0.4\textwidth]{T60.eps}}
+          \caption{原系统 $\to uz$ 平面.}
+        \end{figure}
+        \begin{enumerate}
+          \item $u > 0$, $z > 0$ (图中阴影部分) $\Leftrightarrow x > 0$, $y > 0$.
+          \item $u > 0$, $z < 0 \Leftrightarrow x < 0$, $y < 0$.
+        \end{enumerate}
+
+  \item \begin{equation*}
+          x = \frac{v}{z}, \ y = \frac{1}{z}.
+        \end{equation*}
+        \begin{figure}[!ht]
+          \centering
+          \subfloat[原系统]{\psfrag{1}{$1$}\psfrag{yone}{$x$}\psfrag{ytwo}{$y$}\includegraphics[width = 0.4\textwidth]{T61.eps}}\hfill
+          \subfloat[$vz$ 平面]{\psfrag{yone}{$v$}\psfrag{ytwo}{$z$}\includegraphics[width = 0.4\textwidth]{T62.eps}}
+          \caption{原系统 $\to vz$ 平面.}
+        \end{figure}
+\end{dingautolist}
+
+\begin{Exa}
+  奇点分析举例:
+  \begin{equation}\label{Eq:2.17}
+    \begin{aligned}
+      \dot{x} & = x (3 - x - 5 y) = f,\\
+      \dot{y} & = y ( - 1 + x + y) = g.
+    \end{aligned}
+  \end{equation}
+\end{Exa}
+\begin{solve}
+  \begin{dingautolist}{172}
+    \item 有限奇点: $O(0, 0)$, $A(3, 0)$, $B(0, 1)$, $E\left(\frac{1}{2}, \frac{1}{2}\right)$.
+
+          Jacobian
+          \begin{equation*}
+            \begin{pmatrix}
+              f_x & f_y\\
+              g_x & g_y
+            \end{pmatrix} =
+            \begin{pmatrix}
+              3 - 2 x - 5 y &  - 5 x\\
+              y &  - 1 + x + 2 y
+            \end{pmatrix}.
+          \end{equation*}
+          $O$ 的 Jacobian 为 $\begin{pmatrix} 3 & 0\\ 0 & - 1\end{pmatrix}$, 鞍点.
+
+          $A$ 的 Jacobian 为 $\begin{pmatrix} - 3 & - 15\\ 0 & 2\end{pmatrix}$, 鞍点.
+
+          $B$ 的 Jacobian 为 $\begin{pmatrix} - 2 & 0\\ 1 & 1\end{pmatrix}$, 鞍点.
+
+          $E$ 的 Jacobian 为 $\begin{pmatrix} - \frac{1}{2} & - \frac{5}{2}\\ \frac{1}{2} & \frac{1}{2}\end{pmatrix}$, 可能为中心. 再考虑 $V = x y^3 \left(\frac{1}{3} x + y - 1\right)^2$, $\dot{V}|_{\text{\eqref{Eq:2.17}}} = 0 \Rightarrow E$ 为中心.
+
+          $A$ ($y = 0$), $\dot{x} = x (3 - x)$,
+
+          $B$ ($x = 0$), $\dot{y} = y (y - 1)$,
+
+          $O$ ($x = 0$), $\dot{y} = y (y - 1) = - y + y^2$.
+          \begin{figure}[!ht]
+            \centering
+            \psfrag{x}[][]{$x$}
+            \psfrag{y}[][]{$y$}
+            \psfrag{O}[][]{$O$}
+            \psfrag{A}[][]{$A$}
+            \psfrag{B}[][]{$B$}
+            \psfrag{E}[][]{$E$}
+            \includegraphics{T63.eps}
+            \caption{有限奇点相图.}
+          \end{figure}
+
+    \item 无穷远奇点:
+          \begin{enumerate}
+            \item 作 Poincar\'{e} 变换 (非 $y$ 轴上).
+                \begin{align*}
+                  & x = \frac{1}{z}, \ y = \frac{u}{z}\ (z \neq 0),
+                  \eqref{Eq:2.17} & \Rightarrow
+                    \begin{aligned}
+                      \dot{z} &  = - 3 z + 1 + 5 u,\\
+                      z \dot{u} &  = u ( - z + 1 + u) + u ( - 3 z + 1 + 5 u).
+                    \end{aligned}
+                \end{align*}
+                令 $\D t = z \D \tau$ 有,
+                \begin{align*}
+                  \dot{z} & = z (1 - 3 z + 5 u),\\
+                  \dot{u} & = u (2 - 4 z + 6 u).
+                \end{align*}
+                当 $z = 0$ 时, $u$ 轴上对应的不在 $y$ 轴上的无穷远点 $C(0, 0)$, $D\left( - \frac{1}{3}, 0\right)$. Jacobian 分别为
+                  \begin{equation*}
+                    \begin{array}{cc}
+                      \begin{pmatrix}
+                        2 & 0\\
+                        0 & 1
+                      \end{pmatrix}
+                      & \begin{pmatrix}
+                         - 2 & \frac{4}{3}\\
+                        0 &  - \frac{2}{3}
+                      \end{pmatrix}\\
+                      \text {不稳定结点,} & \text{稳定结点.}
+                    \end{array}
+                  \end{equation*}
+
+            \item $x = \frac{v}{z}$, $y = \frac{1}{z}$ ($y$ 轴).
+
+                  令 $\D t = z \tau$ 有,
+                  \begin{align*}
+                    \dot{z} & = z( - 1 + z - v),\\
+                    \dot{v} & = v( - 6 + 4 z - 2 v).
+                  \end{align*}
+                  $O(0, 0)$ 的 Jacobian 为 $\begin{pmatrix} - 1 & 0\\ 0 & - 6\end{pmatrix}$, 稳定结点.
+                  \begin{figure}[!ht]
+                    \centering
+                    \psfrag{x}[][]{$x$}
+                    \psfrag{y}[][]{$y$}
+                    \psfrag{O}[][]{$O$}
+                    \psfrag{A}[][]{$A$}
+                    \psfrag{B}[][]{$B$}
+                    \psfrag{E}[][]{$E$}
+                    \includegraphics{T64.eps}
+                    \caption{无穷远点相图.}
+                  \end{figure}
+          \end{enumerate}
+  \end{dingautolist}
+\end{solve}
+
+\begin{Exa}
+  Lotka-Volterra 系统, 1925 年,
+  \begin{align*}
+    \dot{x}_1 = x_1 (r_1 + a_{11} x_1 + a_{12} x_2),\\
+    \dot{x}_2 = x_2 (r_2 + a_{21} x_1 + a_{22} x_2).
+  \end{align*}
+  条件: $\exists x^* = (x^*_1, x^*_2) > 0$, $a_{11} < 0$, $a_{22} < 0$, $x^*$ 局部渐近稳定. 用 Lyapunov 函数
+  \begin{equation*}
+    V(x) = c_1 (x_1 - x^*_1 \ln x_1) + c_2 (x_2 - x^*_2 \ln x_2),
+  \end{equation*}
+  证明: $x^*$ 是全局渐近稳定的 (G. A. S).~\footnote{\begin{inparaenum}\item $V$ 正定; \item $\dot{V}$ 负定; \item $V$ 无穷.\end{inparaenum} $\Rightarrow$ G. A. S..}
+\end{Exa}
+
+1983年, Grossberger 用上面的思想构造 Neural Network.
+
+1986年, Prey-Predator System --- Do we live in a Volterra world?
+
+2000年, Korobeinikov 用 $V(x)$ 解决了 70-90 年代产生的一大批如 HIV、癌症、传染病等模型.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{奇点的指标}
+
+连续向量场:
+\begin{equation}\label{Eq:2.18}
+  \begin{gathered}
+    \dot{x} = P(x, y), \ \dot{y} = Q(x, y),\\
+    (P(x, y), Q(x, y)), \ (x, y) \in \mathbb{R}^2.
+  \end{gathered}
+\end{equation}
+记 $N$ 为 $\mathbb{R}^2$ 上的光滑闭曲线, 且不含方程 \eqref{Eq:2.18} 的奇点.
+
+\begin{Def}
+  动点 $(x, y)$ 沿着 $N$ 逆时针转动一周, 向量场转了整数圈 $j$ (角度为 $2 \pi j$), $j$ 为方程 \eqref{Eq:2.18} 沿着 $N$ 的旋转度.
+\end{Def}
+
+\begin{figure}[!ht]
+  \centering
+  \subfloat{
+  \psfrag{1}[][]{\ding{172}}
+  \psfrag{2}[][]{\ding{173}}
+  \psfrag{3}[][]{\ding{174}}
+  \psfrag{4}[][]{\ding{175}}
+  \includegraphics[origin=c]{T66.eps}}
+  \qquad
+  \subfloat{
+  \begin{tabular}[b]{c c c c}
+    \ding{172} & \ding{173} & \ding{174} & \ding{175}\\
+    $\downarrow$ & $\downarrow$ & $\downarrow$ & $\downarrow$ \vspace{1.5cm}
+  \end{tabular}}
+  \caption{常点, $j = 0$.}%\label{}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering
+  \subfloat{
+  \psfrag{1}[][]{\ding{172}}
+  \psfrag{2}[][]{\ding{173}}
+  \psfrag{3}[][]{\ding{174}}
+  \psfrag{4}[][]{\ding{175}}
+  \includegraphics{T65.eps}}
+  \qquad
+  \subfloat{
+  \begin{tabular}[b]{c c c c}
+    \ding{172} & \ding{173} & \ding{174} & \ding{175}\\
+    $\downarrow$ & $\rightarrow$ & $\uparrow$ & $\leftarrow$ \vspace{1.5cm}
+  \end{tabular}
+  }
+  \caption{结点, $j = 1$.}%\label{}
+\end{figure}
+%\begin{figwindow}[0, l, {\psfrag{1}[][]{\ding{172}}\psfrag{2}[][]{\ding{173}}\psfrag{3}[][]{\ding{174}}\psfrag{4}[][]{\ding{175}}\includegraphics{T65.eps}}, {$j = 1$}]
+%  \begin{tabular}{c c c c}
+%    \ding{172} & \ding{173} & \ding{174} & \ding{175}\\
+%    $\downarrow$ & $\rightarrow$ & $\uparrow$ & $\leftarrow$
+%  \end{tabular}
+%  \xymatrix{
+%     & \text{\ding{174}} \ar@/_0.6pc/[dl]  \\
+%  \text{\ding{175}} \ar@/_0.6pc/[dr] & \ar[u] \ar[d] \ar[l] \ar[r] & \text{\ding{173}} \ar@/_0.6pc/[ul] \\
+%     & \text{\ding{172}} \ar@/_0.6pc/[ur]    }
+%\end{figwindow}
+
+闭曲线 $N$ 为闭轨 (周期解) $\Rightarrow (P, Q)$ 沿 $N$ 的旋转度 $j = 1$. 如图 \ref{Fi:2.32}.
+\begin{figure}[!ht]
+  \centering
+  \psfrag{1}[][]{\ding{172}}
+  \psfrag{2}[][]{\ding{173}}
+  \psfrag{3}[][]{\ding{174}}
+  \psfrag{4}[][]{\ding{175}}
+  \includegraphics{T67.eps}
+  \caption{闭轨, $j = 1$.}\label{Fi:2.32}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering
+  \subfloat{
+  \psfrag{ytwo}[][]{$y$}
+  \psfrag{yone}[][]{$x$}
+  \psfrag{1}[][]{\ding{172}}
+  \psfrag{2}[][]{\ding{173}}
+  \psfrag{3}[][]{\ding{174}}
+  \psfrag{4}[][]{\ding{175}}
+  \includegraphics{T68.eps}}
+  \qquad
+  \begin{tabular}[b]{c c c c}
+    \ding{172} & \ding{173} & \ding{174} & \ding{175}\\
+    $\downarrow$ & $\leftarrow$ & $\uparrow$ & $\rightarrow$ \vspace{1.5cm}
+  \end{tabular}
+  \caption{鞍点, $j = - 1$.}%\label{}
+\end{figure}
+
+可将系统
+\begin{equation*}
+  \dot{x} = P(x, y),\ \dot{y} = Q(x, y),
+\end{equation*}
+写为如下形式
+\begin{equation*}
+  \frac{\D y}{\D x} = \frac{Q(x, y)}{P(x, y)}.
+\end{equation*}
+令 $\theta$ 为向量场与 $x$ 轴的夹角, 即,
+\begin{align*}
+  \tan \theta & = \frac{\D y}{\D x} = \frac{Q(x, y)}{P(x, y)},\\
+  \theta & = \arctan \frac{Q(x, y)}{P(x, y)}.
+\end{align*}
+方程 \eqref{Eq:2.18} 沿着 $N$ 旋转度为 $j$,
+\begin{align*}
+  j & = \frac{1}{2 \pi} \oint_N \D \theta = \frac{1}{2 \pi} \oint_N \D \arctan \frac{Q}{P}\\
+    & = \frac{1}{2 \pi} \oint_N \frac{P \kD Q - Q \kD P}{P^2 + Q^2}.
+\end{align*}
+
+\begin{Thm}
+  闭曲线 $N$ 所围区域无奇点, 则 $j = 0$.
+\end{Thm}
+\begin{proof}
+  \begin{equation*}
+  j =  \frac{1}{2 \pi} \oint_N \frac{P \kD Q - Q \kD P}{P^2 + Q^2} = 0.
+  \end{equation*}
+  \begin{enumerate}
+    \item 单连通;
+    \item 全微分.
+  \end{enumerate}
+\end{proof}
+
+\begin{Thm}[Hopf]
+  方程 \eqref{Eq:2.18} 沿闭轨线旋转度为 $1$.
+\end{Thm}
+
+\begin{Cor}
+  闭轨线内必有奇点.
+\end{Cor}
+
+\begin{Cor}\label{Co:2.9}
+  闭曲线 $N_1$, $N_2$ 所围成的环形区域无奇点 $\Rightarrow N_1$, $N_2$ 旋转度相等.
+\end{Cor}
+\begin{figure}[!ht]
+  \centering
+  \psfrag{A}[][]{$A$}
+  \psfrag{B}[][]{$B$}
+  \psfrag{noi}[][]{$N_1$}
+  \psfrag{nti}[][]{$N_2$}
+  \includegraphics{T69.eps}
+  \caption{推论 \ref{Co:2.9}.}
+\end{figure}
+\begin{proof} 由
+  \begin{equation*}
+    \bar{N} = \overrightarrow{AB} + N_1 + \overrightarrow{BA} + N_2,
+  \end{equation*}
+  可得
+  \begin{equation*}
+    \oint_{\bar{N}} \frac{P \kD Q - Q \kD P}{P^2 + Q^2} = 0.
+  \end{equation*}
+  而
+  \begin{equation*}
+    \oint_{\bar{N}} = \oint_{N_1} + \int^A_B - \oint_{N_2} + \int^B_A = 0.
+  \end{equation*}
+  所以有, $j_{N_1} = j_{N_2}$.
+\end{proof}
+
+\begin{Def}
+  闭曲线 $N$ 仅含方程 \eqref{Eq:2.18} 的一个奇点 $(x_0, y_0)$, 则 $(x_0, y_0)$ 的指标 $ = j_N$.
+\end{Def}
+
+\begin{Thm}
+  鞍点: $j = - 1$, 非鞍点 (Anti-Saddle): $j = 1$.
+\end{Thm}
+\begin{proof}
+  设方程 \eqref{Eq:2.18} 的奇点为 $(0, 0)$.
+  \begin{equation*}
+    \begin{aligned}
+      \dot{x} & = a x + b y + f(x, y) = P,\\
+      \dot{y} & = c x + d y + g(x, y) = Q,
+    \end{aligned}
+    \quad (a d - b c \neq 0).
+  \end{equation*}
+  在 $N_{\delta}$ ($(0, 0)$ 的 $\delta$ 邻域) 内有,
+  \begin{align*}
+     j_{\delta} & = \frac{1}{2 \pi} \int^{2 \pi}_{0} \frac{P \kD Q - Q \kD P}{P^2 + Q^2} \\
+     & = \frac{1}{2 \pi} \int^{2 \pi}_{0} \frac{(a x + b y + f(x, y)) \left(\frac{\partial Q}{\partial x} \kD x + \frac{\partial Q}{\partial y} \kD y\right)}{(a x + b y + f(x, y))^2 + (c x + d y + g(x, y))^2} \\
+     & \quad - \frac{1}{2 \pi} \int^{2 \pi}_{0} \frac{(c x + d y + g(x, y)) \left(\frac{\partial P}{\partial x} \kD x + \frac{\partial P}{\partial y} \kD y\right)}{(a x + b y + f(x, y))^2 + (c x + d y + g(x, y))^2} \\
+     & = \frac{1}{2 \pi} \int^{2 \pi}_{0} \frac{(a x + b y + f(x, y)) \left(\left(c + \frac{\partial g(x, y)}{\partial x} \right) \kD x + \left(d + \frac{\partial g(x, y)}{\partial y} \right) \kD y\right)}{(a x + b y + f(x, y))^2 + (c x + d y + g(x, y))^2} \\
+     & \quad - \frac{1}{2 \pi} \int^{2 \pi}_{0} \frac{(c x + d y + g(x, y)) \left(\left(a + \frac{\partial f(x, y)}{\partial x} \right) \kD x + \left(b + \frac{\partial f(x, y)}{\partial y} \right) \kD y\right)}{(a x + b y + f(x, y))^2 + (c x + d y + g(x, y))^2}.
+  \end{align*}
+  令 $x = \delta \cos \theta$, $y = \delta \sin \theta$, $\D x = - \delta \sin \theta \kD \theta$, $\D y = \delta \cos \theta \kD \theta$ 则,
+  \begin{align*}
+     j_{\delta} & = \frac{1}{2 \pi} \int^{2 \pi}_{0} \frac{\delta^2 (a \cos \theta + b \sin \theta) (d \cos \theta - c \sin \theta) \kD \theta}{\delta^2 (a \cos \theta + b \sin \theta + \delta f(\delta, \theta))^2 + \delta^2 (c \cos \theta + d \sin \theta + \delta g(\delta, \theta))^2} \\
+     & \quad - \frac{1}{2 \pi} \int^{2 \pi}_{0} \frac{\delta^2 (c \cos \theta + d \sin \theta) (b \cos \theta - a \sin \theta) \kD \theta - \delta^3 F(\delta, \theta) \kD \theta}{\delta^2 (a \cos \theta + b \sin \theta + \delta f(\delta, \theta))^2 + \delta^2 (c \cos \theta + d \sin \theta + \delta g(\delta, \theta))^2} \\
+     & = \frac{1}{2 \pi} \int^{2 \pi}_0 \frac{ \delta^2 (a d - b c) \kD \theta + \delta^3 F(\delta, \theta) \kD \theta}{ \delta^2 ((a \cos \theta + b \sin \theta)^2 + (c \cos \theta + d \sin \theta)^2) + \delta^3 G(\delta, \theta)} \\
+     & = \frac{1}{2 \pi} \int^{2 \pi}_0 \frac{ (a d - b c) \kD \theta + \Delta_1}{A^2(\theta) + B^2(\theta) + \Delta_2} \\
+    j_0 &  = \lim_{\delta\to 0}j_{\delta} = \frac{a d - b c}{2 \pi} \int^{2 \pi}_0 \frac{\kD \theta}{A^2(\theta) + B^2(\theta)}.
+  \end{align*}
+  而
+  \begin{equation*}
+    \frac{1}{2 \pi} \int^{2 \pi}_0 \frac{\kD \theta}{A^2(\theta) + B^2(\theta)} = \frac{1}{|ad - bc|}.
+  \end{equation*}
+\end{proof}
+
+\begin{Note}\
+  \begin{description}
+    \item[鞍点: ] $a d - b c < 0$, $j_0 = \mathrm{sgn} \left( \det \begin{vmatrix} a & b\\ c & d\end{vmatrix}\right) = - 1$.
+    \item[非鞍点: ] $a d - b c > 0$, $j_0 = 1$.
+  \end{description}
+\end{Note}
+奇点指标 $ = \mathrm{sgn} \det D(P, Q)(0)$. (行列式符号,高维奇点也是如此定义.)
+
+\begin{Cor}
+  闭轨内奇点唯一 $\Rightarrow$ 非鞍点.
+\end{Cor}
+
+\begin{Thm}\label{Th:2.12}
+  闭曲线 $N$ 上无奇点, $N$ 内奇点有限, 则 $j_N = \sum$ 奇点指标.
+\end{Thm}
+\begin{figure}[!ht]
+  \centering
+  \psfrag{A}[][]{$A_1$}
+  \psfrag{B}[][]{$A_2$}
+  \psfrag{C}[][]{$A_3$}
+  \psfrag{aoi}[][]{$B_1$}
+  \psfrag{boi}[][]{$B_2$}
+  \psfrag{coi}[][]{$B_3$}
+  \psfrag{nai}[][]{$N_1$}
+  \psfrag{nbi}[][]{$N_2$}
+  \psfrag{nci}[][]{$N_3$}
+  \includegraphics{T70.eps}
+  \caption{定理 \ref{Th:2.12}.}
+\end{figure}
+\begin{proof}
+  令
+  \begin{align*}
+    \bar{N} = N & + A_1 B_1 + N_1 + B_1 A_1\\
+    & + A_2 B_2 + N_2 + B_2 A_2\\
+    & + A_3 B_3 + N_3 + B_3 A_3,
+  \end{align*}
+  那么有,
+  \begin{gather*}
+    \oint_{\bar{N}} = 0\Leftrightarrow\oint_N = \oint_{N_1} + \oint_{N_2} + \oint_{N_3},\\
+    j_{N} = \sum\text{奇点}.
+  \end{gather*}
+\end{proof}
+
+\begin{Cor}
+  闭轨线内仅有简单奇点, 则个数为奇数且 $N(\text{鞍点}) + 1 = N(\text{非鞍点})$.
+\end{Cor}
+
+\paragraph{高阶奇点举例}
+
+\begin{Exa}
+  系统
+  \begin{align*}
+    \dot{x} & = x^2 - y^2,\\
+    \dot{y} & = y,
+  \end{align*}
+  有非初等奇点为 $(0, 0)$.
+\end{Exa}
+\begin{solve}
+  $\lambda_1 = 0$, $\lambda_2 = 1$, Lyapunov 奇点, $O$---鞍、结点.
+
+  作扰动系统
+  \begin{align*}
+    \dot{x} & = x^2 - y - \varepsilon\\
+    \dot{y} & = y
+  \end{align*}
+  有:
+  \begin{description}
+    \item[鞍点] $A = ( - \sqrt{\varepsilon}, 0)$, $j_A = - 1$.
+    \item[结点] $B = (\sqrt{\varepsilon}, 0)$, $j_B = 1$.
+  \end{description}
+  $\forall$ 闭曲线 $N$ 包含 $A$, $B \Rightarrow j_N = 1 + ( - 1) = 0$.
+
+  $A \to B \to O$, $j_0 = j_N = 0$.
+\end{solve}
+
+\begin{Exa}
+  考虑扰动
+  \begin{align*}
+    \dot{x} & = x^2 - y,\\
+    \dot{y} & = y - \varepsilon \  (\varepsilon > 0),
+  \end{align*}
+\end{Exa}
+
+\begin{Exa}
+  \begin{align*}
+    \dot{x}_1 & = x_1 (r_1 + a_{11} x_1 + a_{12} x_2),\\
+    \dot{x}_2 & = x_2 (r_2 + a_{21} x_1 + a_{22} x_2).
+  \end{align*}
+  给出具体 $r_i$, $a_{ij}$ ($i = 1, 2$) 使得
+  \begin{enumerate}
+    \item $a_{11} < 0$, $a_{22} > 0$,
+    \item $\exists$ G. A. S., $x^* = (x^*_1, x^*_2)$.
+  \end{enumerate}
+  提示: 用 Poincar\'{e} 变换 $\oplus$ Lyapunov.
+
+  S. B. Hsu, The Application of the Poincar\'{e}-Transform to the Lotka-Volterra Model, J. Math. Biology 6, 67-73 (1978).
+\end{Exa}

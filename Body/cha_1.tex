@@ -1,0 +1,1203 @@
+\chapter{动力系统的基本概念}
+
+\section{动力系统简介}
+
+本课程使用教材为: 罗定军, 张祥, 董梅芳. 动力系统的定性与分支理论[M]. 北京: 科学出版社, 2001.
+
+几种典型的动力系统:
+\begin{align*}
+  \dot{x} & = a x, & &\text{指数模型,} \\
+  \dot{x} & = a x - b x^2, &&\\
+  \dot{x} & = a x (1 - x), & &\text{Logistic 模型.}
+\end{align*}
+一般的, 对于系统 $\dot{x} = f(x)$, 可将 $f(x)$ 通过 Taylor 展开为,
+\begin{equation*}
+  f(x) = f(0) + a_1 x + a_2 x^2 + \cdots.
+\end{equation*}
+一般地取 $f(0) = 0$. 取一次项系数 $a_1$ 不为 0, 其余项系数均为 0 时, 则为指数模型. 若一次项系数 $a_1 \neq 0$, 二次项系数 $a_2 < 0$, 其余项系数均为 0, 则为 Logistic 模型.
+
+\begin{Exa}\label{Ex:1.1}
+  \begin{equation}\label{Eq:1.1}
+    \dot{x} = x (1 - x).
+  \end{equation}
+  $\forall x(0) > 0 \Rightarrow x(t) \to 1$, 如图\ref{Fi:1.1}.
+\begin{figure}[!ht]
+  \center
+  \psfrag{0}[][]{$0$}
+  \psfrag{1}[][]{$1$}
+  \psfrag{yone}[][]{$t$}
+  \psfrag{ytwo}[][]{$x(t)$}
+  \includegraphics{T1_1}
+  \caption{例 \ref{Ex:1.1}.}\label{Fi:1.1}
+\end{figure}%
+  $x(t) \equiv 1$, $x(t) \equiv 0$ 是方程 \ref{Eq:1.1} 的平衡解 (点). $x(t) \equiv 1$ 是全局吸引的 (稳定的), 而 $x(t) \equiv 0$ 是排斥的 (不稳定的).
+\end{Exa}
+
+\begin{Def}\label{De:1.1}
+  平衡解: 使 $f(x) = 0$ 的实解.
+\end{Def}
+对于系统 $\dot{x} = x (1 - x)$, $x(0) = x_0$, 解出 $x(t)  = - \frac{C}{ -  C + (C - 1) \e^{ - t}}$, 令 $t \to \infty$, 可发现 $x(t) \to 1$, 这就是定性性质.
+
+上面的方程可求解, 若方程不能求出解析解, 怎样得到定性性质?
+
+\begin{Exa}\label{Ex:1.2}
+$\dot{x} = x (1 - x) (2 - x) (3 - x) (4 - x)$
+\end{Exa}
+\begin{figure}[!ht]
+  \center
+  \psfrag{0}[][]{$0$}
+  \psfrag{1}[][]{$1$}
+  \psfrag{2}[][]{$2$}
+  \psfrag{3}[][]{$3$}
+  \psfrag{4}[][]{$4$}
+  \psfrag{yone}[][]{$t$}
+  \psfrag{ytwo}[][]{$x(t)$}
+  \includegraphics{T1_2}
+  \caption{例 \ref{Ex:1.2}.}\label{Fi:1.2}
+\end{figure}
+
+\begin{tabular}{l l}
+  Lotka & 美国生态学家\\
+  1921 & 化学反应\\
+  \hline
+  Volterra & 意大利科学家, 在ICM上作过4次1小时报告\\
+  1923 & 鱼类竞争
+\end{tabular}
+
+\begin{equation}
+  \begin{cases}
+    \dot{x} = x(1 - y) \\
+    \dot{y} = y(1 - x)
+  \end{cases}
+  \quad \text{Lotka-Voterra 系统}
+\end{equation}
+
+Kolmogorov 系统, 1936 年
+\begin{align*}
+  \frac{\dot{x}(t)}{x(t)} & = f(x(t)),\\
+  \text{单位变化率} & = \text{密度函数},\\
+  \dot{x} & = x f(x).
+\end{align*}
+
+对于 $n$ 种群有: $\frac{\dot{x}_i(t)}{x_i(t)} = f_i (x_1(t), x_2(t), \dots, x_n(t))$.
+
+Kolmogorov 系统: $\dot{x}_i = x_i f(x_1, \dots, x_n)$, ($i = 1, \dots, n$).
+
+对于 Lotka-Volterra ($n = 2$) 系统
+\begin{equation}\label{Eq:1.3}
+  \begin{cases}
+    \dot{x}_1 = x_1 (r_1 + a_{11} x_1 + a_{12} x_2),\\
+    \dot{x}_2 = x_2 (r_2 + a_{21} + x_1 + a_{22} x_2).
+  \end{cases}
+\end{equation}
+方程 \ref{Eq:1.3} 一般是不可解的.
+
+本课程主要介绍:
+\begin{itemize}
+  \item 局部分析 (平衡点指标, 分支);
+
+  \item 无穷远分析 (Poinc\'are 变换);
+
+  \item 全局稳定 (Lyapunov-LaSalle);
+
+  \item 中心焦点分析;
+
+  \item 规范型.
+\end{itemize}
+
+\begin{Exa}\label{Ex:1.3}
+  \begin{equation}
+    \begin{cases}
+      \dot{x} = x (1 - y),\\
+      \dot{y} = y (x - 1).
+    \end{cases}
+  \end{equation}
+  其解为
+  \begin{equation}
+    (x - \ln x) + (y - \ln y) = c > 2
+  \end{equation}
+  图像为
+  \begin{figure}[!ht]
+    \center
+    \psfrag{0}[][]{$0$}
+    \psfrag{yone}[][]{$x$}
+    \psfrag{ytwo}[][]{$y$}
+    \includegraphics{T1_3}
+    \caption{例 \ref{Ex:1.3}.}
+  \end{figure}
+\end{Exa}
+
+\begin{Exa}\label{Ex:1.4}
+  1980 年,
+  \begin{equation}
+    \begin{cases}
+      \dot{x}_1 = x_1 (2 - x_1 - 5 x_2)\\
+      \dot{x}_2 = x_2 ( - 1 + x_1 + x_2)
+    \end{cases}
+  \end{equation}
+  见图 \ref{Fi:1.4}.
+  \begin{figure}[!ht]
+    \center
+    \psfrag{0}[][]{$0$}
+    \psfrag{1}[][]{$1$}
+    \psfrag{yone}[][]{$x$}
+    \psfrag{ytwo}[][]{$y$}
+    \includegraphics{T1_4}
+    \caption{例 \ref{Ex:1.4}.}\label{Fi:1.4}
+  \end{figure}
+\end{Exa}
+
+
+系统 $\dot{x} = \diag(x) (r + A x)$, $n$ 种群, 无公式解.
+
+\begin{equation}
+  \begin{cases}
+    \dot{x} = P_2(x,y),\\
+    \dot{x} = Q_2(x,y).
+  \end{cases}
+\end{equation}
+此为二次系统, 二维系统, 一阶系统. 其解不完全已知, $H(2) = ?$
+
+\begin{itemize}
+  \item 自治系统 $\frac{\D x}{\D t} \equiv \dot{x} = f(x)$, $x = (x_1, \dots, x_n)$;
+  \item 非自治系统 $\dot{x} = f(t, x)$.
+\end{itemize}
+
+令
+\begin{equation*}
+  x_{n + 1} = t \Rightarrow
+  \begin{cases}
+    \dot{x} = f(x_{n + 1}, x) \\
+    \dot{x}_{n + 1} = 1
+  \end{cases}
+\end{equation*}
+$n$ 维非自治系统通过变换可转为 $n + 1$ 维自治系统. 其动力学行为, 定性性质,
+\begin{equation*}
+  \text{自 } n + 1 \doteq \text{非 } n.
+\end{equation*}
+
+二维自治系统
+\begin{equation}
+  \begin{cases}
+    \dot{x}_1 = f_1(x_1, x_2)\\
+    \dot{x}_2 = f_2(x_1, x_2)
+  \end{cases}
+\end{equation}
+有唯一解的条件是?
+
+二维自治系统有这样的性质: 其解 $(x_1(t), x_2(t))$ 为平面上一不自交 (相交) 曲线.
+
+二维非自治系统, 三维自治系统会出现混沌现象.
+
+对于 $n$ 维非自治系统
+\begin{equation}\label{Eq:1.9}
+  \dot{x}_i = f_i(t, x_1, \dots, x_n),\ (i = 1, \dots, n),
+\end{equation}
+和初值条件
+\begin{equation}
+x_i(t_0) \equiv x^0_i,
+\end{equation}
+方程 \ref{Eq:1.9} 在 $(a,b)$ 的解
+\begin{equation}
+  x = \Phi(\Phi_1(t), \dots, \Phi_n(t)) = (x_1, \dots, x_n)
+\end{equation}
+连续可微且
+\begin{equation}
+  \Phi_i(t) = f_i(t, \Phi_1(t), \dots, \Phi_n(t)),\  \Phi(t_0) = x^0.
+\end{equation}
+
+\begin{Exa}
+  系统
+  \begin{align*}
+    \dot{x}_1 & = x_2,\\
+    \dot{x}_2 & = - x_1.
+  \end{align*}
+  其解为
+  \begin{equation*}
+    x_1 = c\sin t,\ x_2 = c\cos t.
+  \end{equation*}
+  等价于
+  \begin{equation*}
+    r^2 = x^2_1 + x^2_2,\ \dot{r} = 0,\ r = r(t).
+  \end{equation*}
+  $x^2_1 + x^2_2 = c > 0$. $(0, 0)$ 是中心型奇点: 围绕它的是周期解. 周期解的周期相同, 则称为等时中心.
+\end{Exa}
+
+
+\begin{Exa}
+  系统
+  \begin{align*}
+      \dot{x}_1 & = x_2,\\
+      \dot{x}_2 & = - x_1,
+  \end{align*}
+  在初值
+  \begin{equation*}
+    x^0 = (2, 2),\ t^0 = \frac{\pi}{4},
+  \end{equation*}
+  的解为 $x_1(t) = 2 \sqrt{2} \sin t$, $x_2(t) = 2 \sqrt{2} \cos t$.
+\end{Exa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{解的 (局部) 存在, 唯一性}
+
+\paragraph{基础知识回顾:}
+\begin{itemize}
+  \item 向量的和、差、数乘;
+  \item 内积 $<x, y> = \sum \limits^n_{i = 1} x_i y_i$;
+  \item 范数 $\|x\| = \sum \limits^n_{i = 1} |x_i|$ 或 $\|x\| = \sqrt{<x, x>} = \sqrt{\sum \limits^n_{i = 1} x^2_i}$;
+  \item 性质 $|<x,y>| \leq \|x\| \cdot \|y\|$, $\|x + y\| \leq \|x\| + \|y\|$;
+  \item 向量函数的导数、积分 $\Leftrightarrow$ 分量的导数、积分;
+  \item
+    \begin{equation}
+      \left\| \int^t_{t_0} f(s) \kD s \right\| \leq \left| \int^t_{t_0} \|f(s)\| \kD s\right|.
+    \end{equation}
+\end{itemize}
+
+\begin{enumerate}
+\item 几乎所有的非线性方程不可解;
+\item 定性, 稳定性, 分析为主要手段;
+\item 解题存在唯一性 (数值计算).
+\end{enumerate}
+
+\paragraph{方程 (系统):}
+
+\begin{equation}\label{Eq:1.14}
+  \dot{x} = f(t, x),\ x(t_0) = x^0.
+\end{equation}
+
+\begin{Thm}\label{Th:1.1}$\ $
+  \begin{enumerate}
+    \item $f(t, x) \in C^0(G)$, $G: |t - t_0| \leq a$, $\|x - x_0\| \leq b$;
+
+    \item $f$ 关于 $x$, Lipschitz 连续, $\exists L > 0$, s.t. $\|f(t,x) - f(t,y)\| \leq L \|x - y\|$.
+
+    \item 记 $M = \max \limits_{G} \|f(t,x)\|$, $h = \min \left( a,\frac{b}{M} \right)$, $|t - t_0| < h$.
+  \end{enumerate}
+\end{Thm}
+\begin{proof}
+  简要概述证明的五个步骤.
+  \begin{asparaenum}
+    \item 证明方程 \ref{Eq:1.14} 与积分方程 \ref{Eq:1.15} 等价.
+        \begin{equation}\label{Eq:1.15}
+          x = x^0 + \int^t_{t_0} f(s, x(s)) \kD s.
+        \end{equation}
+
+    \item 逐次逼近. 在 $|t - t_0| \leq h$ 上定义 $\{\Phi_k(t)\}$, $k = 2, 3, \dots,$
+        \begin{align*}
+          \Phi_0(t) & = x^0, \\
+          \Phi_1(t) & = x^0 + \int^t_{t_0} f(s, \Phi_0(s)) \kD s, \\
+           & \cdots, \\
+          \Phi_k(t) & = x^0 + \int^t_{t_0} f(s, \Phi_{k - 1}(s)) \kD s.
+        \end{align*}
+
+    \item 证明 $\Phi_k(t)$ 在 $|t - t_0| \leq h$ 上一致收敛.
+
+    \item $x = \Phi(t) = \lim \limits_{k \to \infty} \Phi_k(t)$ 为方程 \ref{Eq:1.15} 的解.
+
+    \item 唯一性.
+  \end{asparaenum}
+\end{proof}
+
+\begin{figure}[!ht]
+  \center
+  \psfrag{yone}[][]{$t$}
+  \psfrag{ytwo}[][]{$x$}
+  \psfrag{xphi}[][]{$x = \Phi(t)$}
+  \psfrag{bop}{$b_0 + x_0$}
+  \psfrag{bom}{$b_0 - x_0$}
+  \psfrag{G}[][]{$G$}
+  \psfrag{tox}{$(t_0,x_0)$}
+  \psfrag{tom}[][]{$t_0 - h$}
+  \psfrag{top}[][]{$t_0 + h$}
+  \includegraphics[width=6cm]{T1_5}
+  \caption{定理 \ref{Th:1.1}.}%\label{}
+\end{figure}
+
+\begin{Note}\
+  \begin{enumerate}
+    \item $f(t, x)$ 连续 $\Rightarrow$ 存在性 (欧拉法).
+
+    \item Lipschitz 连续 $\Rightarrow$ 唯一性.
+  \end{enumerate}
+\end{Note}
+
+\begin{Exa}
+  \begin{equation*}
+    \dot{x} = 2 \sqrt{x},\ x(0) = 0.
+  \end{equation*}
+  该函数连续, 但不Lipschitz连续.
+  \begin{equation*}
+    x_1 \equiv 0,\ x_2 \equiv
+    \begin{cases}
+      (t - c)^2, & x > c\\
+      0, & 0 \leq x \leq c
+    \end{cases}.
+  \end{equation*}
+\end{Exa}
+
+\begin{Note}
+  偏导数连续 $\Rightarrow$ Lipschitz 连续.
+\end{Note}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{解的延拓}
+
+$M = \max \|f(t, x)\|$, $h = \min (a, \frac{b}{M})$ 如定理 \ref{Th:1.1} 中所定义. $G$ 变大后, 可能导致 $h$ 变小. 即 $f$ 的定义域变大 $\Rightarrow \Phi(t)$ 的存在区间减小.
+\begin{figure}[!ht]
+  \centering
+  \subfloat[原始区域]{
+    \psfrag{yone}[][]{$t$}
+    \psfrag{ytwo}[][]{$x$}
+    \psfrag{phione}[][]{$\Phi_1(t)$}
+    \psfrag{hone}[][]{$2h_1$}
+    \psfrag{gone}[][]{$G_1$}
+    \includegraphics[width = 0.4\textwidth]{T1_6_a}}\hspace{20pt}
+  \subfloat[区域扩大]{
+    \psfrag{yone}[][]{$t$}
+    \psfrag{ytwo}[][]{$x$}
+    \psfrag{phitwo}[][]{$\Phi_2(t)$}
+    \psfrag{htwo}[][]{$2h_2$}
+    \psfrag{gtwo}[][]{$G_2$}
+    \includegraphics[width = 0.4\textwidth]{T1_6_b}}
+  \caption{$G_1 < G_2 \Rightarrow h_1 \geq h_2$.}\label{Fi:1.6}
+\end{figure}
+由存在唯一性定理, 在公共区间 $2 h_2$ 上, $\Phi_1$ 与 $\Phi_2$ 重合. 如图 \ref{Fi:1.6}.
+
+解能延拓的最大区间 $\Leftrightarrow$ 解存在区间的并, 且称这样的解为饱和解, 最大存在区间为开的 $(\alpha, \beta)$.
+
+\begin{equation}\label{Eq:1.16}
+  \dot{x} = f(t, x),\ x(t_0) = x_0.
+\end{equation}
+\begin{figure}[!ht]
+  \centering
+  \psfrag{yone}[][]{$t$}
+  \psfrag{ytwo}[][]{$x$}
+  \psfrag{tom}[][]{$t_0 - h$}
+  \psfrag{top}[][]{$t_0 + h$}
+  \psfrag{tum}[][]{$t_1 - h_1$}
+  \psfrag{tup}[][]{$t_1 + h_1$}
+  \psfrag{tox}[][]{$(t_0,x)$}
+  \includegraphics{T1_7}
+  \caption{方程 \eqref{Eq:1.16}.}%\label{}
+\end{figure}
+
+\begin{enumerate}
+\item 由定理 \ref{Th:1.1}, 存在 $h$, 使得在 $|t - t_0| \leq h$ 上, 存在唯一的解 $x = \Phi_1(t)$.
+
+\item 记 $t_1 = t_0 + h$, $x_1 = \Phi_1(t_1) = \Phi_1(t_0 + h)$, 考虑初值问题
+    \begin{equation}\tag{\ref{Eq:1.16}$'$}\label{Eq:1.16'}
+      \dot{x} = f(t_1,x),\ x(t_1) = x_1
+    \end{equation}
+    又由定理 \ref{Th:1.1} 存在 $h_1$, 使得在 $|t - t_1| \leq h_1$ 上, 方程 \ref{Eq:1.16'} 存在唯一解 $x = \Phi_2(t)$.
+\item 分段表示
+    \begin{equation}
+      \Phi^*(t) =
+      \begin{cases}
+        \Phi_1(t),\ t\in [t_0 - h,t_0 + h]\\
+        \Phi_2(t),\ t\in [t_0 + h,t_1 + h_1]
+      \end{cases}
+    \end{equation}
+    是方程 \ref{Eq:1.16} 在 $t \in [t_0 - h, t_1 + h_1]$ 上的唯一解.
+\end{enumerate}
+
+\begin{Thm}\label{Th:1.2}
+  $f(t,x)$ 在 $G$ 上连续, 关于 $x$, Lipschitz 连续 $\Rightarrow$ 方程 \ref{Eq:1.16} 的解可以延拓到 $G$ 的边界.
+\end{Thm}
+\begin{proof}\
+\begin{asparaenum}
+  \item 设最大存在区间为 $(\alpha, \beta)$, $\beta$ 有限. $x = \Phi(t_0)$, ($t_0 < \beta$) 位于闭区域 $G' \subset G$.
+      \begin{figure}[!ht]
+        \centering
+        \psfrag{yone}[][]{$t$}
+        \psfrag{tox}[][]{$(t_0,x)$}
+        \psfrag{beta}[][]{$\beta$}
+        \psfrag{G}[][]{$G$}
+        \psfrag{gplus}{$G' = \bar{G'}$}
+        \includegraphics{T1_8}
+        \caption{定理 \ref{Th:1.2}.}%\label{}
+      \end{figure}
+
+  \item 存在 $M$, 使得 $\|f(t, \Phi(t))\| \leq M$ (于 $G'$), 所以 $\forall t_1, t_2 \in (t_0, \beta)$,
+        \begin{align*}
+          \left\|\Phi(t_1) - \Phi(t_2)\right\| &  = \left\|\int^{t_1}_{t_0} f(s, \Phi_1(s)) \kD s - \int^{t_2}_{t_0} f(s, \Phi_1(s)) \kD s\right\|\\
+          & = \left\|\int^{t_1}_{t_2} f(s, \Phi_1(s)) \kD s\right\|\\
+          & \leq \left|\int^{t_1}_{t_2} \left\|f(s, \Phi_1(s))\right\|\right| \kD s\\
+          & \leq M|t_1 - t_2|.
+        \end{align*}
+        这说明函数 $\Phi(t)$ 是一致连续的.
+
+        $\Rightarrow\Phi(\beta - 0)$ 存在且 $(\beta, \Phi(\beta - 0)) \in G'$
+
+        $\Rightarrow$ 仍可延拓, 矛盾!
+  \end{asparaenum}
+\end{proof}
+
+\paragraph{解的整体存在性}
+\begin{Cor}\label{Co:1.3}
+  $f(t,x) \in C^0(\mathbb{R}^{n + 1})$ 关于 $x$, Lipschitz 连续, 方程 \ref{Eq:1.16} 的解有界 $\Rightarrow$ 解存在于 $( - \infty, + \infty)$.
+\end{Cor}
+理由: $\mathbb{R}^{n + 1}( = G)$ 边界为: $x \to \pm \infty$ or $t \to \pm \infty$.
+\begin{figure}[!ht]
+  \centering
+  \psfrag{yone}[][]{$t$}
+  \psfrag{too}[][]{$t_0$}
+  \psfrag{xoto}[][]{$(x_0,t_0)$}
+  \includegraphics{T1_9}\\
+  \caption{推论 \ref{Co:1.3}.}%\label{}
+\end{figure}
+
+\begin{Cor}
+  自治系统
+  \begin{equation}\label{Eq:1.19}
+    \frac{\D \bf{x}}{\D t} = {\bf f(x)},\ {\bf x}(t_0) = {\bf x}^0
+  \end{equation}
+  ${\bf f} \in C^0(\mathbb{R}^n)$, ${\bf f}$ 是 Lipschitz 连续的, 解有界 $\Rightarrow$ 解的存在区间为 $( - \infty, + \infty)$.
+\end{Cor}
+
+\begin{Cor}
+  ${\bf f(x)} \in C^0(\mathbb{R}^n)$, 有界 (+ Lipschitz 连续, 书上没有该条件) $\Rightarrow$ 方程 \ref{Eq:1.19} 解存在区间为 $( - \infty, + \infty)$.
+\end{Cor}
+
+$f(x)$ 连续, 有界但不 Lipschitz 连续的例子:
+\begin{Exa}
+  \begin{equation}
+    f(x) =
+    \begin{cases}
+      \sin \sqrt{x}, & x\geq 0\\
+      0, & x\leq 0
+    \end{cases}
+  \end{equation}
+\end{Exa}
+\begin{proof}
+  反设 $f(x)$ 局部 Lipschitz, 在原点的闭区间有一致的 Lipschitz 常数 $L$.
+  \begin{equation*}
+    \begin{array}{l @{} l}
+      \Rightarrow |\sin \sqrt{x_1} - \sin \sqrt{x_2}| & = \left|\frac{1}{2 \sqrt{\xi}} \cos \sqrt{\xi} \right| \cdot |x_1 - x_2|\\
+      & \leq L |x_1 - x_2| \\
+      \Rightarrow \cos \sqrt{\xi} \leq 2 L \sqrt{\xi} & \\
+      \because x_1, x_2 \to 0,\ \xi \to 0 & \\
+      \Rightarrow 1 \leq 0,
+    \end{array}
+  \end{equation*}
+  矛盾!
+\end{proof}
+
+\begin{Exa}
+  Cauchy 问题, $x \in( - \infty, + \infty)$,
+  \begin{equation}
+    \dot{x} = 1 + x^2, \ x(0) = 0
+  \end{equation}
+  最大存在区间是?
+\end{Exa}
+\begin{solve}
+  $x = \tan t$, $t \in( - \frac{\pi}{2}, \frac{\pi}{2})$.
+\end{solve}
+
+\begin{Exa}
+  $\dot{x} = \sqrt{1 + x^2}$, $x(0) = 0$, 存在区间是?
+\end{Exa}
+\begin{solve}
+  $x = \frac{1}{2}(e^t - e^{ - t})$, $t \in ( - \infty, + \infty)$.
+\end{solve}
+
+可研究问题: $\dot{x} = f(x) = \frac{P(x)}{Q(x)}$, $P(x)$, $Q(x)$是多项式, 求解整体存在的充要条件.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{解对初值及参数的连续依赖性}
+
+Logistic 方程 $\dot{x} = x(r - x)$, $x(t_0) = t_0$, $x = x(t,t_0,x_0,r)$.
+
+\begin{Thm}\label{Th:1.6}\
+  \begin{enumerate}
+    \item 初值问题
+        \begin{equation}
+          \dot{x} = f(t, x, \mu), \ x(t_0) = x^0.
+        \end{equation}
+    \item $f(t, x, \mu)$ 的定义域为
+        \begin{equation}
+          G:\ |t - t_0| \leq a,\ \|x - x_0\| \leq b,\ \|\mu - \mu_0\| \leq c.
+        \end{equation}
+    \item 连续, 局部 Lipschitz.
+  \end{enumerate}
+  则 $x = \Phi(t, u)$ 局部存在且关于 $\mu$ 连续. (即参数连续.)
+\end{Thm}
+\begin{proof}
+  思路如下:
+  \begin{equation*}
+    \dot{x} = f(t, x, \mu),\ x(t_0) = x^0 \Leftrightarrow \Phi(t, \mu) = x_0 + \int^t_{t_0} f(s, \Phi(s, \mu), \mu) \kD s.
+  \end{equation*}
+  定义
+  \begin{align*}
+    \Phi_0(t) & = x_0,\\
+    \Phi_1(t, \mu) & = x_0 + \int^{t}_{t_0} f(s, \Phi_0(s), \mu) \kD s,\\
+    \Phi_2(t, \mu) & = x_0 + \int^{t}_{t_0} f(s, \Phi_1(s, \mu), \mu) \kD s,\\
+    \vdots &
+  \end{align*}
+  $\{\Phi_n(t, \mu)\}$ 一致收敛, $|t - t_0| \leq h$, $\|\mu - \mu_0\| \leq c$.
+  \begin{equation*}
+    \Phi(t,\mu) = x_0 + \int^t_{t_0} f(s, \Phi(s, \mu), \mu) \kD s \Rightarrow \Phi(t, \mu)
+  \end{equation*}
+  为 $t$, $\mu$ 的连续函数.
+\end{proof}
+
+\begin{Thm}\
+  \begin{enumerate}
+    \item 初值问题
+        \begin{equation}
+          \dot{x} = f(t, x),\ x(t_0) = \eta.
+        \end{equation}
+
+    \item 区域 $G:\ |t - t_0| \leq a$, $\|x - x_0\| \leq b$.
+
+    \item 当 $\eta:\ \|\eta - x_0\| \leq \frac{b}{2}$.
+  \end{enumerate}
+  $\Rightarrow$ 存在唯一的 $x = \Phi(t, \eta)$ 关于 $t$, $\eta$ 连续.
+\end{Thm}
+\begin{proof}\
+\begin{enumerate}[方法I. ]
+\item 证明思路:
+    \begin{asparaenum}
+    \item 变换 $x = z + y$,
+        \begin{equation}\label{Th:1.24}
+          \dot{z} = f(t, z + \eta)
+        \end{equation}
+        将对初值的连续依赖问题转化为对参数的连续依赖.
+    \item $\forall z_1, z_2$
+        \begin{align*}
+          \|f(t, z_1 + \eta) - f(t, z_2 + \eta)\| & \leq L \|(z_1 + \eta) - (z_2 + \eta)\| \\
+         &  = L \|z_1 - z_2\|
+        \end{align*}
+    \item 由 \ref{Th:1.6}, 方程 \ref{Th:1.24} 的解 $z = \Psi(t, \eta)$ 关于 $(t, \eta)$ 连续.
+
+        $\Rightarrow$ 存在唯一的 $x = z + \eta = \Psi(t, \eta) + \eta$, 且满足连续依赖性.
+    \end{asparaenum}
+
+\item 证明思路:
+    \begin{align*}
+    \begin{split}
+      \dot{x}_1 = f(t,x_1),\ x_1(t_0) = \eta_1\\
+      \dot{x}_2 = f(t,x_2),\ x_2(t_0) = \eta_2
+    \end{split}\\
+    \begin{split}
+      \Rightarrow & x_1(t) - x_1(t_0) = \int^t_{t_0} f(s, x_1(s)) \kD s\\
+                  & x_2(t) - x_2(t_0) = \int^t_{t_0} f(s, x_2(s)) \kD s
+    \end{split}\\
+    \begin{split}
+      \Rightarrow & \|x_1(t, t_0, \eta_1) - x_2(t, t_0, \eta_2)\| \\
+                  & \leq \|\eta_1 - \eta_2\| + \left\|\int^t_{t_0} \left[f(s, x_1(s)) - f(s, x_2(s))\right] \kD s\right\|\\
+                  & \leq \|\eta_1 - \eta_2\| + L \int^t_{t_0} \|x_1(s) - x_2(s)\| \kD s\\
+                  & \leq \|\eta_1 - \eta_2\| e^{L (t - t_0)}.~\footnotemark
+    \end{split}% &
+    \end{align*}
+  \end{enumerate}
+\end{proof}
+\footnotetext
+{
+Grownwell-Bellman 不等式: $f(t) \leq f_0 + L \int^t_{t_0} |f(s)| \kD s \Rightarrow |f(t)| \leq f e^{L(t - t_0)}.$
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{$\mathbb{R}^n$ 上动力系统, 连续流, 离散流}
+
+\subsection{基本性质}
+
+\begin{equation*}
+  \begin{cases}
+    \dot{x}_1 = x_2,\\
+    \dot{x}_2 = - x_1,
+  \end{cases}
+  t = t_0,\ x = (x^0_1, x^0_2),
+\end{equation*}
+其通解为
+\begin{equation*}
+  \begin{cases}
+    x_1 = c_1 \cos t + c_2 \sin t,\\
+    x_2 = c_1 \sin t + c_2 \cos t.
+  \end{cases}
+  \text{(通解)}
+\end{equation*}
+
+Cauchy 问题解
+
+\begin{align*}
+  x_1 & = x^0_1 \cos(t - t_0) + x^2_0 \sin(t - t_0) = x_1(t; t_0, x^0),\\
+  x_2 & = - x^0_1 \sin(t - t_0) + x^0_2 \cos(t - t_0) = x_2(t; t_0, x^0),
+\end{align*}
+
+\begin{equation*}
+ \shadowbox{$\displaystyle{\Rightarrow x(t; t_0, x^0)}$}
+\end{equation*}
+
+\begin{Exa}\label{Ex:1.11}\
+  \begin{enumerate}
+    \item \label{Ex:1.11_1}
+        \begin{gather*}
+          (x^0_1,x^0_2) = (1,0),\\
+          \begin{cases}
+            x_1 = \cos(t - t_0),\\
+            x_2 = - \sin(t - t_0).
+          \end{cases}
+        \end{gather*}
+        \begin{figure}[!ht]
+          \centering
+          \psfrag{yone}[][]{$x_1$}
+          \psfrag{ytwo}[][]{$x_2$}
+          \psfrag{1}[][]{$1$}
+          \includegraphics[width = 0.4\textwidth]{T1_10}\\
+          \caption{例 \ref{Ex:1.11} (\ref{Ex:1.11_1}).}%\label{}
+        \end{figure}
+
+    \item \label{Ex:1.11_2}
+        \begin{gather*}
+          (x^0_1, x^0_2) = (0, 2),\\
+          \begin{cases}
+            x_1 = 2 \sin(t - t_0),\\
+            x_2 = 2 \cos(t - t_0).
+          \end{cases}
+        \end{gather*}
+        \begin{figure}[!ht]
+          \centering
+          \psfrag{yone}[][]{$x_1$}
+          \psfrag{ytwo}[][]{$x_2$}
+          \psfrag{2}[][]{$2$}
+          \includegraphics[width = 0.4\textwidth]{T1_11}
+          \caption{例 \ref{Ex:1.11} (\ref{Ex:1.11_2}).}%\label{}
+        \end{figure}
+  \end{enumerate}
+\end{Exa}
+
+例 \ref{Ex:1.11} 的解, 如果画在三维空间中, 图形应该如图 \ref{Fi:1.12}.
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width = 0.4\textwidth]{T1_12}
+  \caption{在三维空间解的形态}\label{Fi:1.12}
+\end{figure}
+
+
+\paragraph{自治系统}
+\begin{equation}\label{Eq:1.25}
+  \dot{x} = f(x),\  x(t_0) = x^0
+\end{equation}
+的解 $x = \Phi(t; t_0, x^0)$ 的最大存在区间 $J(x^0) = (\alpha, \beta)$, $t = t_0$, $x = x_0 \Leftrightarrow x^0 = \Phi(t_0; t_0, x^0)$.
+
+$f(x)$ 称为向量场, $\mathbb{R}^n$ 称为相空间.
+
+\begin{Prop}[关于 $t$ 平移不变性]\label{Pr:1.8}\
+  \begin{enumerate}
+    \item $\forall \tau$, $x = \Phi(t + \tau; t_0, x_0)$ 为方程 \eqref{Eq:1.25} 的解.
+    \item $x = \Phi(t - t_0; 0, x_0)$ 满足 $x(t_0) = x^0$, $\Phi(t; t_0, x^0) = \Phi(t - t_0; 0, x^0)$.
+  \end{enumerate}
+\end{Prop}
+
+\begin{Prop}[解唯一性]\label{Pr:1.9}\
+  相空间过 $x^0$ 的轨线由 $x^0$ 唯一决定. (不同于存在唯一性.)
+\end{Prop}
+\begin{proof}
+  设方程 \eqref{Eq:1.25} 有两条轨线, $\Phi_1(t; t_1, x_1)$ 与 $\Phi_2(t; t_2, x_2)$ 过 $x^0$: $\exists T_1$, $T_2$ 使得:
+  \begin{equation*}
+    \Phi_1(T_1; t_1, x_1) = x^0 = \Phi_2(T_2; t_2, x_2).
+  \end{equation*}
+  由性质 \ref{Pr:1.8} $\Phi_1(t + T_1 - T_2; t_1, x_1)$ 与 $\Phi(t; t_2, x_2)$ 均为解, 且满足 $x(T_2) = x^0$, 由解的存在唯一性有 $\Phi_1(t; t_1, x_1)$, $\Phi_2(t; t_2, x_2)$ 为相同轨线 (相空间).
+  \begin{figure}[!ht]
+    \centering
+    \psfrag{x}[][]{$x_0$}
+    \psfrag{xone}[][]{$x_1$}
+    \psfrag{xtwo}[][]{$x_2$}
+    \psfrag{tone}[][]{$T_1$}
+    \psfrag{ttwo}[][]{$T_2$}
+    \includegraphics{T1_13}
+    \caption{性质 \ref{Pr:1.9} 的证明.}%\label{}
+  \end{figure}
+\end{proof}
+
+\begin{Prop}[对 $t$ 的可加性]\label{Pr:1.10}
+  \begin{equation*}
+    \Phi(t_1 + t_2; 0, x^0) = \Phi(t_2; 0, \Phi(t_1; 0, x^0)).
+  \end{equation*}
+\end{Prop}
+\begin{proof}\
+  \begin{enumerate}
+    \item $\Phi(t + t_1; 0, x^0)$ 与 $\Phi(t; 0, \Phi(t_1; 0, x^0))$ 均为解;
+    \item 令 $t = 0$, 两者均变为 $\Phi(t_1; 0, x^0)$;
+    \item 令 $t = t_2$.
+  \end{enumerate}
+  \begin{figure}[!ht]
+    \centering
+    \psfrag{yone}[][]{$t$}
+    \psfrag{ytwo}[][]{$x$}
+    \psfrag{xzero}[][]{$x_0$}
+    \psfrag{xone}[][]{$x_1 = \Phi(t_1; 0, x_0)$}
+    \psfrag{xtwo}[][]{$x_2 = \Phi(t_2 + t_1; 0, x_0)$}
+    \psfrag{tone}[][]{$t_1$}
+    \psfrag{ttwo}[][]{$t_2$}
+    \includegraphics{T1_14}
+    \caption{性质 \ref{Pr:1.10} 的证明.}
+  \end{figure}
+\end{proof}
+
+\begin{Note}
+  非自治不成立!
+\end{Note}
+
+\begin{Note}
+  相空间 $\mathbb{R}^n$ 中轨道, 完全由初始条件 $x^0$ 决定, 与 $t_0$ 无关:
+  \begin{description}
+    \item[$\therefore$] $\Phi(t; t_0, x^0)$ 可以写成 $\Phi(t, x^0)$;
+    \item[进一步] 可写成 $\Phi(t,x)$ ($\Phi(0, x) = x$, 称为演化、进化、发展方程);
+    \item[再一步] $\Phi_t(x)$;
+    \item[更一步] $\Phi_t$: $x \mapsto \Phi_t(x)$, $x \in G$, $t \in \mathbb{R}$.
+  \end{description}
+\end{Note}
+
+\begin{Exa}
+  \begin{align*}
+    x_1(t) & = x_1 \cos t + x_2 \sin t,\\
+    x_2(t) & = - x_1 \sin t + x_2 \cos t.
+  \end{align*}
+\end{Exa}
+\begin{solve}
+ \begin{equation*}
+  \begin{array}{c@{}c@{}c@{}c}
+    \left(\begin{array}{@{}c@{}}
+      x_1(t)\\x_2(t)
+    \end{array}\right)
+    & = &
+    \left(\begin{array}{@{}c c@{}}
+      \cos t&\sin t\\  - \sin t& \cos t
+    \end{array}\right)
+    &
+    \left(\begin{array}{@{}c@{}}
+      x_1\\x_2
+    \end{array}\right)\\
+    \Downarrow & & \Downarrow & \Downarrow\\
+    \boxed{\Phi_t(x)}& &\boxed{\Phi_t}&\boxed{x}
+  \end{array}
+ \end{equation*}
+\end{solve}
+
+\begin{Prop}[恒同性]
+  $\Phi_0(x) \equiv x$
+\end{Prop}
+\begin{proof}
+  $\Phi_0(x) = \Phi_t(x)|_{t = 0} = \Phi(t, x)|_{t = 0} = \Phi(0, x) = x$.
+\end{proof}
+
+\begin{Prop}[可加性]
+  $\Phi_{t_1 + t_2}(x) = \Phi_{t_1}\left(\Phi_{t_2}(x)\right)$.
+\end{Prop}
+\begin{proof}
+  \begin{align*}
+    \Phi_{t_1 + t_2}(x) & = \Phi(t_1 + t_2, x)\\
+    & = \Phi\left(t_1, \Phi(t_2, x)\right)\\
+    & = \Phi_{t_1}\left(\Phi_{t_2}(x)\right)
+  \end{align*}
+\end{proof}
+
+\begin{Prop}[可交换]
+  $\Phi_{t_1 + t_2} = \Phi_{t_1} \circ \Phi_{t_2}$.
+\end{Prop}
+
+\begin{Prop}[可逆]
+  $\Phi_t \circ \Phi_ { - t} = \Phi_0$.
+\end{Prop}
+
+\begin{Def}
+  称 $\{\Phi_t \mid t \in \mathbb{R}\}$ 为单参数连续变换群, 如果满足:
+  \begin{inparaenum}[(i)]
+    \item 恒同;
+    \item 可加;
+    \item 可交换.
+  \end{inparaenum}
+\end{Def}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{流 (连续, 离散) }
+
+微分方程组
+\begin{equation}
+  \dot{x} = f(x),\ x \in G,
+\end{equation}
+与其定义的单参数交换群 $\{\Phi_t \mid t \in \mathbb{R}\}$, 称之为 $G$ 上的动力系统 (连续, 流).
+
+连续 (可微) 映射
+\begin{equation*}
+  \Phi_t:\ G \to G,
+\end{equation*}
+满足恒同性、可加性、可交换, 则称之为 $G$ 上的拓扑 (可微) 动力系统.
+
+\paragraph{离散动力系统}
+
+\begin{Exa}
+  $t \in \mathbb{Z}$
+  \begin{equation*}
+    \dots, \Phi_{ - 2}, \Phi_{ - 1}, \Phi_0, \Phi_1, \Phi_2, \dots,
+  \end{equation*}
+  $\{\Phi_n(x) \mid x \in G\}$, $n = 0, \pm 1, \dots$.
+\end{Exa}
+
+一般 ($g$ 同胚: $g$, $g^{ - 1}$ 连续)
+\begin{equation*}
+  g:\ x \mapsto g(x),\ G \to G,
+\end{equation*}
+作叠代:
+\begin{gather*}
+  \begin{array}{rcccl}
+  x, & g(x), & g(g(x)), & \dots\\
+  x, & g(x), & g^2(x), & g^3(x), & \dots\\
+  x ,& g^{ - 1}(x), & g^{ - 2}(x), & g^{ - 3}(x), & \dots
+  \end{array}\\
+  \dots,\ g^{ - 2}(x),\ g^{ - 1}(x),\ g^0(x),\ g(x),\ g^2(x),\ \dots
+\end{gather*}
+(过 $x \in G$, 由 $g$ 导出的轨道)
+
+\begin{Exa}\label{Ex:1.14}
+  \begin{equation*}
+    g(x,y) = \left(\frac{x}{2}, \frac{y}{2}\right).
+  \end{equation*}
+\end{Exa}
+\begin{solve}
+  表示 (映射): $(x', y') = g(x, y) = \left(\frac{x}{2}, \frac{y}{2}\right)$
+
+  $\Rightarrow x' = \frac{x}{2},\ y' = \frac{y}{2}$.
+
+  表示 (数列): $x_{n + 1} = \frac{x_n}{2},\ y_{n + 1} = \frac{y_n}{2}$.
+  \begin{figure}[!ht]
+    \centering
+    \psfrag{yone}[][]{$x$}
+    \psfrag{ytwo}[][]{$y$}
+    \includegraphics{T1_15}
+    \caption{例 \ref{Ex:1.14} 的轨线.}%\label{}
+  \end{figure}
+\end{solve}
+
+\begin{Exa}\label{Ex:1.15}
+  \begin{equation*}
+    g(x) = \lambda x (1 - x),\ G = [0,1].
+  \end{equation*}
+\end{Exa}
+\begin{solve}
+  表示 (映射) : $x' = g(x) = \lambda x (1 - x)$ Logistic 虫口模型.
+
+  表示 (数列) : $x_{n + 1} = \lambda x_n (1 - x_n)$.
+  \begin{figure}[!ht]
+    \centering
+    \psfrag{yone}[][]{$t$}
+    \psfrag{ytwo}[][]{$x$}
+    \psfrag{1}[][]{$1$}
+    \psfrag{2}[][]{$2$}
+    \psfrag{3}[][]{$3$}
+    \psfrag{4}[][]{$4$}
+    \includegraphics{T1_16}\\
+    \caption{例 \ref{Ex:1.15}, $\lambda$ 不同时, 可能的轨线.}%\label{}
+  \end{figure}
+\end{solve}
+
+\begin{Exa}
+  Henon 映射 (1976), $g(x, y) = (A + B y - x^2, x)$.
+  \begin{equation*}
+    \begin{cases}
+      x' = A + B y - x^2,\\
+      y' = x.
+    \end{cases}
+  \end{equation*}
+\end{Exa}
+一般形式 $x_{n + 1} = g(x_n)$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{奇点, 闭轨线, 导算子}
+
+\begin{Def}\
+  \begin{enumerate}
+    \item 微分方程 $\dot{x} = f(x)$, $x$ 是奇点、平衡点 $\Leftrightarrow$ 使 $f(x) = 0$ 的实零点.
+    \item 迭代 $x' = g(x)$, $x$ 是不动点、平衡点 $\Leftrightarrow g(x) = x$.
+  \end{enumerate}
+\end{Def}
+
+\begin{Exa}\
+  \begin{enumerate}
+    \item $\dot{x} = r x (1 - x)$, 平衡点: 0, 1.
+    \item $x_{n + 1} = r x_n (1 - x_n)$, $n \leq 4$ 保证 $[0,1] \mapsto [0,1]$.
+    \item $x_{n + 1} = x_n \exp[r (1 - x_n)]$ 这个保证了正性.
+  \end{enumerate}
+\end{Exa}
+
+\begin{Note}$\ $
+  \begin{enumerate}
+    \item 正性: 初始 $ > 0$, 结果 $ > 0$.
+
+        $\dot{x} = x r (1 - x)$, 对于任意 $\delta$, 在区间 $(0, \delta)$ 上有,
+        \begin{align*}
+          \int^\delta_0 \frac{\dot{x}}{x} & = \ln \frac{x(\delta)}{x(0)} = \int^\delta_0 (r (1 - x)) = \left. r x - \frac{r}{2} x^2\right|^\delta_0,\\
+          x(\delta) & = x(0) \e^{r \delta - \frac{r}{2} \delta^2}.
+        \end{align*}
+
+    \item \begin{equation*}
+            \frac{x(t + \Delta t) - x(t)}{\Delta t} = \frac{x(t) \exp(\Delta t [r (1 - x(t))] - 1)}{\Delta t},
+          \end{equation*}
+          \begin{itemize}
+            \item $\Delta t = 1$, $t = n$, 离散;
+            \item $\Delta t \to 0$, $\dot{x}(t) = x(t) r (1 - x(t))$.
+          \end{itemize}
+  \end{enumerate}
+\end{Note}
+
+Lotka-Volterra 系统
+\begin{align*}
+  \dot{x}_1 & = x_1 (r_1 + a_{11} x_1 + a_{12} x_2),\\
+  \dot{x}_2 & = x_2 (r_2 + a_{21} x_1 + a_{22} x_2).
+\end{align*}
+\begin{itemize}
+  \item $a_{11} < 0$, $a_{22} < 0$, 种群密度是制约的, 也即种内 (Intra) 竞争;
+  \item $r_i$ 表示增长率.
+\end{itemize}
+种间 (Inter) 关系:
+\begin{enumerate}[(i)]
+  \item $a_{12} > 0$, $a_{12} > 0$, 合作互惠;
+  \item $a_{12} < 0$, $a_{21} < 0$, 竞争;
+  \item $a_{12} \cdot a_{21} < 0$, 捕食;
+  \item $ - ,\ 0$, 偏害共生;
+  \item $ + ,\ 0$, 偏利共生.
+\end{enumerate}
+
+\begin{Def}\
+  \begin{enumerate}
+    \item $\text{周期解} = \text{解} + \text{周期函数}$.
+    \item 周期点 $x_{n + 1} = g(x_n)$, $x - N$ 周期点
+        \begin{enumerate}
+          \item $g^k(x) \neq x$, $k < N$;
+          \item $g^N(x) = x$.
+        \end{enumerate}
+  \end{enumerate}
+\end{Def}
+
+\begin{Exa}
+  求 $x_{n + 1} = r x_n (1 - x_n)$ 存在 2 周期点的充要条件.
+\end{Exa}
+
+\begin{figure}[!ht]
+\centering
+  \psfrag{0}[][]{$0$}
+  \psfrag{1}[][]{$1$}
+  \psfrag{r}[][]{$\frac{r - 1}{r}$}
+  \includegraphics{T1_17}
+  \caption{$r < 2$ 时, 轨线情形}%\label{}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+  \psfrag{0}[][]{$0$}
+  \psfrag{1}[][]{$1$}
+  \psfrag{r}[][]{$\frac{r - 1}{r}$}
+  \includegraphics{T1_18}
+  \caption{$r<3$ 时, 轨线情形}%\label{}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+  \psfrag{xone}{$x_1 = g(x_2)$}
+  \psfrag{xtwo}{$x_2 = g(x_1)$}
+  \includegraphics{T1_19}
+  \caption{二周期解轨线情形, $g^2(x_1) = x_1$, $g^2(x_2) = x_2$}%\label{}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+  \psfrag{xone}[br][br]{$x_0$}
+  \includegraphics{T1_20}
+  \caption{三周期解轨线情形}%\label{}
+\end{figure}
+
+对于系统
+\begin{equation}\label{Eq:1.27}
+  \dot{x} = f(x).
+\end{equation}
+令 $f(x)$ 在 $x = x^*$ ($x^*$ 是平衡点) 处展开
+\begin{equation*}
+  f(x) = a_0 + a_1 x + a_2 x^2 + \dots,
+\end{equation*}
+取一次近似:
+\begin{equation*}
+  f(x) \doteq a_0 + a_1 x,
+\end{equation*}
+则得到线性近似系统,
+\begin{equation}\label{Eq:1.28}
+  \dot{x} = \diff f(x_0) (x - x_0),
+\end{equation}
+其中
+\begin{equation*}
+  \diff f(x_0) =
+  \left.\begin{pmatrix}
+    f_1 x_1 & \cdots & f_1 x_n\\
+    \vdots & \ddots & \vdots\\
+    f_n x_1 & \cdots & f_n x_n
+  \end{pmatrix}\right|_{x = x_0}.
+\end{equation*}
+
+结论: 若 $\diff f(x_0)$ 为双曲的 (特征值的实部 $\neq 0$) 则方程 \eqref{Eq:1.28} 决定方程 \eqref{Eq:1.27} (局部) 性态, 即局部同胚.
+
+\begin{figure}[!ht]
+  \centering
+  \subfloat[非线性情况]{\includegraphics{T1_21_a}}\hspace{30pt}
+  \subfloat[线性近似]{\includegraphics{T1_21_b}}
+  \caption{线性系统为双曲的, 则原系统局部与其同胚.}
+\end{figure}
+
+\begin{Exa}
+  对于系统
+  \begin{equation}\label{Eq:1.29}
+  \begin{aligned}
+    \dot{x}_1 & = x_1 (r_1 + a_{11} x_1 + a_{12} x_2) = f_1(x_1, x_2), \\
+    \dot{x}_2 & = x_2 (r_2 + a_{21} x_1 + a_{22} x_2) = f_2(x_1, x_2). \\
+  \end{aligned}
+  \end{equation}
+  假设 \eqref{Eq:1.29} 有唯一正平衡点 $x^* = (x^*_1, x^*_2)$, 将 \eqref{Eq:1.29} 在 $x^*$ 处线性化: 即, 将 $f(x_1, x_2) = (f_1(x_1, x_2), f_2(x_1, x_2))$ Taylor 展开取一次 (线性) 部分.
+\end{Exa}
+
+
+\paragraph{离散系统的图表示}
+
+\begin{Exa}\label{Ex:1.20}
+  系统
+  \begin{equation*}
+    g(x) = x^3,\ x' = g(x) = x^3,
+  \end{equation*}
+  不动点为: - 1, 0, 1. 0 稳定, 吸引.
+  \begin{figure}[!ht]
+    \centering
+    \input{Graph/T1_22_i.tex}
+    \caption{例 \ref{Ex:1.20}.}
+  \end{figure}
+\end{Exa}
+
+\begin{Exa}\label{Ex:1.21}
+  \begin{equation*}
+    g(x) = 2 x - x^2,\ x' = g(x) = 2 x - x^2.
+  \end{equation*}
+  0 是排斥的, 1 是吸引的. $x = 1$ 取到最大值.
+  \begin{figure}[!ht]
+    \centering
+    \input{Graph/T1_23_i.tex}
+    \caption{例 \ref{Ex:1.21}.}
+  \end{figure}
+\end{Exa}
+
+\paragraph{稳定性}\
+
+渐进稳定 $\Leftrightarrow$ 邻域中的解趋于 $x^*$.
+
+\begin{Def}\
+  \begin{enumerate}
+    \item $x^*$ 稳定: 初值在小区域, 轨道跑不出大区域. 见图 \ref{Fi:1.24}.
+
+    $\forall U$, $\exists V$, s.t. $\forall n$, $g^n(V) \subset U$.
+
+    \begin{figure}[!ht]
+      \centering
+      \input{Graph/T1_24_i.tex}
+      \caption{$\forall x \in V \Rightarrow g^n(x) \in U$}\label{Fi:1.24}
+    \end{figure}
+
+    \item $x^*$ 吸引 (局部). 见图 \ref{Fi:1.25}.
+
+    $\exists V$ s.t. $x \in V \Rightarrow \lim \limits_{n \to \infty} g^n(x) = x^*$.
+
+    \begin{figure}[!ht]
+      \centering
+      \input{Graph/T1_25_i.tex}
+      \caption{$\forall x \in V \Rightarrow \lim \limits_{n \to \infty} g^n(x) = x^*$.}\label{Fi:1.25}
+    \end{figure}
+
+    \item $\text{渐进稳定} = \text{稳定} + \text{吸引}$.
+
+    \item 不稳定 $\Leftrightarrow$ 不是稳定的.
+  \end{enumerate}
+\end{Def}
+
+\begin{Thm}[一维情况]
+  \begin{equation*}
+    \dot{x} = g(x),\ (g \in C^1),\ |g'(x^*)| < 1,
+  \end{equation*}
+  $\Rightarrow \exists V$, $\forall x \in V$, $\lim\limits_{n \to \infty} g^n(x) = x^*$.
+\end{Thm}
+\begin{proof}
+  $\because g\in C^1$, $|g'(x^*)| < 1$, 令 $V = (x^* - \epsilon, x^* + \epsilon)$,
+
+  $\Rightarrow \exists A < 1$, 使得 $|g'(x)| < A < 1$, ($x \in V$).
+
+  中值定理
+  \begin{align*}
+    |g(x) - x^*| & = |g(x) - g(x^*)|,\\
+    & = |g'(\delta) (x - x^*)|,\ (\delta \in V),\\
+    & \leq A |x - x^*|,\\
+    & < |x - x^*| < \epsilon.
+  \end{align*}
+
+  $\Rightarrow |g^n(x) - x^*| \leq A^n |x - x^*| \to 0$.
+
+  $\therefore \lim\limits_{n \to \infty} g^n(x) = x^*$.
+\end{proof}
+
+\begin{Cor}
+  \begin{equation*}
+    |g'(x^*)| > 1 \Rightarrow \exists V = N(x^*),\ \forall x \in V \setminus \{x^*\},\ \exists n,\ \text{s.t.}\ g^n(x) \notin V.
+  \end{equation*}
+\end{Cor}
+
+\begin{Exa}
+  寻找
+  \begin{align*}
+    x' & = r x (1 - x),\\
+    x' & = x \e^{r (1 - x)},
+  \end{align*}
+  的稳定条件 (局部稳定).
+\end{Exa}
+
+\begin{Exa}\label{Ex:1.23}
+  $g(x) = r x(1 - x),\ r = 3.84$. 周期三存在!
+  \begin{figure}[!ht]
+    \centering
+    \input{Graph/T1_26_i.tex}
+    \caption{例 \ref{Ex:1.23}.}
+  \end{figure}
+\end{Exa}
+
+1975 年, Li-Yorke, 3 周期 $\Rightarrow$ Chaos (混沌), Periole 3 impleis chaos.
+
+1964 年, Shakovskii, 乌克兰,
+\begin{align*}
+  &3\prec5\prec7\prec9\prec\cdots\\
+  &2\cdot3\prec2\cdot5\prec2\cdot7\prec2\cdot9\prec\cdots\\
+  &\cdots\\
+  &2^n\cdot3\prec2^n\cdot5\prec2^n\cdot7\prec2^n\cdot9\prec\cdots\\
+  &\cdots\\
+  &2^n\prec\cdots\prec2^{100}\prec\cdots\prec16\prec8\prec4\prec2\prec1
+\end{align*}
+$m$ 周期 $\Rightarrow n$ 周期, 若 $m < n$. 

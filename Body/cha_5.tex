@@ -1,0 +1,221 @@
+\chapter{平面系统分支}
+
+\section{Hopf 分支}
+
+\begin{equation}\label{Eq:5.1}
+\begin{aligned}
+  \dot{x} & = \lambda x - y \underline{{} - a x y - y^2} = P(x, y),\\
+  \dot{y} & = \lambda y + x \underline{{} + a x^2} = Q(x, y).
+\end{aligned}
+\end{equation}
+其中 $\underline{\qquad}$ 表示非线性项.
+
+对于系统 \eqref{Eq:5.1}, 当 $\lambda < 0$ 时, 系统奇点稳定 (焦点), 当 $\lambda > 0$  时, 系统奇点不稳定 (焦点), 以上为系统为中心焦点型.
+
+$\lambda = 0$ 时, 特征值实部为 $0$, 此时, 考虑 $V$ 函数: $V =  (x^2 + y^2) + (x, y, 3) + (x, y, 4) + \cdots$, $(x, y, 3)$ 有 $4$ 系数, $(x, y, 4)$  有 $5$ 系数. 若 $\dot{V} = L(1) (x^2 + y^2)^2$, 可通过判断 $L(1)$ 与 $0$ 的大小确定奇点稳定性. 若 $L(1) = 0$, 则考虑 $V =  (x^2 + y^2) + (x, y, 3) + (x, y, 4) + (x, y, 5)+ \cdots$ 得到 $\dot{V} = L(2)(x^2 + y^2)^3$.
+
+系统 \eqref{Eq:5.1} 中 $L(1) = \frac{a}{4}$, 若 $a < 0$, 则奇点为一阶稳定细焦点, 若 $a > 0$, 则奇点为一阶不稳定细焦点.
+
+\begin{Exa}
+  \begin{equation}
+    \begin{aligned}
+      \dot{x} & = - y - x (x^2 + y^2 - \lambda),\\
+      \dot{y} & = x - y (x^2 + y^2 - \lambda).
+    \end{aligned}
+  \end{equation}
+\end{Exa}
+\begin{solve}
+  特征值为: $\bar{\lambda} = \lambda \pm i$.
+  \begin{enumerate}[(1)]
+    \item $\lambda \neq 0 \Rightarrow$ 粗焦点, $\begin{matrix} \lambda > 0 & \text{不稳定} \\ \lambda < 0 & \text{稳定} \end{matrix}$.
+    \item $\lambda = 0 \Rightarrow$ 细焦点 (weak,  fine).
+    
+          $V = x^2 + y^2 \Rightarrow \dot{V} = - 2 (x^2 + y^2)^2 < 0 \Rightarrow$ 全局稳定细焦点.
+          
+          结论: $\begin{matrix} \lambda > 0 & \text{不稳定} \\ \lambda \leq 0 & \text{稳定} \end{matrix}$.
+    \item $\lambda > 0$, 记 $C = x^2 + y^2 - \lambda$.
+          \begin{equation*}
+            \dot{C}|_{c = 0} = 2 (x^2 + y^2) (\lambda - x^2 - y^2) = 2 (x^2 + y^2) \cdot C|_{c = 0} = 0
+          \end{equation*}
+          结论: 存在一个周期解 (极限环, 对固定的 $\lambda$ 周期解孤立).
+  \end{enumerate}
+  现象:
+  \begin{enumerate}
+    \item $\lambda = 0$, 稳定; 
+    \item $\lambda > 0$, 不稳定;  ($\lambda < 0$, 稳定).
+  \end{enumerate}
+  $\Rightarrow$ Hopf 极限环 (一阶细焦点分支).
+\end{solve}
+
+Hopf 分支 ($\lambda = 0$, $a(0) = 0$, $b(0) > 0$).
+\begin{equation}
+  \begin{aligned}
+    \dot{x} & = a(\lambda) x - b(\lambda) y + P_2(x, y, \lambda),\\
+    \dot{y} & = b(\lambda) x + a(\lambda) y + Q_2(x, y, \lambda).
+  \end{aligned}
+\end{equation}
+$O(0, 0)$ 为中心型奇点, $P_2$, $Q_2$ 是二次以上的多项式.
+
+\begin{Thm}\label{Th:5.1}\
+  \begin{enumerate}
+    \item $\lambda = 0$, $O(0, 0)$ 稳定 (一阶细焦点);
+    \item $\lambda \neq 0$, $|\lambda|$ 充分小时 $\Rightarrow$ 不稳定.
+  \end{enumerate}
+  则存在唯一的极限环.
+\end{Thm}
+\begin{proof}
+  \begin{enumerate}[(1)]
+    \item 极坐标 (转动方向).
+          \begin{equation*}
+            \begin{aligned}
+              \dot{\rho} & = a(\lambda) \rho + o(\text{高阶项}),\\
+              \dot{\theta} & = b(\lambda) + o(\text{高阶项}).
+            \end{aligned}
+          \end{equation*}
+          由 $b(0) > 0$ 得轨线是逆时针的.
+    \item $\lambda = 0$, 奇点稳定.
+    \item $\lambda \neq 0$, $|\lambda|$ 充分小,
+          \begin{enumerate}
+            \item 连续依赖性;
+            \item 不稳定;
+            \item 如图 \ref{Fi:5.1}, 蓝线构成了环域.
+          \end{enumerate}
+          $\Rightarrow$ (B-P), 存在极限环.
+  \end{enumerate}
+  \begin{figure}[!ht]
+    \centering
+    \subfloat[$\lambda = 0$.]{\includegraphics[width = 0.30\textwidth]{T5_1_a.eps}}
+    \quad
+    \subfloat[$\lambda \neq 0$.]{\includegraphics[width = 0.30\textwidth]{T90.eps}}
+    \raisebox{2cm}{$\ \to \ $}
+    \subfloat[构成环域.]{\includegraphics[width = 0.30\textwidth]{T91.eps}}
+    \caption{定理 \ref{Th:5.1}.}\label{Fi:5.1}
+  \end{figure}
+\end{proof}
+
+\begin{Exa}
+  \begin{equation*}
+    \begin{aligned}
+      \dot{x} & = \lambda x - y - a x y - y^2,\\
+      \dot{y} & = x + \lambda y + a x^2.
+    \end{aligned}
+  \end{equation*}
+\end{Exa}
+\begin{solve}\ 
+  \begin{enumerate}[(1)]
+    \item $\lambda = 0$, 一阶焦点量 $L_1 = \frac{a}{4}$.
+          \begin{equation*}
+            \begin{aligned}
+              V & = (x^2 + y^2) + (3) + (4),\\
+              \dot{V} & = \frac{a}{4} (x^2 + y^2)^2 + o(V^2).
+            \end{aligned}
+          \end{equation*}
+    \item $\bar{\lambda} = \lambda \pm i$.
+          \begin{enumerate}[(i)]
+            \item 当 $\lambda = 0$, $a < 0$ 稳定; $\lambda > 0$, 不稳定. 由定理 \ref{Th:5.1} 得到存在极限环.
+            \item $\lambda = 0$, $a > 0$, 不稳定; $\lambda < 0$, 稳定. 由定理 \ref{Th:5.1} 得到存在极限环.
+          \end{enumerate}
+  \end{enumerate}
+\end{solve}
+
+令 $\lambda = L(0)$, 则得到:
+\begin{Thm}[一阶 Hopf 定理]
+  $\lambda = L(0)$ 与 $L(1)$ 反号 $\Rightarrow \exists$ 极限环. (有误)
+\end{Thm}
+
+\section{广义 Hopf}
+考虑二次系统:
+\begin{equation}
+  \begin{aligned}
+    \dot{x} & = \lambda x - y + l x^2 + m x y,\\
+    \dot{y} & = x + x^2.
+  \end{aligned}
+\end{equation}
+$O(0, 0)$ 奇点, $\lambda = 0$,
+\begin{enumerate}
+  \item $O$ 为细焦点. ($V = V(x, y) \Rightarrow \dot{V} = L(1) (x^2 + y^2)^2 + \cdots$), $L(1) = l(m - 2)$.
+  \item \begin{equation*}
+        l = 0\text{ (中心) }
+          \begin{cases}
+            m \neq - 1, & B(x, y) = x^{\alpha} y^{\alpha}, \ \alpha = - \frac{m + 2}{m - 1},\\
+            m = - 1,  & \dot{x} = - y (1 + x), \ \dot{y} = x (1 + x).
+          \end{cases}
+        \end{equation*}
+  \item $l > 0$, $\begin{matrix} m > 2 & \text{不稳定} \\ m < 2 & \text{稳定} \end{matrix}$ 一阶细焦点.
+  \item $l > 0$, $m = 2 \Rightarrow L(1) = 0$. 令 $V = V(x, y)$,
+  
+      $\Rightarrow \dot{V} = L(2) (x^2 + y^2)^3$, $L(2) = - 12 l$.
+      
+      \begin{equation*}
+        \begin{matrix}
+          L(0) = \lambda, & L(1) = l (m - 2), & L(2) = - 12 l,\\
+          & (L(0) = 0 \Leftrightarrow \lambda = 0) & (L(0) = L(1) = 0 \Leftrightarrow \lambda = 0, \ m = 2)
+        \end{matrix}
+      \end{equation*}
+      \begin{equation*}
+        \dot{V} = l (m - 2) (x^2 + y^2)^2 + ( - 12 l) (x^2 + y^2)^3\  (m = 2 \ \text{时}).
+      \end{equation*}
+\end{enumerate}
+
+广义 Hopf:
+\begin{enumerate}
+  \item $\lambda = 0$, $m = 2$. $L(2) = - 12 l < 0 \Rightarrow O$ 是稳定的.
+  \item $\lambda = 0$, $m > 2$, $m - 2 \ll 1 \Rightarrow O$ 是不稳定的 $\Rightarrow$ 存在极限环 ($L(1) \cdot L(2) < 0$).
+  \item 取 $|\lambda|$ 充分小, 且 $\lambda < 0 \Rightarrow$ 存在极限环 ($L(1) \cdot L(2) < 0$).
+\end{enumerate}
+\begin{figure}[!ht]
+  \centering
+  \includegraphics{T92.eps}
+  \caption{广义 Hopf.}
+\end{figure}
+
+\section[Lyapunov 方法再思考]{Lyapunov 方法再思考\\ (中心, 焦点, 小扰动极限环) }
+
+\begin{equation}\label{Eq:5.5}
+  \begin{aligned}
+    \dot{x} & = - y + \sum P_n(x, y),\\
+    \dot{y} & = x + \sum Q_n(x, y).
+  \end{aligned}
+\end{equation}
+
+Lyapunov 函数:
+\begin{equation}
+  V(x, y) = x^2 + y^2 + \sum v_n(x, y).
+\end{equation}
+焦点量的三种算法:
+\begin{enumerate}
+  \item 三角函数,
+  \item 形式级数,
+  \item 迭代公式.
+\end{enumerate}
+沿 \eqref{Eq:5.5} $V$ 导数 $\dot{V}(x, y) = \sum \limits_{n = 1} L(n) (x^2 + y^2)^{n + 1}$, $L(n)$--$n$ 阶焦点量, \eqref{Eq:5.5}系数的多项式.
+
+\begin{Thm}
+  $\forall L(n) = 0 \Rightarrow O(0, 0)$ 是中心.
+\end{Thm}
+
+\begin{Thm}[Hilbert 基原理]
+  $\forall$ 多项式理想 $\Rightarrow \exists$ 有限生成基. ($f_ {\alpha} = \sum \limits^n_{i = 1} P_i f_i$.)
+\end{Thm}
+
+对于 $L(1)$, $\dots$, $L(n)$, $\dots$, $\exists N > 0$ 使得, $L(1) = \cdots = L(N) = 0 \Rightarrow \forall n$,  $L(n) = 0$.
+
+$L(1)$, $L(2)$, $L(3)$, $\dots$,
+\begin{enumerate}[1)]
+  \item 用于判定稳定性,
+  \item 小扰动极限环, 选择参数使得,
+        \begin{enumerate}
+          \item $L(1) = \lambda = 0 \Rightarrow L(2) \cdot L(3) < 0$.
+          \item $\lambda = 0 \Rightarrow L(1) \cdot L(2) < 0$.
+          \item $\lambda \cdot L(1) < 0$.
+        \end{enumerate}
+        $\exists 3$ 个极限环.
+\end{enumerate}
+
+\begin{equation*}
+  \begin{aligned}
+    \dot{x} & = P_n(x, y),\\
+    \dot{y} & = Q_n(x, y).
+  \end{aligned}
+\end{equation*}
+$\hat{H}(n) = \max \{\text{小扰动极限环个数}\}$, 现有结论: $\hat{H}(2) = 3$, $\hat{H}(3) \geq 13$.

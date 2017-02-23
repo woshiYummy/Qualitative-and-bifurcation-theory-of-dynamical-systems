@@ -1,0 +1,578 @@
+\chapter{极限集, 全局结构, 结构稳定性与分支}
+
+\section{极限集}
+
+$n$ 维系统:
+\begin{equation}
+  \dot{x} = f(x), \ x, \ f \in \mathbb{R}^n.
+\end{equation}
+存在 (整体) 唯一性 (第一章, 有界 $\Rightarrow$ 整体存在性).\\
+$\Rightarrow \forall x_0 \in \mathbb{R}^n, \ \exists \Phi_t(x_0)$, $t \in ( -  \infty, + \infty)$.
+
+本章主题: 轨线及性态.
+
+特例:
+\begin{enumerate}
+  \item 奇点,
+  \item 闭轨.
+\end{enumerate}
+
+问题: 一般轨线 ($t \to \pm \infty$) 如何?
+
+\begin{Def}
+  对轨线 $\Phi_t(x)$, $\exists \bar{x}$ 以及 $t_n \to \pm \infty$ 使得 $\lim\limits_{n \to \infty} \Phi_{t_n}(x) = \bar{x}$.
+
+  $\Leftrightarrow \bar{x}$ 为 $\Phi_t(x)$ 的 $\omega$ ($\alpha$) 极限点.
+\end{Def}
+
+$x^*$ 是奇点, $\Phi_t(x^*) = x^*$, $\forall t_n \to \pm \infty \Rightarrow \Phi_{t_n}(x^*) = x^*$. $\therefore x^*$ 为 $\Phi_t(x^*)$ 的 $\omega$ 极限点.
+
+$\bar{x} \in \{x \mid \Phi_t(x) = \Phi_{t + T}(x)\}$ (闭轨), $\bar{x}$ 为 $\Phi_t$ 的 $\omega$ 极限点.
+
+$\lim \limits_{n \to \infty} \Phi_{t_n = n T + t_0}(x) = \Phi_{n T + t_0}(x) = \Phi_{t_0}(x) = \bar{x}$.
+
+\begin{figure}[!ht]
+  \centering
+  \subfloat{
+  \includegraphics[width = 0.20\textwidth]{T82.eps}}\hspace{50pt}
+  \subfloat{
+  \includegraphics[width = 0.20\textwidth]{T83.eps}}
+  \caption{$\Phi_t(x) = x^*$, $t \to + \infty$.}
+\end{figure}
+
+$\Omega(x) = \{\omega\ \textrm{极限点}\}$--$\omega$ 极限集.
+
+$A(x) = \{\alpha\ \textrm{极限点}\}$--$\alpha$ 极限集.
+
+\begin{Exa}\
+  \begin{enumerate}
+    \item $x_0$ 奇点: $\Omega(x_0) = A(x_0) = \{x_0\}$.
+    \item 闭轨: $\{\Phi_t(x_0)\} = A(x_0) = \Omega(x_0)$.
+    \item L (不) 稳定极限环: L 为邻近轨线的 $\omega$ ($\alpha$) 极限集.
+  \end{enumerate}
+\end{Exa}
+
+\begin{Exa}\label{Ex:4.2}
+  \begin{equation}
+    \begin{aligned}
+    \dot{x} & = y + y (1 - x^2) \left[y^2 - x^2 \left(1 - \frac{x^2}{2}\right)\right],\\
+    \dot{y} & = x (1 - x^2) - y \left[y^2 - x^2 \left(1 - \frac{x^2}{2}\right)\right].
+    \end{aligned}
+  \end{equation}
+\end{Exa}
+\begin{solve}
+  奇点$(0, 0)$, $(1, 0)$, $( - 1, 0)$.
+
+  解曲线 (不变曲线) $C:\ y^2 - x^2 \left(1 - \frac{x^2}{2}\right) = 0$ 为外轨线的 $\omega$ 极限集. (验证 $\dot{C}|_{C = 0} = 0$.)
+  \begin{figure}[!ht]
+    \centering
+    \psfrag{andian}[][]{鞍点}
+    \psfrag{omiga}[][]{$\Omega$ 极限集}
+    \psfrag{tongsu}[][]{同宿轨}
+    \psfrag{yone}[][]{$x$}
+    \psfrag{ytwo}[][]{$y$}
+     \includegraphics{T84.eps}
+    \caption{例 \ref{Ex:4.2}.}
+  \end{figure}
+\end{solve}
+
+\begin{Exa}\label{Ex:4.3}
+  系统
+  \begin{equation}\label{Eq:4.3}
+    \dot{x} = 1, \ \dot{y} = \alpha.
+  \end{equation}
+  视 \eqref{Eq:4.3} 为环面上的系统. 平面上, 直线 $y = \alpha x + c$, 限制到单位正方形内. $S = \{(x, y) \mid x \in[0, 1], \ y \in[0, 1]\}$. $(x_1, y_1) \sim (x_2, y_2) \Leftrightarrow x_1 - x_2, \ y_1 - y_2$ 是整数.
+  \begin{figure}[!ht]
+    \centering
+    \psfrag{1}[][]{$1$}
+    \psfrag{2}[][]{$2$}
+    \psfrag{3}[][]{$3$}
+    \psfrag{4}[][]{$4$}
+    \psfrag{5}[][]{$5$}
+    \psfrag{yone}[][]{$x$}
+    \psfrag{ytwo}[][]{$y$}
+     \includegraphics[width = 0.60\textwidth]{T85.eps}
+    \caption{例 \ref{Ex:4.3}.}
+  \end{figure}
+\end{Exa}
+\begin{solve}\
+  \begin{enumerate}
+    \item 当 $\alpha = \frac{4}{3}$, $c = 0 \Rightarrow y = \frac{4}{3} x$. $x$ 方向 3 圈, $y$ 方向 4圈.
+    \item $\alpha = \frac{p}{q}$ (有理数) $\Rightarrow$ 闭轨 (环面上).
+    \item $\alpha$ 是无理数:
+    \begin{enumerate}
+      \item $y = \alpha x$, $x$ 是整数 $\Rightarrow y$ 非整数. $\Rightarrow$ 轨线非闭 (从$(0, 0)$出发).
+      \item 轨线在 $T^2$ 上处处稠密. ($\forall (x, y)$ 的任意邻域, $t \to \infty$, 轨线无限次进入.) $\therefore$ 每一点为任意轨线的 $\omega$, $\alpha$ 极限点.
+      \item $\alpha$ 无理数 $\Rightarrow$ \eqref{Eq:4.3} 为 $T^2$ 上无理流, 遍历现象.
+    \end{enumerate}
+  \end{enumerate}
+  \begin{figure}[!ht]
+    \centering
+    \subfloat{
+    \psfrag{1}[][]{$1$}
+    \psfrag{2}[][]{$2$}
+    \psfrag{3}[][]{$3$}
+    \psfrag{4}[][]{$4$}
+    \psfrag{5}[][]{$5$}
+    \psfrag{6}[][]{$6$}
+    \psfrag{yone}[][]{$x$}
+    \psfrag{ytwo}[][]{$y$}
+    \includegraphics[width = 0.30\textwidth]{T87.eps}}\hspace{20pt}
+    \subfloat{
+    \psfrag{1}[][]{$1$}
+    \psfrag{2}[][]{$2$}
+    \psfrag{3}[][]{$3$}
+    \psfrag{4}[][]{$4$}
+    \psfrag{5}[][]{$5$}
+    \psfrag{6}[][]{$6$}
+    \psfrag{yone}[][]{$x$}
+    \psfrag{ytwo}[][]{$y$}
+    \includegraphics[width = 0.30\textwidth]{T86.eps}}
+    \caption{例 \ref{Ex:4.3} 轨线示意.}
+  \end{figure}
+\end{solve}
+
+\begin{Def}[游荡点, 集]
+  $\Phi_t(x)$ 连续流, $P \in \mathbb{R}^n$, 对 $\forall T > 0$ 及 $U(P)$ (邻域) $\exists t > T$, 使得 $U \cap \Phi_t(U) \neq \varnothing$.\\
+  $\Rightarrow P$ 为 $\Phi$ 的非游荡点. $\Omega(P)$--非游荡点集. ($T$ 取大, $U(P)$ 取小.)
+\end{Def}
+
+\begin{Exa}
+  奇点 $P$ ($\Phi_t(P) = P$): $U(P) \cap \Phi_t(U(P)) = \{P\}$.
+
+  闭轨: $\Phi_t(P) = \Phi_ {t + T}(P)$, $\{P\} \cap \{\Phi_{nT}(P)\} = \{P\} \neq \varnothing$.
+\end{Exa}
+
+问题: 环面上, $\Phi \eqref{Eq:4.3}$, $\alpha = $ 无理, $\alpha = $ 有理时, 游荡点、非游荡点为什么?
+
+\begin{Def}[不变集, invariant set]
+  $K \subset \mathbb{R}^n$,
+  \begin{enumerate}
+    \item $\Phi_t(K) \subset K \Rightarrow K$ 为 $\Phi_t$ 正向 ($t > 0$) 不变集, 负向 ($t < 0$) 不变集.
+    \item 正负均不变 $\Leftrightarrow$ 不变集.
+    \item $K$ 不变集: $\forall x \in K$, $\forall t \Rightarrow \Phi_t(x) \in K$.
+  \end{enumerate}
+\end{Def}
+
+\begin{Exa}\label{Ex:4.5}
+  $\dot{x} = x (1 - x)$, $K = [a, b]$, $0 < a < 1 < b$ (任意 $a$, $b$), $K$ 是正不变集.
+  \begin{figure}[!ht]
+    \centering
+    \psfrag{a}[][]{$a$}
+    \psfrag{b}[][]{$b$}
+    \psfrag{1}[][]{$1$}
+    \psfrag{yone}[][]{$t$}
+    \psfrag{ytwo}[][]{$x$}
+     \includegraphics{T88.eps}
+     \caption{例 \ref{Ex:4.5}.}
+  \end{figure}
+\end{Exa}
+
+\begin{Exa}
+  \begin{equation*}
+    \begin{aligned}
+      \dot{x} & = x (r_1 + a_{11} x + a_{12} y),\\
+      \dot{y} & = y (r_2 + a_{21} x + a_{22} y).
+    \end{aligned}
+  \end{equation*}
+  $\mathbb{R}^2_ + $ (正负) 不变性?
+\end{Exa}
+\begin{solve}\
+  \begin{enumerate}
+    \item $x = 0$, $y = 0$ 是轨线.
+    \item $\int^T_0 \frac{\dot{x}}{x} = \int^T_0 \Delta$ 去说明.
+  \end{enumerate}
+\end{solve}
+
+\begin{Thm}\label{Th:4.1}
+  不变集由整条轨线构成.
+\end{Thm}
+
+\begin{Exa}
+  Lotka-Volterra 系统: $\{\Phi_t(x) \mid x \in \mathbb{R}^2_+\} \subset \mathbb{R}^2_+$.
+
+  $\bigcup \{\Phi_t(x) \mid x \in \mathbb{R}^2_+\} \supset \bigcup\{x\} = \mathbb{R}^2_+$.
+
+  $\therefore \mathbb{R}^2_+ = \bigcup \{\Phi_t(x) \mid x \in \mathbb{R}^2_+\}$.
+\end{Exa}
+\begin{proof}
+  反证, 定理 \ref{Th:4.1}.
+
+  设 $K$ 含非整轨线, 则 $\exists x_0 \in K$, $\exists t_1$, 使得 $\Phi_{t_1}(x_0) \notin K$, 矛盾!
+\end{proof}
+
+\paragraph{极限集的性质}
+
+\begin{Thm}
+  极限集是不变的. (整轨线构成.)
+\end{Thm}
+\begin{proof}
+  $\bar{x} \in \Omega(x_0)$ (目的 $\Phi_t(\bar{x}) \in \Omega(x_0)$).
+
+  $\Rightarrow \exists t_n \to + \infty$ 使得 $\Phi_{t_n}(x_0) \to \bar{x}$ (定义).
+
+  由 $\Phi_t$ 连续性: $\Phi_t(\Phi_ {t_n}(x_0)) \to \Phi_t(\bar{x})(n \to \infty)$.
+
+  故 $t + t_n \to \infty:\ \Phi_{t + t_n}(x_0) \to \Phi_t(\bar{x})$,
+
+  $\Rightarrow \Phi_t(\bar{x}) \in \Omega(x_0)$.
+\end{proof}
+
+\begin{Exa}\
+  \begin{enumerate}
+    \item $\Omega(x_0) = \varnothing \Rightarrow |\Phi_t(x_0)| \to \infty$.
+    \item $\Omega(x_0) = \{\bar{x}\} \Leftrightarrow \lim \limits_{t \to + \infty} \Phi_t(x_0) = \bar{x}$.
+  \end{enumerate}
+\end{Exa}
+
+\begin{Thm}\label{Th:4.3}
+  设 $\Phi_t(x_0) \subset$ 有界闭集 $K \subset \mathbb{R}^n$ ($t > 0$),\\
+  $\Rightarrow \Omega(x_0)$ 非空, 连通, 闭集.
+  \begin{figure}[!ht]
+    \centering
+    \psfrag{yone}[][]{$x$}
+    \psfrag{ytwo}[][]{$y$}
+    \includegraphics[width = 0.50\textwidth]{T89.eps}
+    \caption{定理 \ref{Th:4.3}.}
+  \end{figure}
+\end{Thm}
+
+\paragraph{平面系统的 Poincar\'{e}-Bendixson 定理} (1988 年, Hisch, 1975 年, Smale, 研究三维系统.)
+
+\begin{equation}\label{Eq:4.4}
+  \begin{aligned}
+    \dot{x} & = P(x, y),\\
+    \dot{y} & = Q(x, y).
+  \end{aligned}
+\end{equation}
+
+\begin{Thm}[Poincar\'{e} - Bendixson]
+  $\Phi_t(P)$ 正 (负) 半轨保持在不含奇点的有界区域内 $\Rightarrow \Omega(P)$ ($A(P)$) 为闭轨.
+\end{Thm}
+
+\begin{Cor}
+  $K$ 正不变集 $\Rightarrow$ \eqref{Eq:4.4} 有轨线进入 $K$. $\Rightarrow K$ 有奇点或闭轨.
+\end{Cor}
+
+\begin{Cor}[环域定理]
+  环域不含奇点, 在边界轨线同进或同出. $\Rightarrow$ 存在极限环.
+\end{Cor}
+
+\begin{Cor}
+  相邻极限环之间无奇点. $\Rightarrow$ 极限环稳定性相反.
+\end{Cor}
+
+\section{Lyapunov 稳定性定理}
+
+\begin{Thm}[Lyapunov]
+  \begin{equation}\label{Eq:4.5}
+    \dot{x} = f(x), \ x \in \mathbb{R}^n.
+  \end{equation}
+  $x = 0$ 是系统唯一奇点, 若存在 $V = V(x)$, 使得:
+  \begin{enumerate}
+    \item $V(x) \geq 0$, 等号成立当且仅当 $V(0) = 0$ (正定);
+    \item \label{Lia 2} $\lim \limits_{x \to \partial \mathbb{R}^n} V(x) = \infty$ (无穷大性质);
+    \item $\dot{V}(x) \leq 0$, 等号成立当且仅当 $\dot{V}(x) = 0$ (负定).
+  \end{enumerate}
+  则 $x = 0$ 全局稳定 (Global Asymptotic Stability).
+\end{Thm}
+
+Lotka-Volterra
+\begin{equation*}
+  \begin{aligned}
+    \dot{x} & = \mathrm{diag}(x) A (x - x^*),\\
+    \dot{x}_i & = x_i (r_i + \sum^n_{j = 1} a_{ij} x_j) \ i = 1, 2, \dots, n.
+  \end{aligned}
+\end{equation*}
+假设存在唯一的 $x^* = (x^*_1, \dots, x^*_n)$, 则有
+\begin{equation*}
+  \dot{x}_i = x_i \sum^n_{j = 1} a_{ij} (x_j - x^*_j).
+\end{equation*}
+如果只在第一卦限讨论, Lyapunov 定理条件 \ref{Lia 2}, 可变为:
+\begin{equation*}
+  \lim_{x \to \partial \mathbb{R}^n_ + } V(x) = \infty.
+\end{equation*}
+($x \to \partial \mathbb{R}^n_+$, 即 $x_i \to 0$, 或 $\sum x^2_i \to \infty$.)
+
+\begin{Note}
+  作变换 $\frac{x_i}{x^*_i} = e^{y_i}$, 可将正平衡点移到原点, $\mathbb{R} ^n_+ \to \mathbb{R}^n$.
+\end{Note}
+
+
+Volterva's Lyapunov 函数.
+\begin{align*}
+  V(x) & = \sum^n_{i = 1} c_i (x_i - x^*_i - x^*_i \ln \frac{x_i}{x^*_i}),\\
+  \dot{V}(x) & = \frac{1}{2} (x - x^*) (C A + A^T C) (x - x^*)^T.
+\end{align*}
+计算过程如下:
+\begin{align*}
+  \dot{V}(x) & = \sum_i c_i(\dot{x}_i - \frac{\dot{x}_i}{x_i} x^*_i)\\
+  & = \sum_i c_i \frac{\dot{x}_i}{x_i} (x_i - x^*_i).
+\end{align*}
+代入
+\begin{align*}
+  \frac{\dot{x}_i}{x_i} = \sum^n_{j = 1} a_{ij} (x_j - x^*_j),
+\end{align*}
+得到
+\begin{align*}
+  \dot{V}(x) & = \sum_{i, j} c_i a_{ij} (x_i - x^*_i) (x_j - x^*_j)\\
+  & = \frac{1}{2} (x_i - x^*_i) (C A + A^T C) (x_j - x^*_j)^T.
+\end{align*}
+1977 年, Goh 得到此证明, 其中 $C = \mathrm{diag} (c_1, \dots, c_n)$.
+
+\begin{Thm}
+  $x^*$ 是 G. A. S., 如果 $C A + A^T C$ 是负定的.
+\end{Thm}
+
+\begin{Exa}\label{Ex:4.9}
+  \begin{equation*}
+    \begin{aligned}
+      \dot{x}_1 & = x_1 (r_1 - a_{11} x_1 - a_{12} x_2),\\
+      \dot{x}_2 & = x_2 (r_2 + a_{21} x_1 - a_{22} x_2).
+    \end{aligned}
+  \end{equation*}
+  假设存在唯一正平衡点 $x^* = (x^*_1, x^*_2) > 0$, $a_{jj} > 0$, 求证: $x^*$ 全局稳定.
+\end{Exa}
+\begin{proof}
+  \begin{equation*}
+    \begin{aligned}
+      \dot{x}_1 & = x_1 [ - a_{11} (x_1 - x^*_1) - a_{12} (x_2 - x^*_2)],\\
+      \dot{x}_2 & = x_2 [a_{21} (x_1 - x^*_1) - a_{22} (x_2 - x^*_2)].
+    \end{aligned}
+  \end{equation*}
+  取 $V(x) = c_1 (x_1 - x^*_1 \ln x_1) + c_2 (x_2 - x^*_2 \ln x_2)$, 则有,
+  \begin{align*}
+    \dot{V}(x) & = c_1 \frac{\dot{x}_1}{x_1} (x_1 - x^*_1) + c_2 \frac{\dot{x}_2}{x_2} (x_2 - x^*_2)\\
+    & = - c_1 a_{11} (x_1 - x^*_1)^2 + ( - c_1 a_{12} + c_2 a_{21}) (x_1 - x^*_1) (x_2 - x^*_2) - c_2 a_{22} (x_2 - x^*_2)^2.
+  \end{align*}
+  \begin{equation*}
+    C A + A^T C =
+    \begin{pmatrix}
+      - a_{11} c_1 & \frac{ - a_{12} c_1 + c_2 a_{21}}{2}\\
+      \frac{ - a_{12} c_1 + c_2 a_{21}}{2} & - a_{21} c_2
+    \end{pmatrix}.
+  \end{equation*}
+  取 $c_1 = a_{21}$, $c_2 = a_{12}$, 则 $\dot{V}(x) \leq 0$, 负定.
+
+  特殊的, 取 $a_{22} = 0$ 时, $\dot{V}(x) = - c_1 a_{11}(x_1 - x^*_1)^2 \leq 0$, 半负定.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{LaSalle 原理}
+
+考虑
+\begin{equation}\label{Eq:4.6}
+  \dot{x} = f(x), \ x \in \mathbb{R}^n.
+\end{equation}
+
+\begin{Thm}[LaSalle 原理]
+  若 \eqref{Eq:4.6} 的解有界, 且存在 $V = V(x)$ 使 $\dot{V}(x) \leq 0$ (半负定), 记 $E = \{x \in \mathbb{R}^n \mid \dot{V}(x) = 0\}$, 则 $\Omega(x) \subset M$ ($\subset E$ 的最大不变集). $M$ 称之为 LaSalle 不变集.
+\end{Thm}
+(例 \ref{Ex:4.9}中, $a_{22} = 0$ 时, $E = \{x \mid x_1 = x^*_1\}$ 并不是不变集, Lyapunov 定理中 $\Omega(x) \subset E = \{x^*\}$, $\therefore x^*$ 全局稳定.)
+\begin{proof}[Hofbauer, Sigmund]\
+\begin{itemize}
+  \item
+  \begin{enumerate}[(1)]
+    \item 设 $y \in \Omega(x) \Rightarrow \exists t_k \to + \infty$ 使得 $\Phi_{t_k}(x) \to y$.
+    \item 又 $\dot{V}(x) \leq 0 \Rightarrow \dot{V}(y) \leq 0$; 又设 $\dot{V}(y) \neq 0$, $\dot{V}(y) < 0$.
+    \item \label{LaSa 3} $V$ 沿轨道不增 $t > 0 \Rightarrow V(\Phi_t(y)) < V(y)$.
+    \item \label{LaSa 4} $V(\Phi_t(x))$ 单调递减, $V(\Phi_{t_k}(x)) \to V(y) \Rightarrow V(\Phi_t(x)) \geq V(y)$, $\forall t$.
+    \item \label{LaSa 5} $\Phi_{t_k}(x) \to y \Rightarrow \Phi_{t + t_k}(x) \to \Phi_t(y) \Rightarrow V(\Phi_{t + t_k}(x)) \to V(\Phi_t(y))$.
+    \item \label{LaSa 6} 由 \eqref{LaSa 3} 与 \eqref{LaSa 5} 得: $V(\Phi_{t + t_{k}(x)}) < V(y)$.
+  \end{enumerate}
+  由 \eqref{LaSa 4} 与 \eqref{LaSa 6} 得矛盾!
+
+  \item LaSalle 证明
+
+  $\dot{V}(x) \leq 0 \Rightarrow V(\Phi_t(x))$ 单调递减, 又 $\Phi_t(x)$ 有界 $\Rightarrow V(\Phi_t(x)) \to c$ ($t \to \infty$). 即 $\lim \limits_{t \to \infty} V(\Phi_t(x)) = c$. 那么对 $\forall y \in \Omega(x) \Rightarrow V(y) = c$,
+
+  $\Rightarrow V(\Phi_t(y)) = c$,
+
+  $\Rightarrow \dot{V} = 0$. $\{y \mid V(y) = c\}$ 为不变集.
+\end{itemize}
+\end{proof}
+
+\begin{Exa}
+  例 \ref{Ex:4.9} 中, $a_{22} = 0$ 时, $E = \{x \mid x_1 = x^*_1\}$, $\underline{\Omega(x)}\subset M \subset \underline{E}$.
+\end{Exa}
+\begin{solve}
+  设 $\bar{x}(t) = (\bar{x}_1(t), \bar{x}_2(t)) \in \Omega(x)$, 有
+  \begin{equation*}
+  \left\{
+    \begin{aligned}
+      \bar{x}_{1t} & = \bar{x}_1 [ - a_{11} (\bar{x}_1 - x^*_1) - a_{12} (\bar{x}_2 - x^*_2)],\\
+      \bar{x}_{2t} & = \bar{x}_2 [a_{21} (\bar{x}_1 - x^*_1)].
+    \end{aligned}
+  \right.
+  \end{equation*}
+  将 $\bar{x}_1 = x^*_1$ 代入上式,\\
+  $\Rightarrow \bar{x}_2 = x^*_2$,\\
+  $\Rightarrow \bar{x} = (x^*_1, x^*_2)$,\\
+  $\Rightarrow \Omega (x) = \{x^*\}$.
+\end{solve}
+
+\begin{Exa}
+    \begin{align}
+      \dot{x}_1 & = x_1 [ - a_{11} (x_1 - 1) + a_{12} (x_2 - 1)], \label{Eq:4.7}\\
+      \dot{x}_2 & = x_2 [a_{21} (x_1 - 1) - a_{22} (x_2 - 1) + a_{23} (x_3 - 1)], \label{Eq:4.8}\\
+      \dot{x}_3 & = x_3 [a_{32} (x_2 - 1) - a_{33} (x_3 - 1)]. \label{Eq:4.9}
+    \end{align}
+  \begin{enumerate}[(1)]
+    \item $a_{ii} > 0$, $a_{ij} a_{ji} < 0$, $x^* = (1, 1, 1)$ 全局稳定.
+    \item $a_{11} > 0$, $a_{22} = 0$, $a_{33} = 0$, 全局稳定.
+  \end{enumerate}
+\end{Exa}
+\begin{solve}
+  \begin{align*}
+    V & = \sum c_i (x_i - x^*_i \ln x_i),\\
+    \dot{V} & = - a_{11} c_1 (x_1 - x^*_1)^2 + [\text{交叉项 (适当选取 $c_1$, $c_2$, $c_3$ 使其为 $0$)}] \leq 0.
+  \end{align*}
+  $\Omega(x) \subset M \subset E = \{x \mid x_1 = 1\}$, 任取 $\bar{x}(t) = (\bar{x}_1(t), \bar{x}_2(t), \bar{x}_3(t)) \in \Omega(x)$,\\
+  $\Rightarrow \bar{x}(t) = 1$ 代入 \eqref{Eq:4.8} $\Rightarrow \bar{x}_2 = 1$, 代入 \eqref{Eq:4.9} $\Rightarrow \bar{x}_3 = 1$, 由 \eqref{Eq:4.7} $\Rightarrow \bar{x}(t) = x^*$.\\
+  $\Rightarrow \Omega(x) = \{x^*\}$.
+\end{solve}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{图论稳定性}
+
+Samulson 经济学家.
+
+$a_{11} < 0$, 用 ``\tikz \fill[black] (1ex,1ex) circle (0.5ex);'' 表示; $a_{22} = 0$, 用 ``\tikz \draw (1ex,1ex) circle (0.5ex);'' 表示.
+
+$a_{12} \neq 0$,
+\begin{tikzpicture}
+  \draw[-{Stealth}] (0.1,0) -- (0.9,0);
+  \draw (0,0) node [above] {1};
+  \draw (1,0) node [above] {2};
+  \filldraw[fill=white] (1,0) circle (0.5ex);
+  \fill[black] (0,0) circle (0.5ex);
+\end{tikzpicture}.
+
+
+$a_{21} \neq 0$,
+\begin{tikzpicture}
+  \draw[-{Stealth}] (0.9,0) -- (0.1,0);
+  \draw (0,0) node [above] {1};
+  \draw (1,0) node [above] {2};
+  \filldraw[fill=white] (1,0) circle (0.5ex);
+  \fill[black] (0,0) circle (0.5ex);
+\end{tikzpicture}.
+
+$a_{12} \neq 0$, $a_{21} \neq 0$,
+\begin{tikzpicture}
+  \draw[-] (1,0) -- (0,0);
+  \draw (0,0) node [above] {1};
+  \draw (1,0) node [above] {2};
+  \filldraw[fill=white] (1,0) circle (0.5ex);
+  \fill[black] (0,0) circle (0.5ex);
+\end{tikzpicture}.
+
+在三种群系统中, 不考虑可约系统 (图不连通):
+\begin{center}
+  \begin{tikzpicture}
+    \fill[black] (0,0) circle (0.5ex);
+    \fill[black] (1,-1.7320508075689) circle (0.5ex);
+    \fill[black] (2,0) circle (0.5ex);
+    \draw[-] (0,0) -- (1,-1.7320508075689);
+  \end{tikzpicture}
+\end{center}
+那么则只考虑两种不可约情况:
+\begin{center}
+  \begin{tikzpicture}
+    \fill[black] (0,0) circle (0.5ex);
+    \fill[black] (1,-1.7320508075689) circle (0.5ex);
+    \fill[black] (2,0) circle (0.5ex);
+    \draw[-] (0,0) -- (1,-1.7320508075689);
+    \draw[-] (0,0) -- (2,0);
+  \end{tikzpicture}
+  \qquad
+  \begin{tikzpicture}
+    \fill[black] (0,0) circle (0.5ex);
+    \fill[black] (1,-1.7320508075689) circle (0.5ex);
+    \fill[black] (2,0) circle (0.5ex);
+    \draw[-] (0,0) -- (1,-1.7320508075689);
+    \draw[-] (0,0) -- (2,0);
+    \draw[-] (2,0) -- (1,-1.7320508075689);
+  \end{tikzpicture}
+\end{center}
+
+总结:
+\begin{center}
+  \begin{tikzpicture}
+    \begin{scope}
+      \draw[-] (0,0) -- (1,0);
+      \draw[fill] (0,0) circle (0.5ex);
+      \draw[fill] (1,0) circle (0.5ex);
+      \draw (4,0) node {G. A.};
+    \end{scope}
+    \begin{scope}[yshift=-2em]
+      \draw[-] (0,0) -- (1,0);
+      \draw[fill] (0,0) circle (0.5ex);
+      \filldraw[fill=white] (1,0) circle (0.5ex);
+      \draw (4,0) node {G. A.};
+    \end{scope}
+    \begin{scope}[yshift=-4em]
+      \draw[-] (0,0) -- (1,0);
+      \draw[-] (1,0) -- (2,0);
+      \draw[fill] (0,0) circle (0.5ex);
+      \filldraw[fill=white] (1,0) circle (0.5ex);
+      \filldraw[fill=white] (2,0) circle (0.5ex);
+      \draw (4,0) node {G. A.};
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+
+练习:
+\begin{center}
+\tikz \draw[fill] (0,0) circle (0.5ex) -- (1,0) circle (0.5ex) -- (2,0) circle (0.5ex) (4,0) node {G.A.?};
+\end{center}
+
+问题:
+\begin{center}
+  \begin{tikzpicture}
+    \draw[fill] (0,0) circle (0.5ex) -- (1,0) circle (0.5ex) -- (2,0) circle (0.5ex);
+    \draw[dashed] (2,0)  -- node [above] {$n$} (3,0);
+    \draw[fill] (3,0) circle (0.5ex) -- (4,0) circle (0.5ex) (6,0) node {G.A.?};
+    \draw (0,-1) -- (1,-1) -- (2,-1) (3,-1) -- (4,-1);
+    \draw[dashed] (2,-1)  -- node [above] {$n$} (3,-1);
+    \filldraw[fill=black] (0,-1) circle (0.5ex);
+    \filldraw[fill=white] (1,-1) circle (0.5ex) (2,-1) circle (0.5ex) (3,-1) circle (0.5ex) (4,-1) circle (0.5ex) (6,-1) node {G.A.?};
+  \end{tikzpicture}
+\end{center}
+此问题分别于 1979、1981 年证明成立.
+\begin{center}
+  \begin{tikzpicture}
+    \draw (0,0) -- (4,0);
+    \draw[fill] (2,0) circle (0.5ex);
+    \filldraw[fill=white] (0,0) circle (0.5ex) (1,0) circle (0.5ex) (3,0) circle (0.5ex) (4,0) circle (0.5ex) (6,0) node [right] {不全局稳定.};
+    \draw[dashed] (0,-1)  -- node [above] {$n$} (2,-1);
+    \filldraw[fill=black] (1,-1) circle (0.5ex);
+    \filldraw[fill=white] (0,-1) circle (0.5ex) (2,-1) circle (0.5ex);
+    \draw (6,-1) node [right] {只要有黑点, $n \leq 4$, 全局稳定.};
+  \end{tikzpicture}
+\end{center}
+
+一般的, 图是一棵树 (无圈):
+\begin{center}
+  \begin{tikzpicture}
+    \draw (0,0) -- (1,0) (0,0) -- (-1,0) (0,0) -- (0,-1);
+    \filldraw[fill=white] (-1,0) circle (0.5ex) (0,0) circle (0.5ex) (1,0) circle (0.5ex);
+    \filldraw[fill=black] (0,-1) circle (0.5ex);
+  \end{tikzpicture}
+\end{center}
+Color Test 可以通过的条件是:
+\begin{enumerate}[(1)]
+  \item \tikz \draw (1ex,1ex) circle (0.5ex); 不孤立;
+  \item \tikz \fill[black] (1ex,1ex) circle (0.5ex); 连接一个白点, 再连一个白点.
+\end{enumerate}
+不能通过 Color Test, 则全局稳定.
